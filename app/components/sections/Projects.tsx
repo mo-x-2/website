@@ -103,7 +103,7 @@ export default function Projects() {
 
         <Bubbles 
           sectionId="projects"
-          bubbleCount={2}
+          bubbleCount={5}
           backgroundColor="rgba(255, 255, 255, 1)"
           strokeStyle = 'rgba(1, 56, 167, 0.3)'
         />

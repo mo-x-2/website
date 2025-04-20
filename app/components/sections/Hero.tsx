@@ -84,6 +84,31 @@ export default function Hero() {
               px-5                                   // Fixed padding
               text-base                              // Fixed font size
             "
+            href="https://www.instagram.com/mom_o_17/" 
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              className="dark:invert mr-2"
+              src="/instagram.svg"
+              alt="Instagram"
+              width={20}
+              height={20}
+              sizes="20px"
+            />
+            <span className="relative z-20">Instagram</span>
+          </a>
+          <a
+            className="
+              relative
+              z-20
+              rounded-full border border-solid border-black/[.08] dark:border-white/[.145] 
+              transition-colors flex items-center justify-center 
+              hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] 
+              h-12                                    // Fixed height
+              px-5                                   // Fixed padding
+              text-base                              // Fixed font size
+            "
             href="https://x.com/mo_x_2_" 
             target="_blank"
             rel="noopener noreferrer"

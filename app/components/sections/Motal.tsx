@@ -181,6 +181,31 @@ export default function ExperienceModal({
             </p>
           </div>
           
+          <a 
+            href={experience.link} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="
+              relative block
+              w-full h-[200px] sm:h-[300px] md:h-[400px]
+              rounded-xl overflow-hidden
+              shadow-lg
+              ring-1 ring-black/5 dark:ring-white/5
+              cursor-pointer
+            "
+          >
+            <Image
+              src={experience.mainImage}
+              alt={experience.title}
+              fill
+              className="
+                object-cover 
+                transition-transform duration-500
+                filter brightness-100
+              "
+              priority
+            />
+          </a>
 
           <div className="space-y-8">
             <div className="space-y-12">

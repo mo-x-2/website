@@ -1,42 +1,60 @@
-// 导入必要的React hooks和MUI组件
 import { useEffect, useState } from 'react'
 import { Box } from '@mui/material'
 
-// 定义组件Props类型
 type Props = {
-  sectionId: string;  // 用于监听的section ID
-  gradientColors: {   // 渐变色配置
-    start: string;    // 起始颜色
-    end: string;      // 结束颜色
+  sectionId: string;
+  gradientColors: {
+    start: string;
+    end: string;
   };
 }
 
 export default function GradientBackground({ sectionId, gradientColors }: Props) {
-  // 控制渐变背景是否可见的状态
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    // 创建交叉观察器实例来监听section的可见性
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting)
       },
-      { threshold: 0.3 }  // 当30%的内容可见时触发回调
+      { threshold: 0.3 }
     )
 
-    // 获取并观察目标section元素
     const section = document.getElementById(sectionId)
     if (section) {
       observer.observe(section)
     }
 
-    // 清理函数：组件卸载时断开观察器
     return () => observer.disconnect()
   }, [sectionId])
 
   return (
     <>
+      {/* アニメーションのためのスタイルを追加 */}
+      <style jsx global>{`
+        @keyframes float1 {
+          0% { transform: translate(0, 0) rotate(0deg); }
+          50% { transform: translate(10px, 10px) rotate(5deg); }
+          100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        @keyframes float2 {
+          0% { transform: translate(0, 0) rotate(0deg); }
+          50% { transform: translate(-10px, 15px) rotate(-5deg); }
+          100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        .floating-bg-1 {
+          animation: float1 15s ease-in-out infinite;
+        }
+
+        .floating-bg-2 {
+          animation: float2 18s ease-in-out infinite;
+        }
+      `}</style>
+
       <Box
+        className="floating-bg-1"
         sx={{
           position: 'fixed',
           width: {
@@ -68,6 +86,7 @@ export default function GradientBackground({ sectionId, gradientColors }: Props)
         }}
       />
       <Box
+        className="floating-bg-2"
         sx={{
           position: 'fixed',
           width: {
@@ -100,4 +119,4 @@ export default function GradientBackground({ sectionId, gradientColors }: Props)
       />
     </>
   )
-} 
+}

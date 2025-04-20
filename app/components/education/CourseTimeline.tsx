@@ -6,37 +6,112 @@ import { motion } from "framer-motion"
 
 interface CourseItem {
   date: string
-  title: string
-  description: string
+  title: React.ReactNode
+  type: string
+  description: React.ReactNode
 }
 
 // Example course data - Replace with your own education experience
 const courses: CourseItem[] = [
   {
-    date: "2023 - Present",
-    title: "Your University Name",
-    description: "Your Major | GPA: X.XX"
+    date: "Apr 2020 - Mar 2024",
+    title: "B.C. Nagoya University",
+    type: "# Education",
+    description: (
+      <>
+        Computer Science |{' '}
+        <a 
+          href="http://www.nagao.nuie.nagoya-u.ac.jp/"
+          target="_blank" 
+          className="underline decoration-dotted underline-offset-4 hover:text-pink-500 duration-300"
+        >
+          Nagao Laboratory
+        </a>
+      </>
+    )
+  },
+
+  {
+    date: "Aug 2022",
+    title: (
+      <a 
+        href="https://www.utwente.nl/en/events/2022/8/645021/curiousu-summer-school"
+        target="_blank"
+        className="underline decoration-dotted underline-offset-4 hover:text-pink-500 duration-300"
+      >
+        CuriousU
+      </a>
+    ),
+    type: "# Global Education",
+    description: (
+      <>
+        Summer School | University of Twente | the Netherlands
+      </>
+    )
+  },
+
+  {
+    date: "Sep 2023",
+    title: (
+      <a 
+        href="https://www.unc.edu/posts/2023/11/28/women-defend-against-hackers-in-exchange-program/" 
+        target="_blank"
+        className="underline decoration-dotted underline-offset-4 hover:text-pink-500 duration-300"
+      >
+        Women in Cybersecurity Program
+      </a>
+    ),
+    type: "# Global Education",
+    description: (
+      <>
+        The University of North Carolina at Chapel Hill | the U.S.
+      </>
+    )
+  },
+
+  {
+    date: "Apr 2024 - Current",
+    title: "M.S. The University of Tokyo",
+    type: "# Education",
+    description: (
+      <>
+        HCI | {' '}
+        <a 
+          href="https://ishiguro-lab.org/"
+          target="_blank" 
+          className="underline decoration-dotted underline-offset-4 hover:text-pink-500 duration-300"
+        >
+          Ishiguro Laboratory
+        </a>
+      </>
+    )
   },
   {
-    date: "Fall 2023",
-    title: "Course Name 1",
-    description: "Keyword1 | Keyword2 | Keyword3"
+    date: "Jul - Dec 2024",
+    title: (
+      <a 
+        href="https://weblab.t.u-tokyo.ac.jp/research/misc/"
+        target="_blank"
+        className="underline decoration-dotted underline-offset-4 hover:text-pink-500 duration-300"
+      >
+        Robot Showcase Team at Matsuo & Iwasawa Laboratory
+      </a>
+    ),
+    type: "# Working",
+    description: (
+      <>Sim2Real | Reinforcement Learning | Quadruped Robot</>
+    )
   },
+
   {
-    date: "Spring 2024", 
-    title: "Course Name 2",
-    description: "Keyword1 | Keyword2 | Keyword3"
+    date: "(Planned) Aug 2025 - Jun 2026",
+    title: "University of Sydney",
+    type: "# Global Education",
+    description: (
+      <> Exchange</>
+    )
   },
-  {
-    date: "Fall 2024",
-    title: "Course Name 3",
-    description: "Keyword1 | Keyword2 | Keyword3"
-  },
-  {
-    date: "Spring 2025",
-    title: "Course Name 4", 
-    description: "Keyword1 | Keyword2 | Keyword3"
-  }
+
 ]
 
 // Usage Instructions:
@@ -93,6 +168,13 @@ export default function CourseTimeline() {
                   mb-1
                 ">
                   {course.date}
+                </p>
+                <p className="
+                  text-xs                               /* Mobile: 12px */
+                  sm:text-sm md:text-base              /* sm: 14px, md: 16px */
+                  text-foreground/80
+                ">
+                  {course.type}
                 </p>
                 <p className="
                   text-xs                               /* Mobile: 12px */

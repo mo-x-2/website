@@ -3,33 +3,46 @@
 import Image from "next/image"
 import AnimatedText from "../common/AnimatedText"
 import FloatingElements from "../common/FloatingElements"
+import Bubbles from "../common/Bubbles"
+
+
 
 export default function Hero() {
   return (
     <section id="home" className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <FloatingElements />
+      
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+
+        <Bubbles 
+          sectionId="home"
+          bubbleCount={3}
+          backgroundColor="rgba(255, 255, 255, 1)"
+          strokeStyle = 'rgba(156, 12, 101, 0.3)'
+        />
+
         <AnimatedText className="flex flex-col items-center sm:items-start gap-4">
           <Image
             className="rounded-full"
-            src="/avatar.jpg" // Replace with your avatar image path in public folder
+            src="/avatar.png" // Replace with your avatar image path in public folder
             alt="Profile Picture"
-            width={120}
-            height={120}
+            width={250}
+            height={250}
             priority
           />
-          <h1 className="text-4xl font-bold">Your Name</h1>
+          <h1 className="text-4xl font-bold">Momo Hanawa</h1>
           <p className="text-lg text-foreground/80 font-[family-name:var(--font-geist-mono)]">
-            Your Job Title
+            CS Student 
           </p>
         </AnimatedText>
 
         <AnimatedText 
           className="max-w-2xl text-center sm:text-left"
         >
-          <p className="text-foreground/80 leading-relaxed">
-            Write a brief self-introduction here, including your educational background, job objectives, or current work status.
-          </p>
+            <p className="text-foreground/80 leading-relaxed">
+            Hi. I am a Master's student at <a href="https://ishiguro-lab.org/" target="_blank" className="underline decoration-dotted underline-offset-4 hover:text-pink-500 duration-300">Ishiguro Laboratory</a>
+            , <a href="https://www.iii.u-tokyo.ac.jp/" target="_blank" className="underline decoration-dotted underline-offset-4 hover:text-pink-500 duration-300">III/GSII</a>, The University of Tokyo.<br />
+            My research interests include human-agent interaction, robotics, and AI.
+            </p>
         </AnimatedText>
 
         <AnimatedText 
@@ -46,7 +59,7 @@ export default function Hero() {
               px-5                                   // Fixed padding
               text-base                              // Fixed font size
             "
-            href="https://github.com/your-username" // Replace with your GitHub profile link
+            href="https://github.com/mo-x-2" 
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -62,65 +75,81 @@ export default function Hero() {
           </a>
           <a
             className="
+              relative
+              z-20
               rounded-full border border-solid border-black/[.08] dark:border-white/[.145] 
               transition-colors flex items-center justify-center 
               hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] 
-              hover:border-transparent 
-              h-12                                   // Fixed height
+              h-12                                    // Fixed height
               px-5                                   // Fixed padding
               text-base                              // Fixed font size
-              min-w-44                              // Fixed minimum width
             "
-            href="/resume.pdf" // Replace with your resume PDF path in public folder
+            href="https://x.com/mo_x_2_" 
             target="_blank"
+            rel="noopener noreferrer"
           >
             <Image
               className="dark:invert mr-2"
-              src="/resume.svg"
-              alt="Resume"
+              src="/x.svg"
+              alt="X"
               width={20}
               height={20}
               sizes="20px"
             />
-            View Resume
+            <span className="relative z-20">X</span>
+          </a>
+          <a
+            className="
+              relative
+              z-20
+              rounded-full border border-solid border-black/[.08] dark:border-white/[.145] 
+              transition-colors flex items-center justify-center 
+              hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] 
+              h-12                                    // Fixed height
+              px-5                                   // Fixed padding
+              text-base                              // Fixed font size
+            "
+            href="https://www.linkedin.com/in/momohanawa/" 
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              className="dark:invert mr-2"
+              src="/linkedin.svg"
+              alt="LinkedIn"
+              width={20}
+              height={20}
+              sizes="20px"
+            />
+            <span className="relative z-20">LinkedIn</span>
+          </a>
+          <a
+            className="
+              relative
+              z-20
+              rounded-full border border-solid border-black/[.08] dark:border-white/[.145] 
+              transition-colors flex items-center justify-center 
+              hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] 
+              h-12                                    // Fixed height
+              px-5                                   // Fixed padding
+              text-base                              // Fixed font size
+            "
+            href="mailto:momohanawa@g.ecc.u-tokyo.ac.jp" 
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              className="dark:invert mr-2"
+              src="/mail.svg"
+              alt="Mail"
+              width={20}
+              height={20}
+              sizes="20px"
+            />
+            <span className="relative z-20">Email</span>
           </a>
         </AnimatedText>
       </main>
-
-      <AnimatedText 
-        className="row-start-3 flex gap-6 flex-wrap items-center justify-center"
-      >
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="mailto:your-email" // Replace with your email address
-        >
-          <Image
-            aria-hidden
-            className="dark:invert"
-            src="/mail.svg"
-            alt="Email"
-            width={16}
-            height={16}
-          />
-          Send Email
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://www.linkedin.com/in/your-username" // Replace with your LinkedIn profile link
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            className="dark:invert"
-            src="/linkedin.svg"
-            alt="LinkedIn"
-            width={16}
-            height={16}
-          />
-          LinkedIn
-        </a>
-      </AnimatedText>
     </section>
   )
 } 

@@ -1,44 +1,89 @@
 'use client'
 
 import AnimatedText from "../common/AnimatedText"
+import Image from "next/image"
+import Bubbles from "../common/Bubbles"
 
 export default function About() {
   return (
     <section id="about" className="min-h-screen w-full flex items-center justify-center p-8">
-      <div className="max-w-2xl space-y-12">
+
+      <div className="max-w-6xl w-full">
         <AnimatedText>
           <h1 className="text-4xl font-bold mb-8">About Me</h1>
         </AnimatedText>
 
-        <div className="space-y-8">
-          <AnimatedText>
-            <div className="space-y-4">
-              <p className="text-lg text-foreground/80 leading-relaxed">
-                Here, you can introduce your basic background information. Include your name, major, education and other basic information. This is an excellent place to showcase your personal characteristics.
-              </p>
-              <p className="text-lg text-foreground/80 leading-relaxed">
-                You can describe your professional skills and experience in detail. Highlight your tech stack, project experience, and achievements in relevant fields. This information will help visitors better understand your professional capabilities.
-              </p>
-            </div>
-          </AnimatedText>
+        <div className="flex flex-col md:flex-row gap-8">
+          {/* テキストコンテンツ - 左側 */}
+          <div className="md:w-3/4 space-y-8">
+            <AnimatedText>
+              <div className="space-y-4">
+                <p className="text-lg text-foreground/80 leading-relaxed">
+                  I was born in Osaka and earned my bachelor's degree at Nagoya University, where I studied the fundamentals of computer science with a major in robotics. Currently, I am pursuing a master's degree at The University of Tokyo, and my research is focused on technologies that enhance human interaction. I specialize in Human-Computer Interaction (HCI), exploring the interaction between humans and agents, including robots and virtual agents.
+                </p>
+              </div>
+            </AnimatedText>
 
-          <AnimatedText>
-            <div className="space-y-4">
-              <h2 className="text-2xl font-semibold">Personal Interests</h2>
-              <p className="text-lg text-foreground/80 leading-relaxed">
-                In this section, you can share your personal interests and hobbies. This content can make your profile more vibrant and showcase your unique personality traits.
-              </p>
-            </div>
-          </AnimatedText>
+            <AnimatedText>
+              <div className="space-y-4">
+                <h2 className="text-2xl font-semibold">Personal Interests</h2>
+                <p className="text-lg text-foreground/80 leading-relaxed">
+                Curiosity drives me, and I cherish every chance to connect with people and experience new cultures. I love traveling overseas, getting lost in a good movie, grooving to music, and even checking out Japanese comedy shows. Plus, I'm a huge cat lover!
+                </p>
+              </div>
+            </AnimatedText>
 
-          <AnimatedText>
-            <div className="space-y-4">
-              <h2 className="text-2xl font-semibold">Career Goals</h2>
-              <p className="text-lg text-foreground/80 leading-relaxed">
-                Here you can describe your career development plans and goals. Clearly express the types of opportunities you are looking for and the goals you hope to achieve in your future career.
-              </p>
-            </div>
-          </AnimatedText>
+            <AnimatedText>
+              <div className="space-y-4">
+                <h2 className="text-2xl font-semibold">Certification</h2>
+                <p className="text-lg text-foreground/80 leading-relaxed">
+                Feb 2025 - IELTS 6.5 <br />
+                Apr 2023 - TOEIC 875 <br />
+                Dec 2022 - Applied Information Technology Engineer Examination <br />
+                Nov 2021 - Fundamental Information Technology Engineer Examination
+                </p>
+              </div>
+            </AnimatedText>
+          </div>
+
+          {/* 写真セクション - 右側 */}
+          <div className="md:w-1/4 space-y-8">
+            <AnimatedText>
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 gap-6">
+                  {/* 写真1 */}
+                  <div>
+                    <div className="relative overflow-hidden rounded aspect-[4/3]">
+                      <div className="absolute inset-y-0 left-0 w-[25%] z-25 bg-gradient-to-r from-white/100 to-transparent dark:from-black/50"></div>
+                      <Image
+                        src="/me1.jpg"
+                        alt="Me 1"
+                        width={120}
+                        height={90}
+                        className="object-cover w-full h-full"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                    </div>
+                  </div>
+
+                  {/* 写真2 */}
+                  <div>
+                    <div className="relative overflow-hidden rounded aspect-[4/3]">
+                      <div className="absolute inset-y-0 left-0 w-[25%] z-25 bg-gradient-to-r from-white/100 to-transparent dark:from-black/50"></div>
+                      <Image
+                        src="/me2.jpg"
+                        alt="Me 2"
+                        width={120}
+                        height={90}
+                        className="object-cover w-full h-full"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AnimatedText>
+          </div>
         </div>
       </div>
     </section>

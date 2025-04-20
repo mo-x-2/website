@@ -14,7 +14,7 @@ import Gallery from './components/sections/Gallery'
 
 // Step 2: Choose your template version
 // For Researcher Template: uncomment these imports
-// import Research from './components/sections/Research'
+import Research from './components/sections/Research'
 // import Teaching from './components/sections/TeachingExperience'
 
 // Step 3: Configure your website sections
@@ -32,9 +32,6 @@ export default function Home() {
         {/* About section - Edit your intro in /components/sections/About */}
         <About />
         
-        {/* Skills section - Add your skills in /components/sections/MySkills */}
-        <MySkills />
-        
         {/* Education section - Edit timeline in /components/education/CourseTimeline */}
         <section id="education" className="relative">
           <Box sx={{ 
@@ -43,19 +40,16 @@ export default function Home() {
             alignItems: 'center',
             p: 4,
           }}>
-            <h1 className="text-4xl font-bold mb-12 text-center">Education</h1>
+            <h1 className="text-4xl font-bold mb-12 text-center">Background</h1>
             <CourseTimeline />
           </Box>
         </section>
         
-        {/* Experience section - Add your work history in /components/sections/Experience */}
-        <Experience />
-        
+        {/* Research section - Showcase your projects in /components/sections/Research */}
+        <Research />
+
         {/* Projects section - Showcase your projects in /components/sections/Projects */}
         <Projects />
-        
-        {/* Gallery section - Add your photos in /components/sections/Gallery */}
-        <Gallery />
       </main>
     </>
   )

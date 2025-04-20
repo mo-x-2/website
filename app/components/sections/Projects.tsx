@@ -3,6 +3,7 @@
 import AnimatedText from '../common/AnimatedText'
 import Image from 'next/image'
 import GradientBackground from '../common/GradientBackground'
+import Bubbles from "../common/Bubbles"
 import ExperienceModal from './Motal'
 import { useState } from 'react'
 
@@ -65,12 +66,12 @@ export default function Projects() {
         relative
         overflow-hidden
       ">
-        <GradientBackground 
+
+        <Bubbles 
           sectionId="projects"
-          gradientColors={{
-            start: '#F43F5E',  // Light rose
-            end: '#BE123C'     // Deep rose
-          }}
+          bubbleCount={2}
+          backgroundColor="rgba(255, 255, 255, 1)"
+          strokeStyle = 'rgba(1, 56, 167, 0.3)'
         />
 
         <AnimatedText>

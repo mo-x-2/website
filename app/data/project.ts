@@ -42,7 +42,7 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
     title: "Accompanying Robot",
     company: "Ishiguro Laboratory, The University of Tokyo",
     overview: "We are exploring how people perceive and accept robots they encounter in public spaces. Specifically, our ongoing work examines how visual design elements that express the relationship between an accompanying robot and its user may affect impressions, especially for those who are initially less comfortable with robots.", 
-    mainImage: "/project/2.jpg",
+    mainImage: "/project/2.jpeg",
   },
   3: {
     id: 3,
@@ -77,7 +77,7 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
         image: "/project/4.png"
       }
     ],
-    
+    link: ""
   },
   5: {
     id: 5,

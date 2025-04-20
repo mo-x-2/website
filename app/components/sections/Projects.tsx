@@ -52,7 +52,7 @@ export const projects: Project[] = [
     period: "Apr 2024 - Current",
     state: "On Going",
     tag: "Research",
-    image: "/project/2.jpg",
+    image: "/project/2.jpeg",
     skills: ["Python", "ROS"],
   },
   {

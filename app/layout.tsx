@@ -16,8 +16,16 @@ const geistMono = localFont({
 
 // TODO: Please update the title and description with your personal information
 export const metadata: Metadata = {
-  title: "Portfolio Template",
-  description: "A modern portfolio template for developers and designers",
+  title: "Momo Hanawa",
+  description: "The personal portfolio of Momo Hanawa (塙 桃)",
+  openGraph: {
+    title: "Momo Hanawa",
+    description: "The personal portfolio of Momo Hanawa (塙 桃)",
+    url: "https://momo-hanawa.vercel.app", 
+    siteName: "Momo Hanawa",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

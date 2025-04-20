@@ -8,7 +8,8 @@ type Props = {
   // paper object contains paper details
   paper: {
     title: string              // Paper title (required)
-    overview?: string          // Paper overview (optional)
+    project?: string         // Project name (optional)
+    overview?: string[]        // Paper overview (optional)
     publishDate?: string       // Publication date (optional)
     chartImage?: string        // Chart image path (optional)
     pdf?: string              // PDF link (optional)
@@ -159,7 +160,7 @@ export default function ResearchModal({ paper, onClose }: Props) {
             {/* Publication date - only shown if publishDate provided */}
             {paper.publishDate && (
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                Published on {paper.publishDate}
+                Published on {paper.publishDate}, Related Project: {paper.project}
               </p>
             )}
 

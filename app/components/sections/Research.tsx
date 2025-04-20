@@ -2,7 +2,10 @@
 
 import AnimatedText from '../common/AnimatedText'
 import ResearchModal from './ResearchModal'
+import ExperienceModal from './Motal'
+import Bubbles from "../common/Bubbles"
 import { useState } from 'react'
+import Image from 'next/image'
 
 // Type definition for research paper entries
 type Publication = {
@@ -17,10 +20,12 @@ type Publication = {
   description?: string    // Brief description (optional)
   citations?: string[]    // Citation list (optional)
   bulletPoints?: string[] // Key points list (optional)
-  overview?: string       // Detailed overview (optional)
+  project?: string    // Project name (optional)
+  overview?: string[]       // Detailed overview (optional)
   publishDate?: string    // Publication date (optional)
   chartImage?: string     // Chart image path (optional)
 }
+
 
 // Example research paper data
 // Usage Instructions:
@@ -31,47 +36,29 @@ type Publication = {
 const publications: Publication[] = [
   {
     // Published paper example
-    id: 1,
-    title: "Cleaner Waters and Urbanization",
-    authors: "with Jeremy West",
-    year: "2023",
-    journal: "Journal of Environmental Economics and Management, 122: 102874",
-    type: "publication",
-    pdf: "https://labs-laboratory.com/medicine/",
-    ssrn: "https://labs-laboratory.com/medicine/",
-    description: "English description (by E3M)",
-    overview: "This is a detailed overview of the paper...",
-    publishDate: "December 2023",
-    chartImage: "/research/1.png"
-  },
-  {
-    // Published paper with citations example
     id: 2,
-    title: "Donations make people happier: Evidence from the Wenchuan earthquake",
-    authors: "with Maoliang Ye",
-    year: "2017", 
-    journal: "Social Indicators Research, 132(1): 517-536",
+    title: "ParaTalk: A Real-Time Paralinguistic Dialogue System for Human-Agent Interaction",
+    authors: "with Yoshio Ishiguro",
+    year: "2023",
+    journal: "2025 IEEE Conference on Virtual Reality and 3D User Interfaces Abstracts and Workshops (VRW)",
     type: "publication",
-    ssrn: "#",
-    citations: [
-      "Helliwell, John F., Haifang Huang, and Shun Wang. \"The Social Foundations of World Happiness.\" World Happiness Report 2017: 8."
-    ]
-  },
-  {
+    project: "Paralinguistic Dialogue System",
+    overview: [
+      "In human–agent interactions, spoken language interfaces often pose challenges such as high cognitive load and reduced practicality in noisy environments. Semantic-Free Utterances (SFUs), which are non-verbal sounds lacking semantic content, have emerged as a promising alternative to mitigate these issues. However, existing approaches rarely tackle the key problem of generating real-time, context-aware SFU responses. We address this gap by introducing ParaTalk, a paralinguistic dialogue system that uses a large language model to interpret user verbal input and generate Paralinguistic Utterances (PUs), a specific type of SFU, in real time. The system dynamically combines emotional states (e.g., Neutral, Pleasant, Unpleasant, Activation) with intentional expressions (e.g., Affirmation, Negation, Unsure, Question, Acknowledgment) to generate appropriate responses. In this method, we explore the potential of verbal and non-verbal communication and propose new guidelines for designing dialogue interfaces with agents.",
+    ],
+    publishDate: "2025",
+    chartImage: "/research/1.png"
+    },
+    {
     // Working paper example
-    id: 3,
-    title: "Permission to Build: Climate Risk and Property Tax Revenue",
+    id: 1,
+    title: "hogehoge",
     authors: "",
-    year: "2024",
+    year: "20xx",
     type: "working",
-    pdf: "#",
-    bulletPoints: [
-      "First bullet point about the paper",
-      "Second bullet point about methodology", 
-      "Third bullet point about findings"
-    ]
   }
 ]
+
 
 export default function Research() {
   const [modalOpen, setModalOpen] = useState(false)
@@ -90,6 +77,14 @@ export default function Research() {
     ">
 
       <div className="container max-w-4xl mx-auto relative z-10">
+
+        <Bubbles 
+          sectionId="research"
+          bubbleCount={2}
+          backgroundColor="rgba(255, 255, 255, 1)"
+          strokeStyle = 'rgba(24, 145, 48, 0.3)'
+        /> 
+
         <AnimatedText>
           <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center">
             Research
@@ -147,6 +142,12 @@ export default function Research() {
                         {paper.journal && (
                           <p className="opacity-80 text-xs sm:text-base italic">
                             {paper.journal}
+                          </p>
+                        )}
+
+                        {paper.project && (
+                          <p className="opacity-70 text-xs sm:text-base">
+                            Related Project: {paper.project}
                           </p>
                         )}
 
@@ -216,7 +217,9 @@ export default function Research() {
                 ))}
             </div>
           ))}
+        
         </div>
+        
       </div>
 
       {modalOpen && selectedPaper && (

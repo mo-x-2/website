@@ -23,7 +23,9 @@ type Project = {
   period: string
   image: string
   skills: string[]
-  link: string
+  link?: string
+  tag?: string
+  state: "On Going" | "Finished"
 }
 
 // Example project data
@@ -32,24 +34,56 @@ type Project = {
 // 2. Place project screenshots in public/project/ directory
 // 3. Sort projects in reverse chronological order
 // 4. Project descriptions should highlight core features and technical highlights
-const projects: Project[] = [
+export const projects: Project[] = [
   {
     id: 1,
-    title: "Example Project 1",
-    description: "This is a sample project description. Detail the main features, technical architecture, your responsibilities and project highlights. Use concise language to emphasize key points.",
-    period: "2024.01 - 2024.03",
-    image: "/example1/screenshot.png", // Screenshot path
-    skills: ["React", "TypeScript", "Node.js"], // Tech stack
-    link: "https://github.com/username/project1"
+    title: "Wheelchair Robot",
+    description: "As part of a project in the Nagao Laboratory at Nagoya University, I participated in the Tsukuba Challenge, a technical trial for autonomous mobile robots navigating outdoor environments. In this challenge, we redeveloped a wheelchair-type robot called WHILL to autonomously traverse pedestrian paths and urban areas. My contributions included developing an iOS application for object detection and semantic segmentation, as well as controlling the WHILL’s movements using ROS.",
+    period: "Apr 2023 - Dec 2023",
+    state: "Finished",
+    tag: "Project",
+    image: "/project/1.jpg", 
+    skills: ["ROS", "Python", "Swift"], 
   },
   {
     id: 2, 
-    title: "Example Project 2",
-    description: "Another example project. Description can include: 1) Problems solved 2) Technical solutions used 3) Results achieved 4) What you learned",
-    period: "2023.10 - 2023.12",
-    image: "/example2/demo.png",
-    skills: ["Vue.js", "Python", "MongoDB"],
-    link: "https://github.com/username/project2"
+    title: "Accompanying Robot",
+    description: "We are exploring how people perceive and accept robots they encounter in public spaces. Specifically, our ongoing work examines how visual design elements that express the relationship between an accompanying robot and its user may affect impressions, especially for those who are initially less comfortable with robots.",
+    period: "Apr 2024 - Current",
+    state: "On Going",
+    tag: "Research",
+    image: "/project/2.jpg",
+    skills: ["Python", "ROS"],
+  },
+  {
+    id: 3, 
+    title: "Parkour Simulation",
+    description: "We used the high-performance simulation environment Isaac Gym to train a quadruped robot through reinforcement learning, enabling it to perform complex parkour-like movements. Advances in simulation have made it possible to learn such behaviors in a short time and acquire models that generalize to real-world environments. By collecting large amounts of training data quickly, we were able to develop models capable of adapting to physical settings.",
+    period: "Jul 2024 - Dec 2024",
+    state: "Finished",
+    tag: "Project",
+    image: "/project/3.jpeg",
+    skills: ["ROS", "Python", "Simulation"],
+  },
+  {
+    id: 4, 
+    title: "Paralinguistic Dialogue System",
+    description: "Have you ever wished you could talk to R2D2—not through words, but through sounds? While voice-based agents are becoming more common, relying solely on spoken language in human–agent interaction presents real challenges. It can be mentally demanding and often impractical in noisy or hands-free situations. To address this, we explored the potential of non-verbal communication using Semantic-Free Utterances (SFUs)—meaningless yet expressive sounds that can lighten cognitive load. In this project, we introduce ParaTalk, a paralinguistic dialogue system that interprets user speech using a large language model and responds with Paralinguistic Utterances (PUs), a type of SFU, in real time. By focusing on the balance between verbal and non-verbal expression, ParaTalk opens up new possibilities for designing more intuitive and emotionally resonant agent communication.",
+    period: "Sep 2024 - Current",
+    state: "Finished",
+    tag: "Research",
+    image: "/project/4-2.gif",
+    skills: ["Python", "Unity"],
+  },
+  {
+    id: 5, 
+    title: "Remora Barrette",
+    description: "Have you ever felt uncomfortable when store staff approach you while shopping? We created Romera Barrette, an agent designed to support shy or socially anxious individuals. Inspired by the unspoken signals of headphones and wired earphones—often used as a subtle “do not disturb” sign—this wearable device gently expresses a desire not to be approached. When a staff member’s device comes near, the barrette softly glows, offering a warm and non-verbal way to say “not right now.”",
+    period: "Dec 2025",
+    state: "Finished",
+    tag: "Work",
+    image: "/project/5-2.gif",
+    skills: ["Arduino", "Python"],
   }
 ];
 
@@ -113,9 +147,13 @@ export default function Projects() {
                   <h2 className="text-2xl font-semibold mb-2">
                     {project.title}
                   </h2>
+
+                  <p className="text-base text-gray-600 dark:text-gray-400 mb-2">
+                    {project.tag}
+                  </p>
                   
                   <p className="text-base text-gray-600 dark:text-gray-400 mb-2">
-                    {project.period}
+                    {project.period}, {project.state}
                   </p>
                   
                   <p className="text-base text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">

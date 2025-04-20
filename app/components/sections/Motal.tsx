@@ -39,7 +39,7 @@ export default function ExperienceModal({
   useEffect(() => {
     if (open) {
       document.body.style.overflow = 'hidden';
-      preloadImages(experience.features);
+      preloadImages(experience.features || []);
     } else {
       document.body.style.overflow = 'unset';
     }
@@ -232,19 +232,9 @@ export default function ExperienceModal({
           </a>
 
           <div className="space-y-8">
-            <h2 className="
-              text-xl sm:text-2xl 
-              font-bold 
-              tracking-tight
-              flex items-center gap-2
-              before:content-[''] before:block before:w-8 before:h-[2px] 
-              before:bg-purple-500/50
-            ">
-              Core Features
-            </h2>
             <div className="space-y-12">
-              {experience.features.map((feature, index) => (
-                <div 
+                {experience.features?.map((feature, index) => (
+                  <div 
                   key={index}
                   className="
                     flex flex-col md:flex-row 
@@ -320,119 +310,6 @@ export default function ExperienceModal({
                       </div>
                     )}
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="space-y-8 mb-12">
-            <h2 className="
-              text-xl sm:text-2xl 
-              font-bold 
-              tracking-tight
-            ">
-              Tech Stack
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {experience.techStack.map((tech, index) => (
-                <div 
-                  key={index}
-                  className="
-                    p-6
-                    rounded-xl
-                    space-y-4
-                    hover:bg-white/[0.02] dark:hover:bg-black/[0.02]
-                    transition-colors duration-300
-                    border border-white/[0.03] dark:border-white/[0.03]
-                  "
-                >
-                  <h3 className="
-                    text-lg font-semibold 
-                    text-purple-600 dark:text-purple-400
-                    mb-4
-                  ">
-                    {tech.category}
-                  </h3>
-                  
-                  <div className="
-                    grid grid-cols-3 sm:grid-cols-4 
-                    gap-6
-                  ">
-                    {tech.items.map((item) => (
-                      <div
-                        key={item}
-                        className="
-                          flex flex-col items-center 
-                          gap-3
-                          group
-                        "
-                      >
-                        <div className="
-                          relative 
-                          w-12 sm:w-14
-                          h-12 sm:h-14
-                          flex items-center justify-center 
-                          transition-all duration-300 
-                          group-hover:scale-110   
-                          group-hover:-translate-y-1
-                        ">
-                          <Image
-                            src={`/skills/${item.toLowerCase().replace(/[\s()\.+]/g, '')}.svg`}
-                            alt={item}
-                            width={32}
-                            height={32}
-                            className="
-                              dark:invert          
-                              sm:w-[40px] sm:h-[40px]
-                            "
-                          />
-                        </div>
-                        <span className="
-                          text-xs sm:text-sm
-                          font-medium 
-                          text-gray-600 dark:text-gray-400
-                          group-hover:text-gray-900 dark:group-hover:text-gray-200
-                          transition-colors 
-                          text-center
-                        ">
-                          {item}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="space-y-8">
-            <h2 className="
-              text-xl sm:text-2xl 
-              font-bold 
-              tracking-tight
-            ">
-              Quantitative Results
-            </h2>
-            <div className="
-              grid grid-cols-1 sm:grid-cols-3 
-              gap-8
-            ">
-              {experience.achievements.map((achievement, index) => (
-                <div key={index} className="text-center space-y-2">
-                  <p className="
-                    text-3xl sm:text-4xl 
-                    font-bold 
-                    tracking-tight
-                    text-purple-600 dark:text-purple-400
-                  ">
-                    {achievement.value}
-                  </p>
-                  <p className="
-                    text-gray-600 dark:text-gray-300
-                  ">
-                    {achievement.metric}
-                  </p>
                 </div>
               ))}
             </div>

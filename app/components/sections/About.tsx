@@ -83,6 +83,7 @@ export default function About() {
                 </div>
               </div>
             </AnimatedText>
+
           </div>
         </div>
       </div>

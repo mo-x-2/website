@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Momo Hanawa",
     description: "The personal portfolio of Momo Hanawa (塙 桃)",
-    url: "https://momo-hanawa.vercel.app", 
+    url: "https://momohanawa.vercel.app", 
     siteName: "Momo Hanawa",
     locale: "en_US",
     type: "website",
@@ -33,7 +33,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
+  return (  
     <html lang="en">
       <head>
         <script dangerouslySetInnerHTML={{

@@ -80,7 +80,7 @@ export default function Research() {
 
         <Bubbles 
           sectionId="research"
-          bubbleCount={2}
+          bubbleCount={1}
           backgroundColor="rgba(255, 255, 255, 1)"
           strokeStyle = 'rgba(24, 145, 48, 0.3)'
         /> 

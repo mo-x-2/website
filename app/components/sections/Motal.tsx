@@ -182,31 +182,56 @@ export default function ExperienceModal({
           </div>
           
           <a 
-            href={experience.link} 
+            href={experience.link || '#'} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="
+            className={`
               relative block
               w-full h-[200px] sm:h-[300px] md:h-[400px]
               rounded-xl overflow-hidden
               shadow-lg
               ring-1 ring-black/5 dark:ring-white/5
-              cursor-pointer
-            "
+              ${experience.link ? 'group cursor-pointer' : ''}
+            `}
+            onClick={e => !experience.link && e.preventDefault()}
           >
+            {experience.link && (
+              <div className="
+                absolute inset-0
+                bg-gradient-to-t from-black/50 to-transparent
+                opacity-0 group-hover:opacity-100
+                transition-opacity duration-300
+                z-10
+                flex items-end justify-center
+                pb-6
+              ">
+                <span className="
+                  text-white
+                  text-sm sm:text-base
+                  font-medium
+                  px-4 py-2
+                  rounded-full
+                  bg-black/30
+                  backdrop-blur-sm
+                  border border-white/10
+                ">
+                  View Project
+                </span>
+              </div>
+            )}
             <Image
               src={experience.mainImage}
               alt={experience.title}
               fill
-              className="
+              className={`
                 object-cover 
+                ${experience.link ? 'group-hover:scale-105 filter brightness-100 group-hover:brightness-90' : ''}
                 transition-transform duration-500
-                filter brightness-100
-              "
+              `}
               priority
             />
           </a>
-
+          
           <div className="space-y-8">
             <div className="space-y-12">
                 {experience.features?.map((feature, index) => (

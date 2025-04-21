@@ -82,10 +82,9 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
   5: {
     id: 5,
     title: "Remora Barrette",
-    company: "Example Company 2",
+    company: "Internship at Dentsu Inc.",
     overview: "Have you ever felt uncomfortable when store staff approach you while shopping? We created Romera Barrette, an agent designed to support shy or socially anxious individuals. Inspired by the unspoken signals of headphones and wired earphones—often used as a subtle “do not disturb” sign—this wearable device gently expresses a desire not to be approached. When a staff member’s device comes near, the barrette softly glows, offering a warm and non-verbal way to say “not right now.”", 
     mainImage: "/project/5-2.gif",
-    link: "https://example2.com",
     features: [
       {
         title: "Internal Architecture",

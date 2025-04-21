@@ -14,6 +14,9 @@ export type ProjectDetail = {
     description: string   // Feature description  
     image: string | string[] // Feature image(s) path
   }[]
+  tag?: string
+  state: "On Going" | "Finished"
+  period?: string         // Project duration
 }
 
 // Project data mapping object
@@ -22,6 +25,9 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
     id: 1,
     title: "Wheelchair Robot",
     company: "Nagao Laboratory, Nagoya University", 
+    period: "Apr 2023 - Dec 2023",
+    state: "Finished",
+    tag: "Project",
     overview: "As part of a project in the Nagao Laboratory at Nagoya University, I participated in the “Tsukuba Challenge”, a technical trial for autonomous mobile robots navigating outdoor environments. In this challenge, we redeveloped a wheelchair-type robot called “WHILL” to autonomously traverse pedestrian paths and urban areas. My contributions included developing an iOS application for object detection and semantic segmentation, as well as controlling the WHILL’s movements using ROS.",
     mainImage: "/project/1.jpg",
     features: [
@@ -41,6 +47,9 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
     id: 2,
     title: "Accompanying Robot",
     company: "Ishiguro Laboratory, The University of Tokyo",
+    period: "Apr 2024 - Current",
+    state: "On Going",
+    tag: "Research",
     overview: "We are exploring how people perceive and accept robots they encounter in public spaces. Specifically, our ongoing work examines how visual design elements that express the relationship between an accompanying robot and its user may affect impressions, especially for those who are initially less comfortable with robots.", 
     mainImage: "/project/2.jpeg",
   },
@@ -48,6 +57,9 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
     id: 3,
     title: "Parkour Simulation",
     company: "Matsuo-Iwasawa Lab Tokyo",
+    period: "Jul 2024 - Dec 2024",
+    state: "Finished",
+    tag: "Project",
     overview: "We used the high-performance simulation environment Isaac Gym to train a quadruped robot through reinforcement learning, enabling it to perform complex parkour-like movements. Advances in simulation have made it possible to learn such behaviors in a short time and acquire models that generalize to real-world environments. By collecting large amounts of training data quickly, we were able to develop models capable of adapting to physical settings.", 
     mainImage: "/project/3.jpeg",
     link: "https://weblab.t.u-tokyo.ac.jp/research/misc/",
@@ -68,6 +80,9 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
     id: 4,
     title: "Paralinguistic Dialogue System",
     company: "Ishiguro Laboratory, The University of Tokyo",
+    period: "Sep 2024 - Current",
+    state: "On Going",
+    tag: "Research",
     overview: "Have you ever wished you could talk to R2D2—not through words, but through sounds? While voice-based agents are becoming more common, relying solely on spoken language in human–agent interaction presents real challenges. It can be mentally demanding and often impractical in noisy or hands-free situations. To address this, we explored the potential of non-verbal communication using Semantic-Free Utterances (SFUs)—meaningless yet expressive sounds that can lighten cognitive load. In this project, we introduce ParaTalk, a paralinguistic dialogue system that interprets user speech using a large language model and responds with Paralinguistic Utterances (PUs), a type of SFU, in real time. By focusing on the balance between verbal and non-verbal expression, ParaTalk opens up new possibilities for designing more intuitive and emotionally resonant agent communication.", 
     mainImage: "/project/4-2.gif",
     features: [
@@ -83,6 +98,9 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
     id: 5,
     title: "Remora Barrette",
     company: "Internship at Dentsu Inc.",
+    period: "Dec 2025",
+    state: "Finished",
+    tag: "Work",
     overview: "Have you ever felt uncomfortable when store staff approach you while shopping? We created Romera Barrette, an agent designed to support shy or socially anxious individuals. Inspired by the unspoken signals of headphones and wired earphones—often used as a subtle “do not disturb” sign—this wearable device gently expresses a desire not to be approached. When a staff member’s device comes near, the barrette softly glows, offering a warm and non-verbal way to say “not right now.”", 
     mainImage: "/project/5-2.gif",
     features: [

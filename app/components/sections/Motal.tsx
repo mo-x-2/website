@@ -170,6 +170,9 @@ export default function ExperienceModal({
                 </div>
               </div>
             </div>
+            <p className="text-base text-gray-600 dark:text-gray-400 mb-2">
+              {experience.tag}, {experience.period}, {experience.state}
+            </p>
             <p className="
               text-base sm:text-lg 
               leading-relaxed 
@@ -231,7 +234,7 @@ export default function ExperienceModal({
               priority
             />
           </a>
-          
+
           <div className="space-y-8">
             <div className="space-y-12">
                 {experience.features?.map((feature, index) => (

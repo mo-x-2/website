@@ -70,7 +70,7 @@ export const projects: Project[] = [
     title: "Paralinguistic Dialogue System",
     description: "Have you ever wished you could talk to R2D2—not through words, but through sounds? While voice-based agents are becoming more common, relying solely on spoken language in human–agent interaction presents real challenges. It can be mentally demanding and often impractical in noisy or hands-free situations. To address this, we explored the potential of non-verbal communication using Semantic-Free Utterances (SFUs)—meaningless yet expressive sounds that can lighten cognitive load. In this project, we introduce ParaTalk, a paralinguistic dialogue system that interprets user speech using a large language model and responds with Paralinguistic Utterances (PUs), a type of SFU, in real time. By focusing on the balance between verbal and non-verbal expression, ParaTalk opens up new possibilities for designing more intuitive and emotionally resonant agent communication.",
     period: "Sep 2024 - Current",
-    state: "Finished",
+    state: "On Going",
     tag: "Research",
     image: "/project/4-2.gif",
     skills: ["Python", "Unity"],

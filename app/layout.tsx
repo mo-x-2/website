@@ -18,15 +18,19 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Momo Hanawa",
   description: "The personal portfolio of Momo Hanawa (塙 桃)",
+  verification: {
+    google: "8MREzyl-aZZ3zp3rdrNpvwaR2j6NgLOooa38AgJhcP4"
+  },
   openGraph: {
     title: "Momo Hanawa",
     description: "The personal portfolio of Momo Hanawa (塙 桃)",
-    url: "https://momohanawa.vercel.app", 
+    url: "https://momohanawa.vercel.app",
     siteName: "Momo Hanawa",
     locale: "en_US",
     type: "website",
   },
 };
+
 
 export default function RootLayout({
   children,

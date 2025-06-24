@@ -99,89 +99,92 @@ export default function Projects() {
         py-4 md:py-8
         relative
         overflow-hidden
+        z-0
       ">
 
         <Bubbles 
           sectionId="projects"
           bubbleCount={5}
           backgroundColor="rgba(255, 255, 255, 1)"
-          strokeStyle = 'rgba(1, 56, 167, 0.3)'
+          strokeStyle = 'rgba(1, 56, 167, 0.5)'
         />
 
-        <AnimatedText>
-          <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center relative z-10 text-[var(--foreground)]">
-            Projects
-          </h1>
-        </AnimatedText>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 relative z-0 max-w-6xl w-full">
-          {projects.map((project) => (
-            <div key={project.id}>
-              <AnimatedText>
-                <div 
-                  onClick={() => {
-                    setSelectedProject(project.id)
-                    setModalOpen(true)
-                  }}
-                  className="
-                    bg-white/[0.1] dark:bg-black/[0.2]
-                    backdrop-blur-[20px]
-                    rounded-2xl
-                    border border-white/[0.1] dark:border-white/[0.1]
-                    p-6
-                    transition-all duration-300
-                    hover:-translate-y-1
-                    hover:shadow-xl
-                    cursor-pointer
-                  "
-                >
-                  <div className="relative w-full h-48 md:h-72 mb-4">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="rounded-lg object-cover"
-                    />
-                  </div>
-                  
-                  <h2 className="text-2xl font-semibold mb-2 text-[var(--foreground)]">
-                    {project.title}
-                  </h2>
+        <div className="relative z-10 w-full">
+          <AnimatedText>
+            <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center text-[var(--foreground)]">
+              Projects
+            </h1>
+          </AnimatedText>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl w-full">
+            {projects.map((project) => (
+              <div key={project.id}>
+                <AnimatedText>
+                  <div 
+                    onClick={() => {
+                      setSelectedProject(project.id)
+                      setModalOpen(true)
+                    }}
+                    className="
+                      bg-white/[0.1] dark:bg-black/[0.2]
+                      backdrop-blur-[20px]
+                      rounded-2xl
+                      border border-white/[0.1] dark:border-white/[0.1]
+                      p-6
+                      transition-all duration-300
+                      hover:-translate-y-1
+                      hover:shadow-xl
+                      cursor-pointer
+                    "
+                  >
+                    <div className="relative w-full h-48 md:h-72 mb-4">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="rounded-lg object-cover"
+                      />
+                    </div>
+                    
+                    <h2 className="text-2xl font-semibold mb-2 text-[var(--foreground)]">
+                      {project.title}
+                    </h2>
 
-                  <p className="text-base text-gray-600 dark:text-gray-400 mb-2">
-                    {project.tag}
-                  </p>
-                  
-                  <p className="text-base text-gray-600 dark:text-gray-400 mb-2">
-                    {project.period}, {project.state}
-                  </p>
-                  
-                  <p className="text-base text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {project.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="
-                          px-3 py-1
-                          text-sm
-                          rounded-full
-                          bg-white/[0.05] dark:bg-white/[0.05]
-                          backdrop-blur-[8px]
-                          border border-white/[0.05]
-                          text-gray-600 dark:text-gray-400
-                        "
-                      >
-                        {skill}
-                      </span>
-                    ))}
+                    <p className="text-base text-gray-600 dark:text-gray-400 mb-2">
+                      {project.tag}
+                    </p>
+                    
+                    <p className="text-base text-gray-600 dark:text-gray-400 mb-2">
+                      {project.period}, {project.state}
+                    </p>
+                    
+                    <p className="text-base text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+                      {project.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2">
+                      {project.skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className="
+                            px-3 py-1
+                            text-sm
+                            rounded-full
+                            bg-white/[0.05] dark:bg-white/[0.05]
+                            backdrop-blur-[8px]
+                            border border-white/[0.05]
+                            text-gray-600 dark:text-gray-400
+                          "
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </AnimatedText>
-            </div>
-          ))}
+                </AnimatedText>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

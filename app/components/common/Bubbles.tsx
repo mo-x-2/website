@@ -96,9 +96,9 @@ export default function Bubbles({
         balls.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          r: Math.random() * 100 + 150, // サイズのランダム化
-          vx: Math.random() * 2 - 1,
-          vy: Math.random() * 2 - 1
+          r: Math.random() * 50 + 150, // サイズのランダム化
+          vx: Math.random() * 2.5 - 1.25,
+          vy: Math.random() * 2.5 - 1.25
         });
       }
       ballsRef.current = balls;
@@ -114,31 +114,20 @@ export default function Bubbles({
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
       
-      // 背景を半透明でクリア
-      const fadeAlpha = "0.3";
-      let fadeColor;
-      
-      // CSS変数の場合の処理
-      if (backgroundColor.startsWith('var(--')) {
-        // CSS変数を実際の値に変換
-        const computedStyle = getComputedStyle(document.documentElement);
-        const actualColor = computedStyle.getPropertyValue(backgroundColor.slice(4, -1));
-        fadeColor = actualColor || backgroundColor;
-      } else {
-        fadeColor = backgroundColor.replace(/(\d*\.\d+|\d+)(\))$/, `${fadeAlpha}$2`);
-      }
+      // 背景をクリア（透明に）
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       // ダークモードかどうかを判定
       const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
       
-      // ダークモード時は白の残像を強調
+      // 輪郭線の描画
+      let strokeColor = strokeStyle;
       if (isDarkMode) {
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.3)'; // より強い白の残像
-      } else {
-        ctx.fillStyle = fadeColor;
+        strokeColor = 'rgba(255, 255, 255, 0.5)';
       }
-      
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = strokeColor;
+      ctx.lineWidth = 1.0;
+      ctx.beginPath();
       
       const { width, height } = dimensionsRef.current;
       const resolution = resolutionRef.current;
@@ -183,18 +172,7 @@ export default function Bubbles({
         }
       }
       
-      // 輪郭線の描画
-      let strokeColor = strokeStyle;
-      
-      // ダークモード時は白のストロークに変更
-      if (isDarkMode) {
-        strokeColor = 'rgba(255, 255, 255, 0.4)'; // 白のストローク
-      }
-      
-      ctx.strokeStyle = strokeColor;
-      ctx.lineWidth = 0.5;
-      ctx.beginPath();
-      
+      // 各セルの状態に応じて輪郭線を描画
       for (let i = 0; i < cols - 1; i++) {
         for (let j = 0; j < rows - 1; j++) {
           const x = i * resolution;
@@ -266,7 +244,9 @@ export default function Bubbles({
         }
       }
       
-      ctx.stroke();
+    ctx.save();
+    ctx.stroke();
+    ctx.restore();
       
       // フレームを継続
       requestRef.current = requestAnimationFrame(animate);
@@ -289,11 +269,12 @@ export default function Bubbles({
         inset: 0,
         opacity: isVisible ? 1 : 0,
         transition: 'opacity 0.8s ease-in-out',
-        zIndex: -1,
+        zIndex: 0,
         pointerEvents: 'none',
+        backgroundColor: 'transparent',
       }}
     >
-      <canvas ref={canvasRef} style={{ display: 'block', width: '100%', height: '100%' }} />
+      <canvas ref={canvasRef} style={{ display: 'block', width: '100%', height: '100%', background: 'transparent' }} />
     </Box>
   );
 }

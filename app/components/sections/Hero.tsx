@@ -11,16 +11,16 @@ export default function Hero() {
   return (
     <section id="home" className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-[var(--background)] text-[var(--foreground)]">
       
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+      <main className="flex flex-col gap-8 row-start-2 items-center gap-8">
 
         <Bubbles 
           sectionId="home"
-          bubbleCount={4}
+          bubbleCount={3}
           backgroundColor="var(--background)"
-          strokeStyle = 'rgba(156, 12, 101, 0.3)'
+          strokeStyle = 'rgba(156, 12, 101, 0.5)'
         />
 
-        <AnimatedText className="flex flex-col items-center sm:items-start gap-4">
+        <AnimatedText className="flex flex-col items-center gap-4">
           <Image
             className="rounded-full"
             src="/avatar.png" // Replace with your avatar image path in public folder
@@ -31,12 +31,12 @@ export default function Hero() {
           />
           <h1 className="text-4xl font-bold text-[var(--foreground)]">Momo Hanawa</h1>
           <p className="text-lg text-foreground/80 font-[family-name:var(--font-geist-mono)]">
-            CS Student 
+            M.S. Student 
           </p>
         </AnimatedText>
 
         <AnimatedText 
-          className="max-w-2xl text-center sm:text-left"
+          className="max-w-2xl text-center"
         >
             <p className="text-foreground/80 leading-relaxed">
             Hi. I am a Master's student at <a href="https://ishiguro-lab.org/" target="_blank" className="underline decoration-dotted underline-offset-4 hover:text-pink-500 duration-300">Ishiguro Laboratory</a>

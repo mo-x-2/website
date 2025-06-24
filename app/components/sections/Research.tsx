@@ -40,7 +40,7 @@ const publications: Publication[] = [
     title: "ParaTalk: A Real-Time Paralinguistic Dialogue System for Human-Agent Interaction",
     authors: "Momo Hanawa, Yoshio Ishiguro",
     year: "2025",
-    journal: "2025 IEEE Conference on Virtual Reality and 3D User Interfaces Abstracts and Workshops (VRW)",
+    journal: "IEEE Conference on Virtual Reality and 3D User Interfaces Abstracts and Workshops (VRW)",
     type: "publication",
     project: "Paralinguistic Dialogue System",
     overview: [
@@ -48,8 +48,23 @@ const publications: Publication[] = [
     ],
     publishDate: "2025",
     chartImage: "/research/1.png"
-    },
-    {
+  },
+  {
+    // 新しいPublished paper
+    id: 3,
+    title: "Leash as a Cue: Visual Indicators for Third-Party Acceptance Across Resistance Levels",
+    authors: "Momo Hanawa, Satomi Tokida, Yoshio Ishiguro",
+    year: "2025",
+    journal: "IEEE International Conference on Robot & Human Interactive Communication (RO-MAN)",
+    type: "publication",
+    project: "Accompanying Robot",
+    overview: [
+      "Coming Soon"
+    ],
+    publishDate: "2025",
+    //chartImage: "/research/2.png"
+  },
+  {
     // Working paper example
     id: 1,
     title: "hogehoge",
@@ -75,16 +90,17 @@ export default function Research() {
       flex items-center justify-center 
       py-16 px-4 sm:px-8 md:px-16
       bg-[var(--background)] text-[var(--foreground)]
+      relative
     ">
 
-      <div className="container max-w-4xl mx-auto relative z-10">
+      <Bubbles 
+        sectionId="research"
+        bubbleCount={3}
+        backgroundColor="var(--background)"
+        strokeStyle = 'rgba(24, 145, 48, 0.5)'
+      /> 
 
-        <Bubbles 
-          sectionId="research"
-          bubbleCount={1}
-          backgroundColor="var(--background)"
-          strokeStyle = 'rgba(24, 145, 48, 0.3)'
-        /> 
+      <div className="container max-w-4xl mx-auto relative z-10">
 
         <AnimatedText>
           <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[var(--foreground)]">

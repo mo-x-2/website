@@ -97,8 +97,8 @@ export default function Bubbles({
           x: Math.random() * width,
           y: Math.random() * height,
           r: Math.random() * 75 + 200, // サイズのランダム化
-          vx: Math.random() * 2 - 0.5,
-          vy: Math.random() * 2 - 0.5
+          vx: Math.random() * 1 - 0.25,
+          vy: Math.random() * 1 - 0.25
         });
       }
       ballsRef.current = balls;

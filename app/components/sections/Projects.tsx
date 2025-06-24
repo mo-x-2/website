@@ -104,19 +104,19 @@ export default function Projects() {
 
         <Bubbles 
           sectionId="projects"
-          bubbleCount={5}
+          bubbleCount={0}
           backgroundColor="rgba(255, 255, 255, 1)"
           strokeStyle = 'rgba(1, 56, 167, 0.5)'
         />
 
-        <div className="relative z-10 w-full">
+        <div className="relative z-10 w-full flex flex-col items-center">
           <AnimatedText>
             <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center text-[var(--foreground)]">
               Projects
             </h1>
           </AnimatedText>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl w-full mx-auto justify-center">
             {projects.map((project) => (
               <div key={project.id}>
                 <AnimatedText>

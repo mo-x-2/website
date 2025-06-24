@@ -38,7 +38,7 @@ export const projects: Project[] = [
   {
     id: 1,
     title: "Wheelchair Robot",
-    description: "As part of a project in the Nagao Laboratory at Nagoya University, I participated in the Tsukuba Challenge, a technical trial for autonomous mobile robots navigating outdoor environments. In this challenge, we redeveloped a wheelchair-type robot called WHILL to autonomously traverse pedestrian paths and urban areas. My contributions included developing an iOS application for object detection and semantic segmentation, as well as controlling the WHILL’s movements using ROS.",
+    description: "As part of a project in the Nagao Laboratory at Nagoya University, I participated in the Tsukuba Challenge, a technical trial for autonomous mobile robots navigating outdoor environments. In this challenge, we redeveloped a wheelchair-type robot called WHILL to autonomously traverse pedestrian paths and urban areas. My contributions included developing an iOS application for object detection and semantic segmentation, as well as controlling the WHILL's movements using ROS.",
     period: "Apr 2023 - Dec 2023",
     state: "Finished",
     tag: "Project",
@@ -78,7 +78,7 @@ export const projects: Project[] = [
   {
     id: 5, 
     title: "Remora Barrette",
-    description: "Have you ever felt uncomfortable when store staff approach you while shopping? We created Romera Barrette, an agent designed to support shy or socially anxious individuals. Inspired by the unspoken signals of headphones and wired earphones—often used as a subtle “do not disturb” sign—this wearable device gently expresses a desire not to be approached. When a staff member’s device comes near, the barrette softly glows, offering a warm and non-verbal way to say “not right now.”",
+    description: "Have you ever felt uncomfortable when store staff approach you while shopping? We created Romera Barrette, an agent designed to support shy or socially anxious individuals. Inspired by the unspoken signals of headphones and wired earphones—often used as a subtle \"do not disturb\" sign—this wearable device gently expresses a desire not to be approached. When a staff member's device comes near, the barrette softly glows, offering a warm and non-verbal way to say \"not right now.\"",
     period: "Dec 2025",
     state: "Finished",
     tag: "Work",
@@ -92,7 +92,7 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null)
 
   return (
-    <section id="projects" className="container mx-auto px-4 sm:px-8 md:px-12">
+    <section id="projects" className="container mx-auto px-4 sm:px-8 md:px-12 bg-[var(--background)] text-[var(--foreground)]">
       <div className="
         min-h-screen
         flex flex-col items-center justify-center
@@ -109,7 +109,7 @@ export default function Projects() {
         />
 
         <AnimatedText>
-          <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center relative z-10">
+          <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center relative z-10 text-[var(--foreground)]">
             Projects
           </h1>
         </AnimatedText>
@@ -144,7 +144,7 @@ export default function Projects() {
                     />
                   </div>
                   
-                  <h2 className="text-2xl font-semibold mb-2">
+                  <h2 className="text-2xl font-semibold mb-2 text-[var(--foreground)]">
                     {project.title}
                   </h2>
 

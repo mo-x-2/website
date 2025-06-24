@@ -38,8 +38,8 @@ const publications: Publication[] = [
     // Published paper example
     id: 2,
     title: "ParaTalk: A Real-Time Paralinguistic Dialogue System for Human-Agent Interaction",
-    authors: "with Yoshio Ishiguro",
-    year: "2023",
+    authors: "Momo Hanawa, Yoshio Ishiguro",
+    year: "2025",
     journal: "2025 IEEE Conference on Virtual Reality and 3D User Interfaces Abstracts and Workshops (VRW)",
     type: "publication",
     project: "Paralinguistic Dialogue System",
@@ -74,6 +74,7 @@ export default function Research() {
       min-h-screen w-full 
       flex items-center justify-center 
       py-16 px-4 sm:px-8 md:px-16
+      bg-[var(--background)] text-[var(--foreground)]
     ">
 
       <div className="container max-w-4xl mx-auto relative z-10">
@@ -86,7 +87,7 @@ export default function Research() {
         /> 
 
         <AnimatedText>
-          <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center">
+          <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[var(--foreground)]">
             Research
           </h1>
         </AnimatedText>
@@ -95,7 +96,7 @@ export default function Research() {
           {['publication', 'working'].map((type) => (
             <div key={type} className="space-y-8">
               <AnimatedText>
-                <h2 className="text-xl sm:text-2xl font-semibold">
+                <h2 className="text-xl sm:text-2xl font-semibold text-[var(--foreground)]">
                   {type === 'working' ? 'Working Papers' : 'Publications'}
                 </h2>
               </AnimatedText>

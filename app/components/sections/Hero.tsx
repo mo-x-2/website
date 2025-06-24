@@ -9,7 +9,7 @@ import Bubbles from "../common/Bubbles"
 
 export default function Hero() {
   return (
-    <section id="home" className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen pb-20 gap-8 sm:gap-16 font-[family-name:var(--font-geist-sans)] bg-[var(--background)] text-[var(--foreground)]">
+    <section id="home" className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen gap-8 sm:gap-16 font-[family-name:var(--font-geist-sans)] bg-[var(--background)] text-[var(--foreground)]">
       
       <main className="flex flex-col gap-6 sm:gap-8 row-start-2 items-center">
 

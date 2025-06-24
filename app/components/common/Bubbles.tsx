@@ -25,6 +25,7 @@ export default function Bubbles({
   strokeStyle = 'rgba(0, 0, 0, 0.5)',
 }: Props) {
   const [isVisible, setIsVisible] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const requestRef = useRef<number>();
   const ballsRef = useRef<Ball[]>([]);
@@ -71,6 +72,19 @@ export default function Bubbles({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // ダークモードの変更を監視
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    setIsDarkMode(mediaQuery.matches);
+    
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsDarkMode(e.matches);
+    };
+    
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
   // バブルの初期化と更新
   useEffect(() => {
     if (!isVisible) return;
@@ -101,7 +115,7 @@ export default function Bubbles({
       if (!ctx) return;
       
       // 背景を半透明でクリア
-      const fadeAlpha = "0.2";
+      const fadeAlpha = "0.3";
       let fadeColor;
       
       // CSS変数の場合の処理
@@ -114,7 +128,16 @@ export default function Bubbles({
         fadeColor = backgroundColor.replace(/(\d*\.\d+|\d+)(\))$/, `${fadeAlpha}$2`);
       }
       
-      ctx.fillStyle = fadeColor;
+      // ダークモードかどうかを判定
+      const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      // ダークモード時は白の残像を強調
+      if (isDarkMode) {
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.3)'; // より強い白の残像
+      } else {
+        ctx.fillStyle = fadeColor;
+      }
+      
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       const { width, height } = dimensionsRef.current;
@@ -161,7 +184,14 @@ export default function Bubbles({
       }
       
       // 輪郭線の描画
-      ctx.strokeStyle = strokeStyle;
+      let strokeColor = strokeStyle;
+      
+      // ダークモード時は白のストロークに変更
+      if (isDarkMode) {
+        strokeColor = 'rgba(255, 255, 255, 0.4)'; // 白のストローク
+      }
+      
+      ctx.strokeStyle = strokeColor;
       ctx.lineWidth = 0.5;
       ctx.beginPath();
       
@@ -250,16 +280,16 @@ export default function Bubbles({
         cancelAnimationFrame(requestRef.current);
       }
     };
-  }, [isVisible, bubbleCount, backgroundColor]);
+  }, [isVisible, bubbleCount, backgroundColor, isDarkMode]);
 
   return (
     <Box
       sx={{
         position: 'absolute',
         inset: 0,
-        opacity: isVisible ? 0.8 : 0,
+        opacity: isVisible ? 1 : 0,
         transition: 'opacity 0.8s ease-in-out',
-        zIndex: 0,
+        zIndex: -1,
         pointerEvents: 'none',
       }}
     >

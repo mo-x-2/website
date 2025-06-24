@@ -92,7 +92,7 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null)
 
   return (
-    <section id="projects" className="container mx-auto px-4 sm:px-8 md:px-12 bg-[var(--background)] text-[var(--foreground)]">
+    <section id="projects" className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 bg-[var(--background)] text-[var(--foreground)]">
       <div className="
         min-h-screen
         flex flex-col items-center justify-center

@@ -85,13 +85,7 @@ export default function Research() {
   }
 
   return (
-    <section id="research" className="
-      min-h-screen w-full 
-      flex items-center justify-center 
-      py-16 px-4 sm:px-8 md:px-16
-      bg-[var(--background)] text-[var(--foreground)]
-      relative
-    ">
+    <section id="research" className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 min-h-screen flex items-center justify-center py-16 bg-[var(--background)] text-[var(--foreground)] relative">
 
       <Bubbles 
         sectionId="research"
@@ -100,7 +94,7 @@ export default function Research() {
         strokeStyle = 'rgba(24, 145, 48, 0.5)'
       /> 
 
-      <div className="container max-w-4xl mx-auto relative z-10">
+      <div className="container max-w-6xl mx-auto relative z-10">
 
         <AnimatedText>
           <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[var(--foreground)]">

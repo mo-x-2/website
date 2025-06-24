@@ -58,11 +58,7 @@ const categories = {
 
 export default function MySkills() {
   return (
-    <section id="skills" className="
-      min-h-screen w-full flex items-center justify-center 
-      p-2 sm:p-4 md:p-8
-      bg-[var(--background)] text-[var(--foreground)]
-    ">
+    <section id="skills" className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 min-h-screen flex items-center justify-center">
       <div className="container mx-auto px-2 sm:px-4">
         <AnimatedText>
           <h1 className="

@@ -6,7 +6,7 @@ import Bubbles from "../common/Bubbles"
 
 export default function About() {
   return (
-    <section id="about" className="min-h-screen w-full flex items-center justify-center p-8 bg-[var(--background)] text-[var(--foreground)]">
+    <section id="about" className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 min-h-screen flex items-center justify-center p-8 bg-[var(--background)] text-[var(--foreground)]">
 
       <div className="max-w-6xl w-full">
         <AnimatedText>

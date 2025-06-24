@@ -50,7 +50,7 @@ export default function Experience() {
   const [selectedExperience, setSelectedExperience] = useState<number | null>(null)
 
   return (
-    <section id="experience" className="container mx-auto px-2 sm:px-4 md:px-8 lg:px-12 bg-[var(--background)] text-[var(--foreground)]">
+    <section id="experience" className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 container min-h-screen flex flex-col items-center justify-center">
       <div className="
         min-h-screen
         flex flex-col items-center justify-center

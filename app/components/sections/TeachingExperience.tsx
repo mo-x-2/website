@@ -65,7 +65,7 @@ export default function TeachingExperience() {
       flex items-center justify-center 
       py-16 px-4 sm:px-8 md:px-16
     ">
-      <div className="container max-w-4xl mx-auto">
+      <div className="container max-w-6xl mx-auto">
         <AnimatedText>
           <div className="flex flex-col items-center mb-12">
             <h1 className="text-3xl sm:text-4xl font-bold text-center">

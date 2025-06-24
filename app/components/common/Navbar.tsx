@@ -76,7 +76,7 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-10 bg-background/80 backdrop-blur-sm">
       <div className="
-        max-w-4xl mx-auto 
+        max-w-6xl mx-auto 
         px-3 sm:px-4 /* 移动端水平内边距3, sm(640px)以上为4 */
         py-4
       ">

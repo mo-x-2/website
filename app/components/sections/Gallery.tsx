@@ -38,7 +38,7 @@ const photos: Photo[] = [
 
 export default function Gallery() {
   return (
-    <Container id="gallery" maxWidth="xl" component="section" sx={{ bg: 'var(--background)', color: 'var(--foreground)' }}>
+    <Container id="gallery" maxWidth={false} className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8" component="section" sx={{ bg: 'var(--background)', color: 'var(--foreground)' }}>
       <Box sx={{ 
         minHeight: '100vh',
         display: 'flex', 

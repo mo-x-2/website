@@ -138,7 +138,7 @@ export default function CourseTimeline() {
   }
 
   return (
-    <div className="w-full">
+    <section className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
       {/* Timeline container */}
       <div className="relative">
         {/* Timeline background line */}
@@ -263,6 +263,6 @@ export default function CourseTimeline() {
           </div>
         </AnimatedText>
       )}
-    </div>
+    </section>
   )
 }

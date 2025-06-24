@@ -60,12 +60,13 @@ export default function MySkills() {
   return (
     <section id="skills" className="
       min-h-screen w-full flex items-center justify-center 
-      p-4 sm:p-8 /* padding 4 on mobile, 8 on sm(640px) and above */
+      p-2 sm:p-4 md:p-8
+      bg-[var(--background)] text-[var(--foreground)]
     ">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-2 sm:px-4">
         <AnimatedText>
           <h1 className="
-            text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center
+            text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 md:mb-12 text-center text-[var(--foreground)]
           ">
             Technical Skills
           </h1>
@@ -73,15 +74,15 @@ export default function MySkills() {
         
         <div className="
           max-w-5xl mx-auto 
-          space-y-8 sm:space-y-12 /* vertical spacing 8 on mobile, 12 on sm(640px) and above */
+          space-y-6 sm:space-y-8 md:space-y-12
         ">
           {(Object.keys(technologies) as Array<keyof typeof technologies>).map((category) => (
             <AnimatedText key={category} className="
-              space-y-4 sm:space-y-6 /* vertical spacing 4 on mobile, 6 on sm(640px) and above */
+              space-y-3 sm:space-y-4 md:space-y-6
             ">
               <h2 className="
-                text-xl sm:text-2xl /* font size xl(20px) on mobile, 2xl(24px) on sm(640px) and above */  
-                font-semibold text-center
+                text-lg sm:text-xl md:text-2xl
+                font-semibold text-center text-[var(--foreground)]
               ">
                 {categories[category]}
               </h2>
@@ -89,22 +90,21 @@ export default function MySkills() {
               <div className="flex justify-center">
                 <div className="
                   flex flex-wrap justify-center 
-                  gap-4 sm:gap-8 md:gap-12 /* gap 4 on mobile, 8 on sm(640px), 12 on md(768px) and above */
+                  gap-3 sm:gap-4 md:gap-8 lg:gap-12
                 ">
                   {technologies[category].map((tech) => (
                     <div
                       key={tech.name}
                       className="
                         flex flex-col items-center 
-                        gap-2 sm:gap-3 /* gap 2 on mobile, 3 on sm(640px) and above */
-                        w-[80px] sm:w-[100px] /* width 80px on mobile, 100px on sm(640px) and above */
+                        gap-1 sm:gap-2 md:gap-3
+                        w-[70px] sm:w-[80px] md:w-[100px]
                         group
                       "
                     >
                       <div className="
                         relative 
-                        w-16 sm:w-20 /* width 4rem(64px) on mobile, 5rem(80px) on sm(640px) and above */           
-                        h-16 sm:h-20 /* height 4rem(64px) on mobile, 5rem(80px) on sm(640px) and above */           
+                        w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20
                         flex items-center justify-center 
                         transition-all duration-300 
                         group-hover:scale-110   
@@ -116,16 +116,16 @@ export default function MySkills() {
                           width={48}
                           height={48}
                           className="
-                            dark:invert          
-                            sm:w-[56px] sm:h-[56px] /* icon size 56px on sm(640px) and above */
+                            dark:invert
+                            w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
                           "
                         />
                       </div>
                       <span className="
-                        text-xs sm:text-sm /* font size xs(12px) on mobile, sm(14px) on sm(640px) and above */     
+                        text-xs sm:text-sm
                         font-medium 
-                        text-foreground/70 
-                        group-hover:text-foreground/90 
+                        text-[var(--foreground)]/70 
+                        group-hover:text-[var(--foreground)]/90 
                         transition-colors 
                         text-center
                       ">

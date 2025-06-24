@@ -82,7 +82,7 @@ export default function Research() {
         <Bubbles 
           sectionId="research"
           bubbleCount={1}
-          backgroundColor="rgba(255, 255, 255, 1)"
+          backgroundColor="var(--background)"
           strokeStyle = 'rgba(24, 145, 48, 0.3)'
         /> 
 
@@ -110,12 +110,12 @@ export default function Research() {
                       pb-6 border-b border-black/10 dark:border-white/10
                     ">
                       <div className="space-y-2 sm:space-y-0">
-                        <div className="flex flex-wrap items-center gap-2 text-sm sm:text-lg">
-                          <span className="font-medium">{paper.title}</span>
+                        <div className="flex flex-wrap items-center gap-2 text-sm sm:text-lg text-[var(--foreground)]">
+                          <span className="font-medium text-[var(--foreground)]">{paper.title}</span>
                           {paper.authors && (
-                            <span className="opacity-70">({paper.authors})</span>
+                            <span className="opacity-70 text-[var(--foreground)]">({paper.authors})</span>
                           )}
-                          <span className="opacity-70">{paper.year}.</span>
+                          <span className="opacity-70 text-[var(--foreground)]">{paper.year}.</span>
                           {paper.pdf && (
                             <a 
                               href={paper.pdf}
@@ -141,25 +141,25 @@ export default function Research() {
                         </div>
 
                         {paper.journal && (
-                          <p className="opacity-80 text-xs sm:text-base italic">
+                          <p className="opacity-80 text-xs sm:text-base italic text-[var(--foreground)]">
                             {paper.journal}
                           </p>
                         )}
 
                         {paper.project && (
-                          <p className="opacity-70 text-xs sm:text-base">
+                          <p className="opacity-70 text-xs sm:text-base text-[var(--foreground)]">
                             Related Project: {paper.project}
                           </p>
                         )}
 
                         {paper.description && (
-                          <p className="opacity-70 text-xs sm:text-base">
+                          <p className="opacity-70 text-xs sm:text-base text-[var(--foreground)]">
                             {paper.description}
                           </p>
                         )}
 
                         {paper.bulletPoints && (
-                          <ul className="list-disc list-inside opacity-70 text-xs sm:text-base pl-1 space-y-1">
+                          <ul className="list-disc list-inside opacity-70 text-xs sm:text-base pl-1 space-y-1 text-[var(--foreground)]">
                             {paper.bulletPoints.map((point, index) => (
                               <li key={index}>{point}</li>
                             ))}
@@ -190,6 +190,7 @@ export default function Research() {
                           mr-2
                           group-hover:translate-x-0.5
                           transition-transform duration-300
+                          text-[var(--foreground)]
                         ">
                           View Details
                         </span>

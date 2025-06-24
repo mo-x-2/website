@@ -102,7 +102,18 @@ export default function Bubbles({
       
       // 背景を半透明でクリア
       const fadeAlpha = "0.2";
-      const fadeColor = backgroundColor.replace(/(\d*\.\d+|\d+)(\))$/, `${fadeAlpha}$2`);
+      let fadeColor;
+      
+      // CSS変数の場合の処理
+      if (backgroundColor.startsWith('var(--')) {
+        // CSS変数を実際の値に変換
+        const computedStyle = getComputedStyle(document.documentElement);
+        const actualColor = computedStyle.getPropertyValue(backgroundColor.slice(4, -1));
+        fadeColor = actualColor || backgroundColor;
+      } else {
+        fadeColor = backgroundColor.replace(/(\d*\.\d+|\d+)(\))$/, `${fadeAlpha}$2`);
+      }
+      
       ctx.fillStyle = fadeColor;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
@@ -246,9 +257,9 @@ export default function Bubbles({
       sx={{
         position: 'absolute',
         inset: 0,
-        opacity: isVisible ? 1 : 0,
+        opacity: isVisible ? 0.8 : 0,
         transition: 'opacity 0.8s ease-in-out',
-        zIndex: -1,
+        zIndex: 0,
         pointerEvents: 'none',
       }}
     >

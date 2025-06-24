@@ -16,7 +16,7 @@ export default function Hero() {
         <Bubbles 
           sectionId="home"
           bubbleCount={4}
-          backgroundColor="rgba(255, 255, 255, 1)"
+          backgroundColor="var(--background)"
           strokeStyle = 'rgba(156, 12, 101, 0.3)'
         />
 

@@ -38,15 +38,15 @@ const photos: Photo[] = [
 
 export default function Gallery() {
   return (
-    <Container id="gallery" maxWidth="xl" component="section">
+    <Container id="gallery" maxWidth="xl" component="section" sx={{ bg: 'var(--background)', color: 'var(--foreground)' }}>
       <Box sx={{ 
         minHeight: '100vh',
         display: 'flex', 
         flexDirection: 'column', 
         alignItems: 'center',
         justifyContent: 'center',
-        py: { xs: 4, md: 4 },
-        px: { xs: 2, sm: 4, md: 8 },
+        py: { xs: 2, sm: 3, md: 4 },
+        px: { xs: 1, sm: 2, md: 4, lg: 8 },
         position: 'relative',
         overflow: 'hidden',
       }}>
@@ -59,13 +59,13 @@ export default function Gallery() {
         />
 
         <AnimatedText>
-          <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-center relative z-10">Gallery</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-center relative z-10 text-[var(--foreground)]">Gallery</h1>
         </AnimatedText>
         
-        <Grid container spacing={{ xs: 2, sm: 3, md: 4 }} sx={{ position: 'relative', zIndex: 1, maxWidth: 'xl' }}>
+        <Grid container spacing={{ xs: 1, sm: 2, md: 3, lg: 4 }} sx={{ position: 'relative', zIndex: 1, maxWidth: 'xl' }}>
           {photos.map((photo, index) => (
             <Grid item xs={6} sm={4} md={4} key={photo.id} sx={{ 
-              transform: index % 2 === 0 ? 'translateY(40px)' : 'translateY(0)'
+              transform: index % 2 === 0 ? 'translateY(20px)' : 'translateY(0)'
             }}>
               <AnimatedText>
                 <Card 
@@ -95,9 +95,9 @@ export default function Gallery() {
                   }}
                 >
                   <CardContent sx={{ 
-                    p: { xs: 1.5, sm: 2, md: 3 }
+                    p: { xs: 1, sm: 1.5, md: 2, lg: 3 }
                   }}>
-                    <Box sx={{ mb: { xs: 1, sm: 1.5, md: 2 } }}>
+                    <Box sx={{ mb: { xs: 0.5, sm: 1, md: 1.5, lg: 2 } }}>
                       <Image
                         src={photo.image}
                         alt={photo.description}
@@ -108,33 +108,39 @@ export default function Gallery() {
                     </Box>
                     <Typography variant="body1" sx={{ 
                       fontWeight: 500,
-                      mb: { xs: 0.5, sm: 0.75, md: 1 },
+                      mb: { xs: 0.25, sm: 0.5, md: 0.75, lg: 1 },
                       fontSize: { 
-                        xs: '0.875rem',
-                        sm: '1rem',
-                        md: '1.125rem'
-                      }
+                        xs: '0.75rem',
+                        sm: '0.875rem',
+                        md: '1rem',
+                        lg: '1.125rem'
+                      },
+                      color: 'var(--foreground)'
                     }}>
                       {photo.location}
                     </Typography>
                     <Typography variant="body2" sx={{ 
                       opacity: 0.7,
                       fontSize: { 
-                        xs: '0.75rem',
-                        sm: '0.875rem',
-                        md: '1rem'
-                      }
+                        xs: '0.625rem',
+                        sm: '0.75rem',
+                        md: '0.875rem',
+                        lg: '1rem'
+                      },
+                      color: 'var(--foreground)'
                     }}>
                       {photo.date}
                     </Typography>
                     <Typography variant="body2" sx={{ 
                       opacity: 0.7,
-                      mt: { xs: 0.5, sm: 0.75, md: 1 },
+                      mt: { xs: 0.25, sm: 0.5, md: 0.75, lg: 1 },
                       fontSize: { 
-                        xs: '0.75rem',
-                        sm: '0.875rem',
-                        md: '1rem'
-                      }
+                        xs: '0.625rem',
+                        sm: '0.75rem',
+                        md: '0.875rem',
+                        lg: '1rem'
+                      },
+                      color: 'var(--foreground)'
                     }}>
                       {photo.description}
                     </Typography>

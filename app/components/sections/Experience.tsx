@@ -50,11 +50,11 @@ export default function Experience() {
   const [selectedExperience, setSelectedExperience] = useState<number | null>(null)
 
   return (
-    <section id="experience" className="container mx-auto px-4 sm:px-8 md:px-12">
+    <section id="experience" className="container mx-auto px-2 sm:px-4 md:px-8 lg:px-12 bg-[var(--background)] text-[var(--foreground)]">
       <div className="
         min-h-screen
         flex flex-col items-center justify-center
-        py-16 md:py-20
+        py-8 sm:py-12 md:py-16 lg:py-20
         relative
         overflow-hidden
       ">
@@ -74,12 +74,12 @@ export default function Experience() {
         />
 
         <AnimatedText>
-          <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center relative z-10">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center relative z-10 text-[var(--foreground)]">
             Experience
           </h1>
         </AnimatedText>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 relative z-0 max-w-6xl w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 relative z-0 max-w-6xl w-full">
           {experiences.map((experience) => (
             <div key={experience.id}>
               <AnimatedText>
@@ -101,8 +101,8 @@ export default function Experience() {
                     h-full
                   "
                 >
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="relative w-12 h-12 rounded-xl overflow-hidden flex-shrink-0">
+                  <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+                    <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-xl overflow-hidden flex-shrink-0">
                       <Image
                         src={experience.logo}
                         alt={experience.company}
@@ -113,24 +113,25 @@ export default function Experience() {
                     
                     <div className="flex-1">
                       <h3 className="
-                        text-base sm:text-lg md:text-xl  /* Mobile: 16px, sm:18px, md:20px */
+                        text-sm sm:text-base md:text-lg lg:text-xl
                         font-bold 
                         mb-1
+                        text-[var(--foreground)]
                       ">
                         {experience.title}
                       </h3>
                       
-                      <p className="text-base text-gray-600 dark:text-gray-400">
+                      <p className="text-sm sm:text-base text-[var(--foreground)]/70">
                         {experience.company}
                       </p>
                     </div>
                   </div>
 
-                  <p className="text-base text-gray-600 dark:text-gray-400 mb-4">
+                  <p className="text-sm sm:text-base text-[var(--foreground)]/70 mb-3 sm:mb-4">
                     {experience.period}
                   </p>
                   
-                  <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
+                  <p className="text-sm sm:text-base md:text-lg text-[var(--foreground)]/70 mb-4 sm:mb-6">
                     {experience.description}
                   </p>
                   
@@ -139,13 +140,13 @@ export default function Experience() {
                       <span
                         key={skill}
                         className="
-                          px-3 py-1
-                          text-sm
+                          px-2 py-1 sm:px-3 sm:py-1
+                          text-xs sm:text-sm
                           rounded-full
                           bg-white/[0.05] dark:bg-white/[0.05]
                           backdrop-blur-[8px]
                           border border-white/[0.05]
-                          text-gray-600 dark:text-gray-400
+                          text-[var(--foreground)]/70
                         "
                       >
                         {skill}

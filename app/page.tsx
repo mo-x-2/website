@@ -38,7 +38,9 @@ export default function Home() {
             display: 'flex', 
             flexDirection: 'column', 
             alignItems: 'center',
-            p: 4,
+            p: { xs: 2, sm: 3, md: 4 },
+            minHeight: '100vh',
+            justifyContent: 'center'
           }}>
             <h1 className="text-4xl font-bold mb-12 text-center">Background</h1>
             <CourseTimeline />

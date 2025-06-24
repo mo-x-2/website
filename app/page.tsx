@@ -42,7 +42,7 @@ export default function Home() {
             minHeight: '100vh',
             justifyContent: 'center'
           }}>
-            <h1 className="text-4xl font-bold mb-12 text-center">Background</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[var(--foreground)]">Background</h1>
             <CourseTimeline />
           </Box>
         </section>

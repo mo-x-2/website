@@ -10,7 +10,8 @@ export default function About() {
 
       <div className="max-w-6xl w-full">
         <AnimatedText>
-          <h1 className="text-4xl font-bold mb-8 text-[var(--foreground)]">About Me</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[var(--foreground)]">About Me</h1>
+          
         </AnimatedText>
 
         <div className="flex flex-col md:flex-row gap-8">

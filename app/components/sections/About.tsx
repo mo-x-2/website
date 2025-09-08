@@ -20,7 +20,7 @@ export default function About() {
             <AnimatedText>
               <div className="space-y-4">
                 <p className="text-lg text-foreground/80 leading-relaxed text-[var(--foreground)]/80">
-                  I was born in Osaka and earned my bachelor's degree at Nagoya University, where I studied the fundamentals of computer science with a major in robotics. Currently, I am pursuing a master's degree at The University of Tokyo, and my research is focused on technologies that enhance human interaction. I specialize in Human-Computer Interaction (HCI), exploring the interaction between humans and agents, including robots and virtual agents.
+                  I was born in Osaka and earned my bachelor's degree at Nagoya University, where I studied the fundamentals of computer science with a major in robotics. Currently, I am pursuing a master's degree at The University of Tokyo while on an exchange program at the University of Sydney. My research is focused on technologies that enhance human interaction. I specialize in Human-Computer Interaction (HCI), exploring the interaction between humans and agents, including robots and virtual agents.
                 </p>
               </div>
             </AnimatedText>

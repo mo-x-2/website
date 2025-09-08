@@ -42,6 +42,7 @@ export default function Hero() {
             <p className="text-sm sm:text-base text-foreground/80 leading-relaxed">
             Hi. I am a Master's student at <a href="https://ishiguro-lab.org/" target="_blank" className="underline decoration-dotted underline-offset-4 hover:text-pink-500 duration-300">Ishiguro Laboratory</a>
             , <a href="https://www.iii.u-tokyo.ac.jp/" target="_blank" className="underline decoration-dotted underline-offset-4 hover:text-pink-500 duration-300">III/GSII</a>, The University of Tokyo.<br />
+            Currently, I am on an exchange program at the University of Sydney, in Australia.<br />
             My research interests include human-agent interaction, robotics, and AI.
             </p>
         </AnimatedText>
@@ -179,6 +180,34 @@ export default function Hero() {
             />
             <span className="relative z-20">Email</span>
           </a>
+          <a
+            className="
+              relative
+              z-20
+              rounded-full border border-solid border-black/[.08] dark:border-white/[.145] 
+              transition-colors flex items-center justify-center 
+              hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] 
+              h-10 sm:h-12
+              px-3 sm:px-5
+              text-sm sm:text-base
+              mb-1
+            "
+            href="https://drive.google.com/file/d/1Vlml5WzAdf0rDG7ye7GAcABWTEYyAesH/view?usp=sharing" 
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              className="dark:invert mr-1 sm:mr-2"
+              src="/cv.svg"
+              alt="CV"
+              width={18}
+              height={18}
+              sizes="18px"
+            />
+            <span className="relative z-20">CV</span>
+          </a>
+
+          
         </AnimatedText>
       </main>
     </section>

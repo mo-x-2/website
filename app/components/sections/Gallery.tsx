@@ -50,7 +50,7 @@ const photos: Photo[] = [
   },
   {
     id: 6,
-    image: "/gallery/20250829.jpg",
+    image: "/gallery/20250829.JPG",
     date: "2025.08.29",
     location: "Antwerp, Belgium",
     description: ""

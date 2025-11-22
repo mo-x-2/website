@@ -7,7 +7,6 @@ import { motion } from "framer-motion"
 interface CourseItem {
   date: string
   title: React.ReactNode
-  type: string
   description: React.ReactNode
 }
 
@@ -15,71 +14,50 @@ interface CourseItem {
 const courses: CourseItem[] = [
   {
     date: "Apr 2020 - Mar 2024",
-    title: "B.C. Nagoya University",
-    type: "# Education",
+    title: "B.C. at Nagoya University",
     description: (
       <>
-        Computer Science |{' '}
+        <a 
+          href="https://www.i.nagoya-u.ac.jp/si/cs/"
+          target="_blank" 
+          className="underline decoration-dotted underline-offset-4 duration-300"
+          onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(210, 83, 181, 1)'}
+          onMouseLeave={(e) => e.currentTarget.style.color = ''}
+        >
+          Department of Computer Science
+        </a>
+        {' | '}
         <a 
           href="http://www.nagao.nuie.nagoya-u.ac.jp/"
           target="_blank" 
-          className="underline decoration-dotted underline-offset-4 hover:text-pink-500 duration-300"
+          className="underline decoration-dotted underline-offset-4 duration-300"
+          onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(210, 83, 181, 1)'}
+          onMouseLeave={(e) => e.currentTarget.style.color = ''}
         >
           Nagao Laboratory
         </a>
       </>
     )
   },
-
   {
-    date: "Aug 2022",
-    title: (
-      <a 
-        href="https://www.utwente.nl/en/events/2022/8/645021/curiousu-summer-school"
-        target="_blank"
-        className="underline decoration-dotted underline-offset-4 hover:text-pink-500 duration-300"
-      >
-        CuriousU
-      </a>
-    ),
-    type: "# Global Education",
+    date: "Apr 2024 - Mar 2026(Expected)",
+    title: "M.S. at The University of Tokyo",
     description: (
       <>
-        Summer School | University of Twente | the Netherlands
-      </>
-    )
-  },
-
-  {
-    date: "Sep 2023",
-    title: (
-      <a 
-        href="https://www.unc.edu/posts/2023/11/28/women-defend-against-hackers-in-exchange-program/" 
-        target="_blank"
-        className="underline decoration-dotted underline-offset-4 hover:text-pink-500 duration-300"
-      >
-        Women in Cybersecurity Program
-      </a>
-    ),
-    type: "# Global Education",
-    description: (
-      <>
-        The University of North Carolina at Chapel Hill | the U.S.
-      </>
-    )
-  },
-
-  {
-    date: "Apr 2024 - Current",
-    title: "M.S. The University of Tokyo",
-    type: "# Education",
-    description: (
-      <>
-        HCI | {' '}
+        <a 
+          href="https://www.iii.u-tokyo.ac.jp/" 
+          target="_blank" 
+          className="underline decoration-dotted underline-offset-4 hover:text-[#d253b5] duration-300"
+        >
+          III/GSII
+        </a>
+        {' | '}
         <a 
           href="https://ishiguro-lab.org/"
           target="_blank" 
-          className="underline decoration-dotted underline-offset-4 hover:text-pink-500 duration-300"
+          className="underline decoration-dotted underline-offset-4 duration-300"
+          onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(210, 83, 181, 1)'}
+          onMouseLeave={(e) => e.currentTarget.style.color = ''}
         >
           Ishiguro Laboratory
         </a>
@@ -87,28 +65,10 @@ const courses: CourseItem[] = [
     )
   },
   {
-    date: "Jul - Dec 2024",
-    title: (
-      <a 
-        href="https://weblab.t.u-tokyo.ac.jp/research/misc/"
-        target="_blank"
-        className="underline decoration-dotted underline-offset-4 hover:text-pink-500 duration-300"
-      >
-        Robot Showcase Team at Matsuo & Iwasawa Laboratory
-      </a>
-    ),
-    type: "# Working",
+    date: "Aug 2025 - July 2026(Expected)",
+    title: "Exchange at The University of Sydney",
     description: (
-      <>Sim2Real | Reinforcement Learning | Quadruped Robot</>
-    )
-  },
-
-  {
-    date: "(Planned) Aug 2025 - Jun 2026",
-    title: "University of Sydney",
-    type: "# Global Education",
-    description: (
-      <> Exchange</>
+      <> Also Working as a Visiting Researcher</>
     )
   },
 
@@ -168,13 +128,6 @@ export default function CourseTimeline() {
                   mb-1
                 ">
                   {course.date}
-                </p>
-                <p className="
-                  text-xs                               /* Mobile: 12px */
-                  sm:text-sm md:text-base              /* sm: 14px, md: 16px */
-                  text-foreground/80
-                ">
-                  {course.type}
                 </p>
                 <p className="
                   text-xs                               /* Mobile: 12px */
@@ -263,6 +216,60 @@ export default function CourseTimeline() {
           </div>
         </AnimatedText>
       )}
+
+      {/* Publications Section */}
+      <AnimatedText>
+        <div className="mt-8 space-y-2">
+          <h2 className="text-xl font-bold text-[var(--foreground)]">Publications</h2>
+          
+          <div className="space-y-3">
+            <div>
+              <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2">Conference Papers</h3>
+              <p className="text-base text-foreground/80 leading-normal text-[var(--foreground)]/80">
+                ・Momo Hanawa, Satomi Tokida, Yoshio Ishiguro. &quot;Leash as a Cue: Visual Indicators for Third-Party Acceptance Across Resistance Levels&quot; 2025 IEEE International Conference on Robot & Human Interactive Communication (RO-MAN), 2025. (7 pages)
+              </p>
+              <p className="text-base text-foreground/80 leading-normal text-[var(--foreground)]/80 mt-1">
+                ・Momo Hanawa, Yoshio Ishiguro. &quot;ParaTalk: A Real-Time Paralinguistic Dialogue System for Human-Agent Interaction&quot; 2025 IEEE Conference on Virtual Reality and 3D User Interfaces Abstracts and Workshops (VRW). IEEE, 2025. (5 pages)
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2">Thesis</h3>
+              <p className="text-base text-foreground/80 leading-normal text-[var(--foreground)]/80">
+                ・Momo Hanawa, Katashi Nagao. &quot;A study on the placement and distribution function of automatic guided robots based on object detection and semantic segmentation&quot; Bachelor&apos;s Thesis, Nagoya University. February 2022. (63 pages)
+              </p>
+            </div>
+          </div>
+        </div>
+      </AnimatedText>
+
+      {/* Extracurricular Activities Section */}
+      <AnimatedText>
+        <div className="mt-8 space-y-2">
+          <h2 className="text-xl font-bold text-[var(--foreground)]">Extracurricular Activities</h2>
+          <div className="space-y-1">
+            <h3 className="text-lg font-semibold text-[var(--foreground)]">International Experience</h3>
+            <p className="text-base text-foreground/80 leading-normal text-[var(--foreground)]/80">
+              ・CuriousU Summer School (University of Twente, Netherlands, 2 weeks, August 2022) <br />
+              ・Selected participant, Women in Cybersecurity Program (University of North Carolina at Chapel Hill, U.S., 2 weeks, September 2023) <br />
+              ・Selected participant, Osaka Prefectural Global Leaders High School Short-term Training Program (Carolina, the U.S., 2 weeks, August 2018)
+            </p>
+          </div>
+        </div>
+      </AnimatedText>
+
+      {/* Certification Section */}
+      <AnimatedText>
+        <div className="mt-8 space-y-2">
+          <h2 className="text-xl font-bold text-[var(--foreground)]">Certification</h2>
+          <p className="text-base text-foreground/80 leading-normal text-[var(--foreground)]/80">
+            ・Feb 2025 - IELTS 6.5 <br />
+            ・Apr 2023 - TOEIC 875 <br />
+            ・Dec 2022 - Applied Information Technology Engineer Examination <br />
+            ・Nov 2021 - Fundamental Information Technology Engineer Examination
+          </p>
+        </div>
+      </AnimatedText>
     </section>
   )
 }

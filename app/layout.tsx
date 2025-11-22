@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Cormorant_Unicase, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -12,6 +13,18 @@ const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
+});
+
+const cormorantUnicase = Cormorant_Unicase({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-cormorant-unicase",
+});
+
+const nunitoSans = Nunito_Sans({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-nunito-sans",
 });
 
 // TODO: Please update the title and description with your personal information
@@ -50,7 +63,7 @@ export default function RootLayout({
           `
         }} />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--background)] text-[var(--foreground)]`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${cormorantUnicase.variable} ${nunitoSans.variable} antialiased bg-[var(--background)] text-[var(--foreground)]`}>
         {children}
       </body>
     </html>

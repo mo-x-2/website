@@ -17,7 +17,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-nunito-sans), sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -26,4 +26,14 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Cormorant Unicase for uppercase text */
+.font-uppercase {
+  font-family: var(--font-cormorant-unicase), serif;
+}
+
+/* Apply to all headings by default */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-cormorant-unicase), serif;
 }

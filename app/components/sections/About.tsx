@@ -10,7 +10,7 @@ export default function About() {
 
       <div className="max-w-6xl w-full">
         <AnimatedText>
-          <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[var(--foreground)]">About Me</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-center text-[var(--foreground)]">About Me</h1>
           
         </AnimatedText>
 
@@ -19,29 +19,17 @@ export default function About() {
           <div className="md:w-3/4 space-y-8">
             <AnimatedText>
               <div className="space-y-4">
-                <p className="text-lg text-foreground/80 leading-relaxed text-[var(--foreground)]/80">
-                  I was born in Osaka and earned my bachelor's degree at Nagoya University, where I studied the fundamentals of computer science with a major in robotics. Currently, I am pursuing a master's degree at The University of Tokyo while on an exchange program at the University of Sydney. My research is focused on technologies that enhance human interaction. I specialize in Human-Computer Interaction (HCI), exploring the interaction between humans and agents, including robots and virtual agents.
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed text-[var(--foreground)]/80">
+                  I was born in Osaka and earned my bachelor's degree at Nagoya University, where I studied the fundamentals of computer science with a major in robotics. Currently, I am pursuing a master's degree at The University of Tokyo while on an exchange program at the University of Sydney. My research is focused on technologies that enhance human interaction. I am interested in how humans perceive and form impressions of artificial agents, including robots and virtual agents, and I study Human-Computer Interaction (HCI).
                 </p>
               </div>
             </AnimatedText>
 
             <AnimatedText>
               <div className="space-y-4">
-                <h2 className="text-2xl font-semibold text-[var(--foreground)]">Personal Interests</h2>
-                <p className="text-lg text-foreground/80 leading-relaxed text-[var(--foreground)]/80">
-                Curiosity drives me, and I cherish every chance to connect with people and experience new cultures. I love traveling overseas, getting lost in a good movie, grooving to music, and even checking out Japanese comedy shows. Plus, I'm a huge cat lover!
-                </p>
-              </div>
-            </AnimatedText>
-
-            <AnimatedText>
-              <div className="space-y-4">
-                <h2 className="text-2xl font-semibold text-[var(--foreground)]">Certification</h2>
-                <p className="text-lg text-foreground/80 leading-relaxed text-[var(--foreground)]/80">
-                Feb 2025 - IELTS 6.5 <br />
-                Apr 2023 - TOEIC 875 <br />
-                Dec 2022 - Applied Information Technology Engineer Examination <br />
-                Nov 2021 - Fundamental Information Technology Engineer Examination
+                <h2 className="text-xl sm:text-2xl font-semibold text-[var(--foreground)]">Personal Interests</h2>
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed text-[var(--foreground)]/80">
+                I am curious about human-created content such as music, movies, manga, and culture. I also enjoy traveling overseas, and recently I've been getting into photography ^^
                 </p>
               </div>
             </AnimatedText>

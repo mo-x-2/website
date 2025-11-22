@@ -2,8 +2,7 @@
 
 import AnimatedText from '../common/AnimatedText'
 import Image from 'next/image'
-import { Typography, Container, Box, Card, CardContent, Grid } from '@mui/material'
-import GradientBackground from '../common/GradientBackground'
+import Bubbles from "../common/Bubbles"
 
 // Define photo data type
 // Each photo must include:
@@ -28,129 +27,129 @@ type Photo = {
 // 4. Recommended to sort photos in reverse chronological order
 const photos: Photo[] = [
   {
-    id: 1,
-    image: "/gallery/example.jpg",
-    date: "2023.12",
-    location: "Santa Cruz Beach Boardwalk",
-    description: "With UCSC friends"
+    id: 9,
+    image: "/gallery/20251004.JPG",
+    date: "2025.10.04",
+    location: "Sydney, Australia",
+    description: ""
+  },
+  {
+    id: 8,
+    image: "/gallery/20250920.JPG",
+    date: "2025.09.20",
+    location: "Sydney, Australia",
+    description: ""
+  },
+  {
+    id: 7,
+    image: "/gallery/20250917.JPG",
+    date: "2025.09.17",
+    location: "Sydney, Australia",
+    description: ""
+  },
+  {
+    id: 6,
+    image: "/gallery/20250824.JPG",
+    date: "2025.08.24",
+    location: "New Delhi, India",
+    description: ""
+  },
+  {
+    id: 5,
+    image: "/gallery/20250312.jpg",
+    date: "2025.03.12",
+    location: "Saint-Malo, France",
+    description: ""
+  },
+  {
+    id: 4,
+    image: "/gallery/20250127.jpg",
+    date: "2025.01.27",
+    location: "Cappadocia, Turkey",
+    description: ""
+  },
+  {
+    id: 3,
+    image: "/gallery/20240320.jpg",
+    date: "2024.03.20",
+    location: "Hokkaido, Japan",
+    description: ""
+  },
+  {
+    id: 2,
+    image: "/gallery/20240227.jpg",
+    date: "2024.02.27",
+    location: "Shanghai, China",
+    description: ""
   }
 ]
 
 export default function Gallery() {
   return (
-    <Container id="gallery" maxWidth={false} className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8" component="section" sx={{ bg: 'var(--background)', color: 'var(--foreground)' }}>
-      <Box sx={{ 
-        minHeight: '100vh',
-        display: 'flex', 
-        flexDirection: 'column', 
-        alignItems: 'center',
-        justifyContent: 'center',
-        py: { xs: 2, sm: 3, md: 4 },
-        px: { xs: 1, sm: 2, md: 4, lg: 8 },
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
-        <GradientBackground 
+    <section id="gallery" className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 bg-[var(--background)] text-[var(--foreground)]">
+      <div className="
+        min-h-screen
+        flex flex-col items-center justify-center
+        py-4 md:py-8
+        relative
+        overflow-hidden
+        z-0
+      ">
+
+        <Bubbles 
           sectionId="gallery"
-          gradientColors={{
-            start: '#60A5FA',  // Light blue
-            end: '#3B82F6'     // Deep blue
-          }}
+          bubbleCount={0}
+          backgroundColor="rgba(255, 255, 255, 1)"
+          strokeStyle = 'rgba(1, 56, 167, 0.5)'
         />
 
-        <AnimatedText>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-center relative z-10 text-[var(--foreground)]">Gallery</h1>
-        </AnimatedText>
-        
-        <Grid container spacing={{ xs: 1, sm: 2, md: 3, lg: 4 }} sx={{ position: 'relative', zIndex: 1, maxWidth: 'xl' }}>
-          {photos.map((photo, index) => (
-            <Grid item xs={6} sm={4} md={4} key={photo.id} sx={{ 
-              transform: index % 2 === 0 ? 'translateY(20px)' : 'translateY(0)'
-            }}>
-              <AnimatedText>
-                <Card 
-                  elevation={0}
-                  sx={{
-                    height: '100%',
-                    background: theme => theme.palette.mode === 'dark' 
-                      ? 'rgba(0, 0, 0, 0.2)' 
-                      : 'rgba(255, 255, 255, 0.1)',
-                    backdropFilter: 'blur(20px)',
-                    borderRadius: 4,
-                    border: theme => `1px solid ${
-                      theme.palette.mode === 'dark' 
-                        ? 'rgba(255, 255, 255, 0.1)' 
-                        : 'rgba(255, 255, 255, 0.2)'
-                    }`,
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
-                      background: theme => theme.palette.mode === 'dark'
-                        ? 'rgba(0, 0, 0, 0.3)'
-                        : 'rgba(255, 255, 255, 0.15)',
-                      boxShadow: theme => theme.palette.mode === 'dark'
-                        ? '0 20px 40px rgba(0, 0, 0, 0.3)'
-                        : '0 20px 40px rgba(0, 0, 0, 0.1)',
-                    }
-                  }}
+        <div className="relative z-10 w-full flex flex-col items-center">
+          <AnimatedText>
+            <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center text-[var(--foreground)]">
+              Photo Gallery
+            </h1>
+          </AnimatedText>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl mx-auto">
+            {photos.map((photo) => (
+              <AnimatedText key={photo.id}>
+                <div 
+                  className="
+                    bg-white/[0.1] dark:bg-black/[0.2]
+                    backdrop-blur-[20px]
+                    rounded-2xl
+                    border border-white/[0.1] dark:border-white/[0.1]
+                    p-6
+                    transition-all duration-300
+                    hover:-translate-y-1
+                    hover:shadow-xl
+                    h-full
+                    flex flex-col
+                  "
                 >
-                  <CardContent sx={{ 
-                    p: { xs: 1, sm: 1.5, md: 2, lg: 3 }
-                  }}>
-                    <Box sx={{ mb: { xs: 0.5, sm: 1, md: 1.5, lg: 2 } }}>
-                      <Image
-                        src={photo.image}
-                        alt={photo.description}
-                        width={400}
-                        height={300}
-                        className="rounded-lg object-cover w-full"
-                      />
-                    </Box>
-                    <Typography variant="body1" sx={{ 
-                      fontWeight: 500,
-                      mb: { xs: 0.25, sm: 0.5, md: 0.75, lg: 1 },
-                      fontSize: { 
-                        xs: '0.75rem',
-                        sm: '0.875rem',
-                        md: '1rem',
-                        lg: '1.125rem'
-                      },
-                      color: 'var(--foreground)'
-                    }}>
+                  <div className="relative w-full h-48 mb-4 rounded overflow-hidden">
+                    <Image
+                      src={photo.image}
+                      alt={photo.description}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  
+                  <div className="flex flex-col flex-grow">
+                    <h2 className="text-xl font-bold mb-2 text-[var(--foreground)]">
                       {photo.location}
-                    </Typography>
-                    <Typography variant="body2" sx={{ 
-                      opacity: 0.7,
-                      fontSize: { 
-                        xs: '0.625rem',
-                        sm: '0.75rem',
-                        md: '0.875rem',
-                        lg: '1rem'
-                      },
-                      color: 'var(--foreground)'
-                    }}>
+                    </h2>
+                    <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 font-[family-name:var(--font-nunito-sans)]">
                       {photo.date}
-                    </Typography>
-                    <Typography variant="body2" sx={{ 
-                      opacity: 0.7,
-                      mt: { xs: 0.25, sm: 0.5, md: 0.75, lg: 1 },
-                      fontSize: { 
-                        xs: '0.625rem',
-                        sm: '0.75rem',
-                        md: '0.875rem',
-                        lg: '1rem'
-                      },
-                      color: 'var(--foreground)'
-                    }}>
-                      {photo.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
+                    </p>
+                  </div>
+                </div>
               </AnimatedText>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-    </Container>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   )
 } 

@@ -1,11 +1,18 @@
 'use client'
 
 import Image from 'next/image'
+import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import { 
   getProjectById,
   PROJECT_DATA
 } from '@/app/data/project'
+
+// Color constants - 一括管理用
+const COLORS = {
+  text: '#000000',
+  border: '#D253CA',
+} as const
 
 const preloadImages = (features: { image: string | string[] }[]) => {
   if (typeof window === 'undefined') return;
@@ -58,18 +65,22 @@ export default function ExperienceModal({
   if (!open) return null;
 
   return (
-    <div 
-      className="
-        fixed inset-0 
-        flex items-center justify-center 
-        p-4 sm:p-8 
-        bg-black/40 dark:bg-black/60
-        backdrop-blur-md
-        z-50
-        transition-all duration-300 ease-in-out
-      "
-      onClick={onClose}
-    >
+    <>
+      {experience.videoUrl && (
+        <Script src="https://player.vimeo.com/api/player.js" strategy="lazyOnload" />
+      )}
+      <div 
+        className="
+          fixed inset-0 
+          flex items-center justify-center 
+          p-4 sm:p-8 
+          bg-black/40 dark:bg-black/60
+          backdrop-blur-md
+          z-50
+          transition-all duration-300 ease-in-out
+        "
+        onClick={onClose}
+      >
       <div 
         className="
           relative w-full max-w-[1000px] max-h-[90vh] overflow-auto
@@ -101,8 +112,9 @@ export default function ExperienceModal({
             hover:rotate-90
             hover:scale-110
             focus:outline-none
-            focus:ring-2 focus:ring-purple-500/50
+            focus:ring-2
           "
+          style={{ '--tw-ring-color': `${COLORS.border}80` } as React.CSSProperties}
         >
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
@@ -127,15 +139,14 @@ export default function ExperienceModal({
                 {experience.company}
               </p>
               <div className="flex items-center justify-between gap-4">
-                <h1 className="
-                  text-2xl sm:text-3xl md:text-4xl 
-                  font-bold 
-                  tracking-tight
-                  bg-clip-text text-transparent
-                  bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600
-                  dark:from-purple-400 dark:via-pink-400 dark:to-purple-400
-                  animate-gradient
-                ">
+                <h1 
+                  className="
+                    text-2xl sm:text-3xl md:text-4xl 
+                    font-bold 
+                    tracking-tight
+                  "
+                  style={{ color: COLORS.text }}
+                >
                   {experience.title}
                 </h1>
                 <div className="flex gap-4 mt-8">
@@ -173,67 +184,90 @@ export default function ExperienceModal({
             <p className="text-base text-gray-600 dark:text-gray-400 mb-2">
               {experience.tag}, {experience.period}, {experience.state}
             </p>
-            <p className="
-              text-base sm:text-lg 
-              leading-relaxed 
-              text-gray-600 dark:text-gray-300
-              border-l-4 border-purple-500/30
-              pl-4
-            ">
+            <p 
+              className="
+                text-base sm:text-lg 
+                leading-relaxed 
+                text-gray-600 dark:text-gray-300
+                border-l-4
+                pl-4
+              "
+              style={{ borderColor: COLORS.border }}
+            >
               {experience.overview}
             </p>
           </div>
           
-          <a 
-            href={experience.link || '#'} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className={`
+          {experience.videoUrl ? (
+            <div className="
               relative block
-              w-full h-[200px] sm:h-[300px] md:h-[400px]
+              w-full
               rounded-xl overflow-hidden
               shadow-lg
               ring-1 ring-black/5 dark:ring-white/5
-              ${experience.link ? 'group cursor-pointer' : ''}
-            `}
-            onClick={e => !experience.link && e.preventDefault()}
-          >
-            {experience.link && (
-              <div className="
-                absolute inset-0
-                bg-gradient-to-t from-black/50 to-transparent
-                opacity-0 group-hover:opacity-100
-                transition-opacity duration-300
-                z-10
-                flex items-end justify-center
-                pb-6
-              ">
-                <span className="
-                  text-white
-                  text-sm sm:text-base
-                  font-medium
-                  px-4 py-2
-                  rounded-full
-                  bg-black/30
-                  backdrop-blur-sm
-                  border border-white/10
-                ">
-                  View Project
-                </span>
-              </div>
-            )}
-            <Image
-              src={experience.mainImage}
-              alt={experience.title}
-              fill
+            " style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                src={experience.videoUrl}
+                frameBorder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                className="absolute top-0 left-0 w-full h-full"
+                title={experience.title}
+                allowFullScreen
+              />
+            </div>
+          ) : (
+            <a 
+              href={experience.link || '#'} 
+              target="_blank" 
+              rel="noopener noreferrer"
               className={`
-                object-cover 
-                ${experience.link ? 'group-hover:scale-105 filter brightness-100 group-hover:brightness-90' : ''}
-                transition-transform duration-500
+                relative block
+                w-full h-[200px] sm:h-[300px] md:h-[400px]
+                rounded-xl overflow-hidden
+                shadow-lg
+                ring-1 ring-black/5 dark:ring-white/5
+                ${experience.link ? 'group cursor-pointer' : ''}
               `}
-              priority
-            />
-          </a>
+              onClick={e => !experience.link && e.preventDefault()}
+            >
+              {experience.link && (
+                <div className="
+                  absolute inset-0
+                  bg-gradient-to-t from-black/50 to-transparent
+                  opacity-0 group-hover:opacity-100
+                  transition-opacity duration-300
+                  z-10
+                  flex items-end justify-center
+                  pb-6
+                ">
+                  <span className="
+                    text-white
+                    text-sm sm:text-base
+                    font-medium
+                    px-4 py-2
+                    rounded-full
+                    bg-black/30
+                    backdrop-blur-sm
+                    border border-white/10
+                  ">
+                    View Project
+                  </span>
+                </div>
+              )}
+              <Image
+                src={experience.mainImage}
+                alt={experience.title}
+                fill
+                className={`
+                  object-cover 
+                  ${experience.link ? 'group-hover:scale-105 filter brightness-100 group-hover:brightness-90' : ''}
+                  transition-transform duration-500
+                `}
+                priority
+              />
+            </a>
+          )}
 
           <div className="space-y-8">
             <div className="space-y-12">
@@ -248,12 +282,14 @@ export default function ExperienceModal({
                   "
                 >
                   <div className="flex-1 space-y-4">
-                    <h3 className="
-                      text-lg sm:text-xl 
-                      font-semibold 
-                      tracking-tight
-                      text-purple-600 dark:text-purple-400
-                    ">
+                    <h3 
+                      className="
+                        text-lg sm:text-xl 
+                        font-bold 
+                        tracking-tight
+                      "
+                      style={{ color: COLORS.text }}
+                    >
                       {feature.title}
                     </h3>
                     <p className="
@@ -270,7 +306,7 @@ export default function ExperienceModal({
                     {Array.isArray(feature.image) ? (
                       <div className="space-y-4">
                         <div className="
-                          relative w-full h-[200px]
+                          relative w-full h-[250px]
                           rounded-xl overflow-hidden
                           shadow-lg
                         ">
@@ -289,11 +325,9 @@ export default function ExperienceModal({
                               className={`
                                 w-2 h-2 rounded-full
                                 transition-all duration-300
-                                ${currentImageIndex === imgIndex 
-                                  ? 'bg-purple-600 w-4' 
-                                  : 'bg-gray-300 hover:bg-gray-400'
-                                }
+                                ${currentImageIndex === imgIndex ? 'w-4' : ''}
                               `}
+                              style={currentImageIndex === imgIndex ? { backgroundColor: COLORS.text } : {}}
                               aria-label={`View image ${imgIndex + 1}`}
                             />
                           ))}
@@ -301,7 +335,7 @@ export default function ExperienceModal({
                       </div>
                     ) : (
                       <div className="
-                        relative w-full h-[200px]
+                        relative w-full h-[250px]
                         rounded-xl overflow-hidden
                         shadow-lg
                       ">
@@ -318,8 +352,17 @@ export default function ExperienceModal({
               ))}
             </div>
           </div>
+
+          {experience.publication && (
+            <div className="pt-8 border-t border-gray-200 dark:border-gray-800">
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 italic">
+                {experience.publication}
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>
+    </>
   )
 } 

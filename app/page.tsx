@@ -29,6 +29,9 @@ export default function Home() {
         {/* Hero section - Edit content in /components/sections/Hero */}
         <Hero />    
         
+        {/* Projects section - Showcase your projects in /components/sections/Projects */}
+        <Projects />
+
         {/* About section - Edit your intro in /components/sections/About */}
         <About />
         
@@ -46,12 +49,11 @@ export default function Home() {
             <CourseTimeline />
           </Box>
         </section>
+      
         
-        {/* Research section - Showcase your projects in /components/sections/Research */}
-        <Research />
-
-        {/* Projects section - Showcase your projects in /components/sections/Projects */}
-        <Projects />
+        {/* Gallery section - Showcase your gallery in /components/sections/Gallery */}
+        <Gallery />
+        
       </main>
     </>
   )

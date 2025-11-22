@@ -70,14 +70,14 @@ const photos: Photo[] = [
   },
   {
     id: 3,
-    image: "/gallery/20240320.jpg",
+    image: "/gallery/20240320.JPG",
     date: "2024.03.20",
     location: "Hokkaido, Japan",
     description: ""
   },
   {
     id: 2,
-    image: "/gallery/20240227.jpg",
+    image: "/gallery/20240227.JPG",
     date: "2024.02.27",
     location: "Shanghai, China",
     description: ""

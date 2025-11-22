@@ -270,6 +270,9 @@ export default function CourseTimeline() {
           </p>
         </div>
       </AnimatedText>
+      
+      {/* Bottom spacing for next section */}
+      <div className="pb-16 md:pb-24"></div>
     </section>
   )
 }

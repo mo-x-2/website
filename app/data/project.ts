@@ -71,6 +71,16 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
     mainImage: "/project/5-1.gif",
     features: [
       {
+        title: "Inspiration",
+        description: "Inspired by how remoras attach themselves to other fish, we explored the possibility of creating a wearable accessory modeled after this behavior. We envisioned a wearable agent where the remora could serve as an intermediary, helping to communicate intentions of refusal that are difficult to express directly to others.",
+        image: "/project/5-5.png"
+      },
+      {
+        title: "Color Variation",
+        description: "In order to match users' preferences and outfits, we explored various color variations to create a unique and friendly design.",
+        image: "/project/5-6.png"
+      },
+      {
         title: "Internal Architecture",
         description: "We developed a wearable device that's small enough to be worn and cute enough to love. By turning a smartphone into a beacon and using an onboard ESP32 to detect its signal, the device reacts to nearby phones in a playful and compact way.",
         image: "/project/5-3.jpg"

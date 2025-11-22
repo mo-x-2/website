@@ -27,7 +27,7 @@ export default function About() {
 
             <AnimatedText>
               <div className="space-y-4">
-                <h2 className="text-xl sm:text-2xl font-semibold text-[var(--foreground)]">Personal Interests</h2>
+                <h2 className="text-xl sm:text-2xl font-semibold text-[var(--foreground)] border-l-4 border-[rgba(210,83,181,0.5)] pl-4 py-1">Personal Interests</h2>
                 <p className="text-base sm:text-lg text-foreground/80 leading-relaxed text-[var(--foreground)]/80">
                 I am curious about human-created content such as music, movies, manga, and culture. I also enjoy traveling overseas, and recently I've been getting into photography ^^
                 </p>

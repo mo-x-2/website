@@ -9,7 +9,7 @@ import Bubbles from "../common/Bubbles"
 
 export default function Hero() {
   return (
-    <section id="home" className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen gap-8 sm:gap-16 font-[family-name:var(--font-geist-sans)] bg-[var(--background)] text-[var(--foreground)]">
+    <section id="home" className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen gap-8 sm:gap-16 bg-[var(--background)] text-[var(--foreground)]">
       
       <main className="flex flex-col gap-6 sm:gap-8 row-start-2 items-center">
 
@@ -30,13 +30,14 @@ export default function Hero() {
             sizes="(max-width: 640px) 180px, 250px"
             priority
           />
-          <h1 className="text-3xl sm:text-4xl font-bold text-[var(--foreground)]">Momo Hanawa</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--foreground)]">Momo Hanawa</h1>
         </AnimatedText>
 
+        
         <AnimatedText 
           className="max-w-2xl text-center"
         >
-            <p className="text-sm sm:text-base text-foreground/80 leading-relaxed">
+            <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
             Hi. I am a Master's student at <a href="https://ishiguro-lab.org/" target="_blank" className="underline decoration-dotted underline-offset-4 hover:text-[#d253b5] duration-300">Ishiguro Laboratory</a>
             , <a href="https://www.iii.u-tokyo.ac.jp/" target="_blank" className="underline decoration-dotted underline-offset-4 hover:text-[#d253b5] duration-300">III/GSII</a>, The University of Tokyo.<br />
             Currently, I am on an exchange program at the University of Sydney, in Australia.<br />

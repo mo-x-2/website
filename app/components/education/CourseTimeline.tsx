@@ -220,11 +220,11 @@ export default function CourseTimeline() {
       {/* Publications Section */}
       <AnimatedText>
         <div className="mt-8 space-y-2">
-          <h2 className="text-xl font-bold text-[var(--foreground)]">Publications</h2>
+          <h2 className="text-xl font-bold text-[var(--foreground)] border-l-4 border-[rgba(210,83,181,0.5)] pl-4 py-1">Publications</h2>
           
           <div className="space-y-3">
             <div>
-              <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2">Conference Papers</h3>
+              <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2 underline decoration-1 underline-offset-4 decoration-[var(--foreground)]/30">Conference Papers</h3>
               <p className="text-base text-foreground/80 leading-normal text-[var(--foreground)]/80">
                 ・Momo Hanawa, Satomi Tokida, Yoshio Ishiguro. &quot;Leash as a Cue: Visual Indicators for Third-Party Acceptance Across Resistance Levels&quot; 2025 IEEE International Conference on Robot & Human Interactive Communication (RO-MAN), 2025. (7 pages)
               </p>
@@ -234,7 +234,7 @@ export default function CourseTimeline() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2">Thesis</h3>
+              <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2 underline decoration-1 underline-offset-4 decoration-[var(--foreground)]/30">Thesis</h3>
               <p className="text-base text-foreground/80 leading-normal text-[var(--foreground)]/80">
                 ・Momo Hanawa, Katashi Nagao. &quot;A study on the placement and distribution function of automatic guided robots based on object detection and semantic segmentation&quot; Bachelor&apos;s Thesis, Nagoya University. February 2022. (63 pages)
               </p>
@@ -246,9 +246,9 @@ export default function CourseTimeline() {
       {/* Extracurricular Activities Section */}
       <AnimatedText>
         <div className="mt-8 space-y-2">
-          <h2 className="text-xl font-bold text-[var(--foreground)]">Extracurricular Activities</h2>
+          <h2 className="text-xl font-bold text-[var(--foreground)] border-l-4 border-[rgba(210,83,181,0.5)] pl-4 py-1">Extracurricular Activities</h2>
           <div className="space-y-1">
-            <h3 className="text-lg font-semibold text-[var(--foreground)]">International Experience</h3>
+            <h3 className="text-lg font-semibold text-[var(--foreground)] underline decoration-1 underline-offset-4 decoration-[var(--foreground)]/30">International Experience</h3>
             <p className="text-base text-foreground/80 leading-normal text-[var(--foreground)]/80">
               ・CuriousU Summer School (University of Twente, Netherlands, 2 weeks, August 2022) <br />
               ・Selected participant, Women in Cybersecurity Program (University of North Carolina at Chapel Hill, U.S., 2 weeks, September 2023) <br />
@@ -261,7 +261,7 @@ export default function CourseTimeline() {
       {/* Certification Section */}
       <AnimatedText>
         <div className="mt-8 space-y-2">
-          <h2 className="text-xl font-bold text-[var(--foreground)]">Certification</h2>
+          <h2 className="text-xl font-bold text-[var(--foreground)] border-l-4 border-[rgba(210,83,181,0.5)] pl-4 py-1">Certification</h2>
           <p className="text-base text-foreground/80 leading-normal text-[var(--foreground)]/80">
             ・Feb 2025 - IELTS 6.5 <br />
             ・Apr 2023 - TOEIC 875 <br />

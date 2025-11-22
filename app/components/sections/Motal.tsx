@@ -192,7 +192,7 @@ export default function ExperienceModal({
                 border-l-4
                 pl-4
               "
-              style={{ borderColor: COLORS.border }}
+              style={{ borderColor: 'rgba(210, 83, 181, 0.5)' }}
             >
               {experience.overview}
             </p>
@@ -287,8 +287,11 @@ export default function ExperienceModal({
                         text-lg sm:text-xl 
                         font-bold 
                         tracking-tight
+                        border-l-4
+                        pl-4
+                        py-1
                       "
-                      style={{ color: COLORS.text }}
+                      style={{ color: COLORS.text, borderColor: 'rgba(210, 83, 181, 0.5)' }}
                     >
                       {feature.title}
                     </h3>

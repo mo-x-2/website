@@ -67,7 +67,7 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
     company: "Internship Project at Dentsu Inc.",
     period: "Feb 2025",
     tag: "Work",
-    overview: "Have you ever felt uncomfortable when store staff approach you while shopping? We created Romera Barrette, an agent designed to support shy or socially anxious individuals. Inspired by the unspoken signals of headphones and wired earphones—often used as a subtle \"do not disturb\" sign—this wearable device gently expresses a desire not to be approached. When a staff member's device comes near, the barrette softly glows, offering a warm and non-verbal way to say \"not right now.\"", 
+    overview: "Have you ever felt uncomfortable when store staff approach you while shopping? We created Remora Barrette, an agent designed to support shy or socially anxious individuals. Inspired by the unspoken signals of headphones and wired earphones—often used as a subtle \"do not disturb\" sign—this wearable device gently expresses a desire not to be approached. When a staff member's device comes near, the barrette softly glows, offering a warm and non-verbal way to say \"not right now.\"", 
     mainImage: "/project/5-1.gif",
     features: [
       {

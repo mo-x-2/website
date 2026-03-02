@@ -28,6 +28,20 @@ type Photo = {
 // 4. Recommended to sort photos in reverse chronological order
 const photos: Photo[] = [
   {
+    id: 11,
+    image: "/gallery/20260219.JPG",
+    date: "2026.02.19",
+    location: "Bali, Indonesia",
+    description: ""
+  },
+  {
+    id: 10,
+    image: "/gallery/20260127.JPG",
+    date: "2026.01.27",
+    location: "Queensland, Australia",
+    description: ""
+  },
+  {
     id: 9,
     image: "/gallery/20251004.JPG",
     date: "2025.10.04",

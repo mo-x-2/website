@@ -92,12 +92,12 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
       {
         title: "Concept",
         description: "In our modern global society, physical and psychological distances are widening, leading to increased isolation. Existing communication media, with their read receipts and notifications, force one-way visibility of intentions and create a sense of obligation and surveillance. However, chance encounters bring surprise and joy without forcing expectations, offering opportunities to reconnect. We designed AwaseKagami to recreate these serendipitous moments even across great distances.",
-        image: "/project/6.jpg"
+        image: "/project/6-2.png"
       },
       {
         title: "System",
         description: "The system creates a synchronous connection using a Node.js server and Socket.IO to manage real-time signaling between two distributed mirrors. When the server detects exactly two active connections, it initiates a WebRTC P2P (Peer-to-Peer) pipeline to establish a direct video stream. On the client side, a TensorFlow.js-based face-detection model monitors the user's presence every 150ms. The video display is only toggled from a black screen to full-screen remote video when the local state, remote state (shared via the server), and the active WebRTC stream all confirm that both users are simultaneously peering into the mirror.",
-        image: "/project/6.jpg"
+        image: "/project/6-3.png"
       }
     ],
   },

@@ -17,7 +17,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, sans-serif;
+  font-family: Arial, var(--font-zen-kaku-gothic-new), sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -35,5 +35,5 @@ html {
 
 /* Apply to all headings by default */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-cormorant-unicase), serif;
+  font-family: var(--font-cormorant-unicase), var(--font-zen-kaku-gothic-new), serif;
 }

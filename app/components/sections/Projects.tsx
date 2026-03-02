@@ -35,8 +35,17 @@ type Project = {
 // 4. Project descriptions should highlight core features and technical highlights
 export const projects: Project[] = [
   {
+    id: 8, 
+    title: "RecallMe",
+    description: "a", 
+    period: "Oct 2025 - Current",
+    tag: "Research",
+    image: "/project/8.jpg",
+
+  },
+  {
     id: 7, 
-    title: "Ben10",
+    title: "Ben10 Watch",
     description: "a", 
     period: "Aug 2025 - Nov 2025",
     tag: "Project",

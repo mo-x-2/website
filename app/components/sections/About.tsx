@@ -20,7 +20,7 @@ export default function About() {
             <AnimatedText>
               <div className="space-y-4">
                 <p className="text-base sm:text-lg text-foreground/80 leading-relaxed text-[var(--foreground)]/80">
-                  I was born in Osaka and earned my bachelor's degree at Nagoya University, where I studied the fundamentals of computer science with a major in robotics. Currently, I am pursuing a master's degree at The University of Tokyo while on an exchange program at the University of Sydney. My research is focused on technologies that enhance human interaction. I am interested in how humans perceive and form impressions of artificial agents, including robots and virtual agents, and I study Human-Computer Interaction (HCI).
+                  I was born in Osaka and earned my bachelor's degree at Nagoya University, where I studied the fundamentals of computer science with a major in robotics. Currently, I am pursuing a master's degree at The University of Tokyo while on an exchange program at the University of Sydney. My research focuses on the nature of communication between humans and artificial agents. I am deeply interested in how we perceive, feel, and interact with entities like robots and virtual agents. Ultimately, I want to explore how we can establish a meaningful coexistence between humans and technology.
                 </p>
               </div>
             </AnimatedText>
@@ -29,7 +29,7 @@ export default function About() {
               <div className="space-y-4">
                 <h2 className="text-xl sm:text-2xl font-semibold text-[var(--foreground)] border-l-4 border-[rgba(210,83,181,0.5)] pl-4 py-1">Personal Interests</h2>
                 <p className="text-base sm:text-lg text-foreground/80 leading-relaxed text-[var(--foreground)]/80">
-                I am curious about human-created content such as music, movies, manga, and culture. I also enjoy traveling overseas, and recently I've been getting into photography ^^
+                I have a profound curiosity for human-centric culture—music, film, and manga—as well as the diverse expressions I encounter through my travels in the world. To me, technology is an extension of this creativity. I am driven by its power to turn the "impossible" into "the everyday," moving people’s emotions and reshaping our world in the process.
                 </p>
               </div>
             </AnimatedText>
@@ -60,7 +60,7 @@ export default function About() {
                     <div className="relative overflow-hidden rounded aspect-[4/3]">
                       <div className="absolute inset-y-0 left-0 w-[25%] z-25 bg-gradient-to-r from-white/100 to-transparent dark:from-black/50"></div>
                       <Image
-                        src="/me2.jpg"
+                        src="/me11.png"
                         alt="Me 2"
                         width={120}
                         height={90}

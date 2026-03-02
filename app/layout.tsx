@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Cormorant_Unicase, Nunito_Sans } from "next/font/google";
+import { Cormorant_Unicase, Nunito_Sans, Zen_Kaku_Gothic_New } from "next/font/google";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -25,6 +25,12 @@ const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-nunito-sans",
+});
+
+const zenKakuGothicNew = Zen_Kaku_Gothic_New({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-zen-kaku-gothic-new",
 });
 
 // TODO: Please update the title and description with your personal information
@@ -63,7 +69,7 @@ export default function RootLayout({
           `
         }} />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${cormorantUnicase.variable} ${nunitoSans.variable} antialiased bg-[var(--background)] text-[var(--foreground)]`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${cormorantUnicase.variable} ${nunitoSans.variable} ${zenKakuGothicNew.variable} antialiased bg-[var(--background)] text-[var(--foreground)]`}>
         {children}
       </body>
     </html>

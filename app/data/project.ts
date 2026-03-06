@@ -32,7 +32,7 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
     tag: "Research",
     collaborators: "Yoshio Ishiguro",
     overview: "RecallMe is a research project exploring self-reflection through dialogue with a \"past self\" using a rotary telephone as a ritualistic interface. While interacting with generative AI clones often induces cognitive dissonance or an \"uncanny valley\" effect, this project leverages the historical and cultural affordance of the telephone—connecting with someone absent—to create a dedicated space for introspection. By using a physical rotary phone, the system frames the dialogue as a meaningful ritual, mitigating technological discomfort and supporting the reconstruction of personal narratives.",
-    mainImage: "/project/8.jpg",
+    mainImage: "/project/8.png",
     features: [
       {
         title: "Interaction",

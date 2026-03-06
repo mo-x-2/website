@@ -187,7 +187,7 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
       {
         title: "Aim",
         description: "This research explores how visual design elements that express the relationship between a robot and its operator influence people's impressions and acceptance, with a focus on individual differences in comfort levels with robots.",
-        image: "/project/2-1.jpg",
+        image: "/project/2-1.JPG",
       }
     ],
     publication: "Hanawa, Momo, and Yoshio Ishiguro. \"Leash as a Cue: Visual Indicators for Third-Party Acceptance Across Resistance Levels.\" 2025 IEEE International Conference on Robot & Human Interactive Communication (RO-MAN). IEEE, 2025.",

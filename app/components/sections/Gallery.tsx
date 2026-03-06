@@ -36,7 +36,7 @@ const photos: Photo[] = [
   },
   {
     id: 10,
-    image: "/gallery/20260127.JPG",
+    image: "/gallery/20260127.jpg",
     date: "2026.01.27",
     location: "Queensland, Australia",
     description: ""

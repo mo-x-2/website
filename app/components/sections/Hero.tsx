@@ -30,7 +30,7 @@ export default function Hero() {
             sizes="(max-width: 640px) 180px, 250px"
             priority
           />
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--foreground)]">Momo Hanawas</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--foreground)]">Momo Hanawa</h1>
         </AnimatedText>
 
         

@@ -182,7 +182,9 @@ export default function ExperienceModal({
               </div>
             </div>
             <p className="text-base text-gray-600 dark:text-gray-400 mb-2">
-              {experience.tag}, {experience.period}, {experience.state}
+              {experience.tag}, {experience.period} 
+              <br></br>
+              With {experience.collaborators}
             </p>
             <p 
               className="

@@ -32,22 +32,22 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
     tag: "Research",
     collaborators: "Yoshio Ishiguro",
     overview: "RecallMe is a research project exploring self-reflection through dialogue with a \"past self\" using a rotary telephone as a ritualistic interface. While interacting with generative AI clones often induces cognitive dissonance or an \"uncanny valley\" effect, this project leverages the historical and cultural affordance of the telephone—connecting with someone absent—to create a dedicated space for introspection. By using a physical rotary phone, the system frames the dialogue as a meaningful ritual, mitigating technological discomfort and supporting the reconstruction of personal narratives.",
-    mainImage: "/project/8.png",
+    mainImage: "/project/8-5.JPG",
     features: [
       {
         title: "Interaction",
         description: "The interaction is a four-phase ritual designed for deep immersion. It begins as the user lifts the receiver and dials, transitioning from the mundane into a reflective state. Guided by an AI operator, the user engages in a dialogue with a voice-cloned version of their past self. This setup enables users to confront past conflicts from a matured, present-day perspective, reframing their personal narratives before concluding the experience by physically hanging up.",
-        image: "/project/8-1.png"
+        image: "/project/8.png"
       },
       {
         title: "System",
         description: "The system integrates a vintage Model 800 rotary telephone with a generative AI pipeline. An internal ESP32 microcontroller monitors the hook and pulse dial signals, triggering the software sequence on a host PC. The audio pipeline utilizes the Whisper API for transcription, an LLM for character construction, and ElevenLabs for voice cloning. To enhance realism, the voice is pitch-adjusted based on the user's age, ensuring it resonates naturally through the handset’s acoustic characteristics",
-        image: "/project/8-3.png"
+        image: "/project/8-1.png"
       },
       {
         title: "Motivation",
         description: "My habit of letter writing has always felt like a way of encountering my past and future selves, evoking a complex mix of pain and joy. While traditional media allow us to leave traces across time, they remain one-directional. I wanted to transcend this impossibility by creating a real-time, embodied dialogue.Guided by the concept of \"dividuality\" (分人), I believe we coexist with various versions of ourselves across different timelines. This project, RecallMe, was born from a desire to facilitate deep self-reflection and healing—allowing the present self to comfort a wounded past, or a future self to soothe present anxieties. By transforming asynchronous reflection into an interactive ritual, I aim to help users reconstruct their own narratives through a direct encounter with the many versions of who they are",
-        image: "/project/8-4.gif"
+        image: "/project/8-6.png"
       },
     ],
   },

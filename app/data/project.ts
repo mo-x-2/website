@@ -184,13 +184,18 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
     period: "Apr 2024 - Mar 2025",
     tag: "Research",
     collaborators: "Satomi Tokida, Yoshio Ishiguro",
-    overview: "How do people accept robots they encounter in public spaces? We investigated whether visual indicators that show the relationship between a robot and its operator affect public acceptance. In our experiment, we compared three operation methods: fully autonomous robots, joystick-controlled robots, and robots on a leash. Results revealed that robots on a leash were most acceptable, especially for people who are initially uncomfortable with robots. This finding suggests that making the human-robot relationship visible is key to improving robot acceptance in public spaces.", 
+    overview: "As robots increasingly enter public spaces, how do third-party bystanders perceive them? This project investigates how visual cues indicating the relationship between an \"accompanying robot\" and its handler affect public acceptance. We focused on two design elements: \"connection visibility\" (a physical link) and \"control visibility\" (evident authority). By comparing Autonomous, Joystick, and Leash operation methods, we found that the Leash condition—which provides both connection and control visibility—yielded the highest acceptance. Crucially, individuals with a high pre-existing resistance to robots benefited the most from these explicit cues, as the familiar \"dog-and-leash\" metaphor significantly reduced their anxiety.",
     mainImage: "/project/2-2.png",
     features: [
       {
-        title: "Aim",
-        description: "This research explores how visual design elements that express the relationship between a robot and its operator influence people's impressions and acceptance, with a focus on individual differences in comfort levels with robots.",
+        title: "Aim & Methodology",
+        description: "This research explores how visual design elements influence bystander impressions, specifically focusing on the interaction between these cues and individuals' pre-existing resistance to robots (NARS). To isolate the effects of visual indicators, we conducted a controlled experiment simulating passing encounters using an automated Wizard-of-Oz approach.",
         image: "/project/2-1.JPG",
+      },
+      {
+        title: "Design Implications",
+        description: "Our findings suggest that making the human-robot cooperative relationship explicitly visible is key to social integration. For people hesitant about unfamiliar technology, designing visible physical constraints—such as a leash—fosters familiarity and significantly improves third-party acceptance in shared environments.",
+        image: "/project/2-3.png",
       }
     ],
     publication: "Hanawa, Momo, and Yoshio Ishiguro. \"Leash as a Cue: Visual Indicators for Third-Party Acceptance Across Resistance Levels.\" 2025 IEEE International Conference on Robot & Human Interactive Communication (RO-MAN). IEEE, 2025.",

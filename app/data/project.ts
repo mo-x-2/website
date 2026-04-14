@@ -52,7 +52,7 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
         image: "/project/8-6.png"
       },
     ],
-    publication: "Hanawa, Momo and Ishiguro, Yoshio. \"RecallMe: Designing a Ritualistic Artifact for Immersive Reflection with the Past Self.\" Designing Interactive Systems Conference (DIS Companion '26), Singapore, Singapore, June 13--17, 2026. ACM, 2026. https://doi.org/10.1145/3802974.3808036",
+    publication: "Momo Hanawa, and Yoshio Ishiguro. \"RecallMe: Designing a Ritualistic Artifact for Immersive Reflection with the Past Self.\" Designing Interactive Systems Conference (DIS Companion '26), Singapore, Singapore, June 13--17, 2026. ACM, 2026. https://doi.org/10.1145/3802974.3808036",
   },
   7: {
     id: 7,

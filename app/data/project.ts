@@ -31,7 +31,9 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
     period: "Oct 2025 - Current",
     tag: "Research",
     collaborators: "Yoshio Ishiguro",
-    overview: "RecallMe is a research project exploring self-reflection through dialogue with a \"past self\" using a rotary telephone as a ritualistic interface. While interacting with generative AI clones often induces cognitive dissonance or an \"uncanny valley\" effect, this project leverages the historical and cultural affordance of the telephone—connecting with someone absent—to create a dedicated space for introspection. By using a physical rotary phone, the system frames the dialogue as a meaningful ritual, mitigating technological discomfort and supporting the reconstruction of personal narratives.",
+    overview: "\"RecallMe\" is an experience design project exploring self-reflection through dialogue with a \"past self.\"  In an era where digital devices prioritize extreme efficiency and speed, deep introspection is often hindered by the disposable nature of digital interactions. To counter this, RecallMe leverages a vintage rotary telephone as a \"ritualistic interface.\" By intentionally designing physical friction—the weight of the receiver, the waiting time of the dial—the system frames the AI dialogue as a meaningful ritual. This physical framing bridges the gap between generative AI and human emotion, supporting the safe reconstruction of personal narratives.",
+
+
     mainImage: "/project/8-5.JPG",
     features: [
       {
@@ -46,10 +48,11 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
       },
       {
         title: "Motivation",
-        description: "My habit of letter writing has always felt like a way of encountering my past and future selves, evoking a complex mix of pain and joy. While traditional media allow us to leave traces across time, they remain one-directional. I wanted to transcend this impossibility by creating a real-time, embodied dialogue.Guided by the concept of \"dividuality\" (分人), I believe we coexist with various versions of ourselves across different timelines. This project, RecallMe, was born from a desire to facilitate deep self-reflection and healing—allowing the present self to comfort a wounded past, or a future self to soothe present anxieties. By transforming asynchronous reflection into an interactive ritual, I aim to help users reconstruct their own narratives through a direct encounter with the many versions of who they are",
+        description: "My habit of letter writing has always felt like a way of encountering my past and future selves, evoking a complex mix of pain and joy. While traditional media allow us to leave traces across time, they remain one-directional. I wanted to transcend this impossibility by creating a real-time, embodied dialogue. Guided by the concept of \"dividuality\" (分人)—the idea that we are composed of multiple true selves shaped by our relationships—I believe this concept extends beyond space to time. We coexist not only with the selves we show to different people, but with various versions of ourselves left behind across different timelines. This project, RecallMe, was born from a desire to facilitate deep self-reflection and healing—allowing the present self to comfort a wounded past \"dividual\". By transforming asynchronous reflection into an interactive ritual, I aim to help users reconstruct their own narratives through a direct encounter with the many versions of who they are",
         image: "/project/8-6.png"
       },
     ],
+    publication: "Hanawa, Momo and Ishiguro, Yoshio. \"RecallMe: Designing a Ritualistic Artifact for Immersive Reflection with the Past Self.\" Designing Interactive Systems Conference (DIS Companion '26), Singapore, Singapore, June 13--17, 2026. ACM, 2026. https://doi.org/10.1145/3802974.3808036",
   },
   7: {
     id: 7,

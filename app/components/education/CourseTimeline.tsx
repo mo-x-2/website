@@ -231,6 +231,9 @@ export default function CourseTimeline() {
               <p className="text-base text-foreground/80 leading-normal text-[var(--foreground)]/80 mt-1">
                 ・Momo Hanawa, Yoshio Ishiguro. &quot;ParaTalk: A Real-Time Paralinguistic Dialogue System for Human-Agent Interaction&quot; 2025 IEEE Conference on Virtual Reality and 3D User Interfaces Abstracts and Workshops (VRW). IEEE, 2025. (5 pages)
               </p>
+              <p className="text-base text-foreground/80 leading-normal text-[var(--foreground)]/80 mt-1">
+                ・Momo Hanawa. &quot;RecallMe: Designing a Ritualistic Artifact for Immersive Reflection with the Past Self&quot; Designing Interactive Systems Conference (DIS Companion '26), Singapore, Singapore, June 13--17, 2026. ACM, 2026. (5 pages)
+              </p>
             </div>
 
             <div>

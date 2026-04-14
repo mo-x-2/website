@@ -253,10 +253,11 @@ export default function CourseTimeline() {
           <div className="space-y-1">
             <h3 className="text-lg font-semibold text-[var(--foreground)] underline decoration-1 underline-offset-4 decoration-[var(--foreground)]/30">International Experience</h3>
             <p className="text-base text-foreground/80 leading-normal text-[var(--foreground)]/80">
-              ・Participant, CuriousU Summer School (University of Twente, Netherlands, 2 weeks, August 2022) <br />
+              ・Exchange Student, University of Sydney (Australia, Aug 2025 - Jul 2026) <br />
               ・Selected participant, Women in Cybersecurity Program (University of North Carolina at Chapel Hill, U.S., 2 weeks, September 2023) <br />
-              ・Selected participant, Osaka Prefectural Global Leaders High School Short-term Training Program (Carolina, the U.S., 2 weeks, August 2018) <br />
-              ・Exchange Student, University of Sydney (Australia, Aug 2025 - Jul 2026)
+              ・Participant, CuriousU Summer School (University of Twente, Netherlands, 2 weeks, August 2022) <br />
+              ・Selected participant, Osaka Prefectural Global Leaders High School Short-term Training Program (Carolina, the U.S., 2 weeks, August 2018) 
+              
             </p>
           </div>
         </div>

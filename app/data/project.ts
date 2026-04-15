@@ -195,7 +195,7 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
       {
         title: "Design Implications",
         description: "Our findings suggest that making the human-robot cooperative relationship explicitly visible is key to social integration. For people hesitant about unfamiliar technology, designing visible physical constraints—such as a leash—fosters familiarity and significantly improves third-party acceptance in shared environments.",
-        image: "/project/2-3.png",
+        image: "/project/2-4.jpeg",
       }
     ],
     publication: "Hanawa, Momo, and Yoshio Ishiguro. \"Leash as a Cue: Visual Indicators for Third-Party Acceptance Across Resistance Levels.\" 2025 IEEE International Conference on Robot & Human Interactive Communication (RO-MAN). IEEE, 2025.",

@@ -61,9 +61,7 @@ export default function MySkills() {
     <section id="skills" className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 min-h-screen flex items-center justify-center">
       <div className="container mx-auto px-2 sm:px-4">
         <AnimatedText>
-          <h1 className="
-            text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 md:mb-12 text-center text-[var(--foreground)]
-          ">
+          <h1 className="section-heading mb-6 sm:mb-8 md:mb-12 text-center text-[var(--foreground)]">
             Technical Skills
           </h1>
         </AnimatedText>
@@ -76,10 +74,7 @@ export default function MySkills() {
             <AnimatedText key={category} className="
               space-y-3 sm:space-y-4 md:space-y-6
             ">
-              <h2 className="
-                text-lg sm:text-xl md:text-2xl
-                font-semibold text-center text-[var(--foreground)]
-              ">
+              <h2 className="text-xl font-bold text-center text-[var(--foreground)]">
                 {categories[category]}
               </h2>
               

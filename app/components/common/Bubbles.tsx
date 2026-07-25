@@ -22,7 +22,7 @@ export default function Bubbles({
   sectionId = 'bubblesSection',
   bubbleCount = 5,
   backgroundColor = 'rgba(255, 255, 255, 0.5)',
-  strokeStyle = 'rgba(0, 0, 0, 0.5)',
+  strokeStyle = 'rgba(192, 0, 0, 0.5)',
 }: Props) {
   const [isVisible, setIsVisible] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -123,7 +123,7 @@ export default function Bubbles({
       // 輪郭線の描画
       let strokeColor = strokeStyle;
       if (isDarkMode) {
-        strokeColor = 'rgba(255, 255, 255, 0.5)';
+        strokeColor = 'rgba(192, 0, 0, 0.7)';
       }
       ctx.strokeStyle = strokeColor;
       ctx.lineWidth = 1.0;

@@ -1,17 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import AnimatedText from '../common/AnimatedText'
 import Image from 'next/image'
-import Bubbles from "../common/Bubbles"
+import { motion, useReducedMotion } from 'framer-motion'
+import { useLanguage } from '@/app/context/LanguageContext'
+import { t, ui } from '@/app/data/i18n'
 
-// Define photo data type
-// Each photo must include:
-// - id: Unique identifier
-// - image: Image path (stored in public/gallery/ directory)
-// - date: Photo date
-// - location: Photo location
-// - description: Photo description
 type Photo = {
   id: number
   image: string
@@ -20,12 +15,6 @@ type Photo = {
   description: string
 }
 
-// Example photo data
-// To add more photos:
-// 1. Place your photo files in public/gallery/ directory
-// 2. Copy the template below and add new photo entries
-// 3. Update the image path, date, location and description
-// 4. Recommended to sort photos in reverse chronological order
 const photos: Photo[] = [
   {
     id: 11,
@@ -99,6 +88,29 @@ const photos: Photo[] = [
   }
 ]
 
+type CircleItem = {
+  angle: number
+  width: number
+  tilt: number
+  floatDuration: number
+  floatDelay: number
+  floatY: number
+}
+
+function createCircleItems(count: number): CircleItem[] {
+  const widths = [148, 168, 156, 176, 150, 170, 160, 180, 154, 164]
+  const tilts = [-6, 4, -3, 7, -5, 3, -4, 6, -2, 5]
+
+  return Array.from({ length: count }, (_, i) => ({
+    angle: (360 / count) * i - 90, // start from top
+    width: widths[i % widths.length],
+    tilt: tilts[i % tilts.length],
+    floatDuration: 5 + (i % 4),
+    floatDelay: i * 0.25,
+    floatY: 6 + (i % 3) * 2,
+  }))
+}
+
 function ImageModal({ 
   open, 
   onClose,
@@ -129,7 +141,6 @@ function ImageModal({
         flex items-center justify-center 
         p-4 sm:p-8 
         bg-black/80 dark:bg-black/90
-        backdrop-blur-md
         z-50
         transition-all duration-300 ease-in-out
       "
@@ -138,12 +149,10 @@ function ImageModal({
       <div 
         className="
           relative w-full h-full max-w-7xl max-h-[95vh]
-          rounded-lg
           overflow-hidden
         "
         onClick={e => e.stopPropagation()}
       >
-        {/* Image - Full screen background */}
         <div className="relative w-full h-full">
           <Image
             src={photo.image}
@@ -154,24 +163,21 @@ function ImageModal({
           />
         </div>
 
-        {/* Close button */}
         <button
           onClick={onClose}
           className="
             absolute top-4 right-4
             p-2
-            rounded-full
+            rounded-none
             text-white
             bg-black/30
-            backdrop-blur-sm
             hover:bg-black/50
             transition-all duration-300
-            hover:rotate-90
-            hover:scale-110
             focus:outline-none
             focus:ring-2 focus:ring-white/50
             z-20
           "
+          aria-label="Close"
         >
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
@@ -189,23 +195,21 @@ function ImageModal({
           </svg>
         </button>
 
-        {/* Text overlay - Bottom */}
         <div className="
           absolute bottom-0 left-0 right-0
           bg-gradient-to-t from-black/80 via-black/60 to-transparent
-          backdrop-blur-sm
           p-6 sm:p-8
           z-10
         ">
           <div className="text-center">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">
+            <h2 className="section-heading text-white mb-2">
               {photo.location}
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-white/90 font-[family-name:var(--font-nunito-sans)]">
+            <p className="body-text text-white/90">
               {photo.date}
             </p>
             {photo.description && (
-              <p className="text-sm sm:text-base text-white/80 mt-2">
+              <p className="body-text text-white/80 mt-2">
                 {photo.description}
               </p>
             )}
@@ -216,9 +220,123 @@ function ImageModal({
   )
 }
 
+function CirclePhoto({
+  photo,
+  item,
+  radius,
+  reduceMotion,
+  orbitDuration,
+  onClick,
+}: {
+  photo: Photo
+  item: CircleItem
+  radius: number
+  reduceMotion: boolean
+  orbitDuration: number
+  onClick: () => void
+}) {
+  return (
+    <div
+      className="absolute left-1/2 top-1/2"
+      style={{
+        width: item.width,
+        marginLeft: -item.width / 2,
+        marginTop: -(item.width * 0.75) / 2,
+        // Place on circle, then cancel placement rotation so the slot stays upright
+        transform: `rotate(${item.angle}deg) translateY(-${radius}px) rotate(${-item.angle}deg)`,
+      }}
+    >
+      {/* Counter-rotate against the parent orbit so the image stays upright */}
+      <motion.div
+        animate={reduceMotion ? undefined : { rotate: -360 }}
+        transition={
+          reduceMotion
+            ? undefined
+            : { duration: orbitDuration, repeat: Infinity, ease: 'linear' }
+        }
+      >
+        <motion.button
+          type="button"
+          onClick={onClick}
+          className="relative w-full cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(192,0,0,0.6)]"
+          initial={{ opacity: 0, scale: 0.85 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          animate={
+            reduceMotion
+              ? { rotate: item.tilt }
+              : {
+                  y: [0, -item.floatY, 0],
+                  rotate: [item.tilt, item.tilt + 1.5, item.tilt - 1.5, item.tilt],
+                }
+          }
+          transition={
+            reduceMotion
+              ? { duration: 0.4 }
+              : {
+                  y: {
+                    duration: item.floatDuration,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: item.floatDelay,
+                  },
+                  rotate: {
+                    duration: item.floatDuration * 1.2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: item.floatDelay,
+                  },
+                  opacity: { duration: 0.5 },
+                  scale: { duration: 0.5 },
+                }
+          }
+          whileHover={{
+            scale: 1.12,
+            zIndex: 20,
+            transition: { duration: 0.2 },
+          }}
+          whileTap={{ scale: 0.98 }}
+          aria-label={`${photo.location}, ${photo.date}`}
+        >
+          <div className="
+            relative aspect-[4/3] overflow-hidden
+            shadow-[0_12px_40px_rgba(0,0,0,0.12)]
+            ring-1 ring-black/5
+            transition-shadow duration-300
+            group-hover:shadow-[0_18px_50px_rgba(0,0,0,0.2)]
+          ">
+            <Image
+              src={photo.image}
+              alt={photo.location}
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 45vw, 180px"
+            />
+            <div className="
+              absolute inset-x-0 bottom-0
+              bg-gradient-to-t from-black/55 to-transparent
+              px-2 py-2
+              opacity-0 group-hover:opacity-100
+              transition-opacity duration-300
+            ">
+              <p className="text-[11px] sm:text-xs text-white truncate text-left">
+                {photo.location}
+              </p>
+            </div>
+          </div>
+        </motion.button>
+      </motion.div>
+    </div>
+  )
+}
+
 export default function Gallery() {
+  const { locale } = useLanguage()
+  const reduceMotion = useReducedMotion()
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null)
+  const circleItems = useMemo(() => createCircleItems(photos.length), [])
+  const orbitDuration = 120
 
   const handlePhotoClick = (photo: Photo) => {
     setSelectedPhoto(photo)
@@ -227,70 +345,99 @@ export default function Gallery() {
 
   return (
     <>
-      <section id="gallery" className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 bg-[var(--background)] text-[var(--foreground)]">
+      <section
+        id="gallery"
+        className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 bg-[var(--background)] text-[var(--foreground)]"
+      >
         <div className="
           min-h-screen
-          flex flex-col items-center justify-center
-          py-4 md:py-8
+          flex flex-col items-center
+          py-16 md:py-20
           relative
           overflow-hidden
-          z-0
         ">
+          <AnimatedText>
+            <h1 className="section-heading mb-4 text-center text-[var(--foreground)] relative z-20">
+              {t(ui.gallery.title, locale)}
+            </h1>
+          </AnimatedText>
 
-          <Bubbles 
-            sectionId="gallery"
-            bubbleCount={0}
-            backgroundColor="rgba(255, 255, 255, 1)"
-            strokeStyle = 'rgba(1, 56, 167, 0.5)'
-          />
+          <p className="body-text text-foreground/50 text-center mb-6 relative z-20">
+            {locale === 'ja' ? '写真をクリックしてご覧ください' : 'Click a photo to explore'}
+          </p>
 
-          <div className="relative z-10 w-full flex flex-col items-center">
-            <AnimatedText>
-              <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center text-[var(--foreground)]">
-                Photo Gallery
-              </h1>
-            </AnimatedText>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl mx-auto">
-              {photos.map((photo) => (
-                <AnimatedText key={photo.id}>
-                  <div 
-                    className="
-                      bg-white/[0.1] dark:bg-black/[0.2]
-                      backdrop-blur-[20px]
-                      rounded-2xl
-                      border border-white/[0.1] dark:border-white/[0.1]
-                      p-6
-                      transition-all duration-300
-                      hover:-translate-y-1
-                      hover:shadow-xl
-                      h-full
-                      flex flex-col
-                      cursor-pointer
-                    "
-                    onClick={() => handlePhotoClick(photo)}
-                  >
-                    <div className="relative w-full h-48 mb-4 rounded overflow-hidden">
-                      <Image
-                        src={photo.image}
-                        alt={photo.description}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    
-                    <div className="flex flex-col flex-grow">
-                      <h2 className="text-xl font-bold mb-2 text-[var(--foreground)]">
-                        {photo.location}
-                      </h2>
-                      <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 font-[family-name:var(--font-nunito-sans)]">
-                        {photo.date}
-                      </p>
-                    </div>
-                  </div>
-                </AnimatedText>
+          {/* Desktop / tablet: circular arrangement */}
+          <div className="relative hidden sm:flex w-full items-center justify-center aspect-square max-w-[720px] mx-auto">
+            <motion.div
+              className="relative w-full h-full"
+              animate={reduceMotion ? undefined : { rotate: 360 }}
+              transition={
+                reduceMotion
+                  ? undefined
+                  : {
+                      duration: orbitDuration,
+                      repeat: Infinity,
+                      ease: 'linear',
+                    }
+              }
+            >
+              {photos.map((photo, index) => (
+                <CirclePhoto
+                  key={photo.id}
+                  photo={photo}
+                  item={circleItems[index]}
+                  radius={280}
+                  reduceMotion={!!reduceMotion}
+                  orbitDuration={orbitDuration}
+                  onClick={() => handlePhotoClick(photo)}
+                />
               ))}
-            </div>
+            </motion.div>
+
+            {/* Soft center accent */}
+            <div
+              className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-[38%] rounded-full"
+              style={{
+                background:
+                  'radial-gradient(circle, rgba(192,0,0,0.08) 0%, rgba(192,0,0,0.02) 45%, transparent 70%)',
+              }}
+              aria-hidden
+            />
+          </div>
+
+          {/* Mobile: simpler wrap with light float */}
+          <div className="sm:hidden w-full grid grid-cols-2 gap-4 px-1">
+            {photos.map((photo, index) => (
+              <motion.button
+                key={photo.id}
+                type="button"
+                onClick={() => handlePhotoClick(photo)}
+                className="relative aspect-[4/3] overflow-hidden"
+                animate={
+                  reduceMotion
+                    ? undefined
+                    : {
+                        y: [0, index % 2 === 0 ? -8 : 8, 0],
+                      }
+                }
+                transition={{
+                  duration: 4 + (index % 3),
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  delay: index * 0.15,
+                }}
+                whileTap={{ scale: 0.98 }}
+                aria-label={`${photo.location}, ${photo.date}`}
+              >
+                <Image
+                  src={photo.image}
+                  alt={photo.location}
+                  fill
+                  className="object-cover"
+                  sizes="45vw"
+                />
+              </motion.button>
+            ))}
           </div>
         </div>
       </section>
@@ -302,4 +449,4 @@ export default function Gallery() {
       />
     </>
   )
-} 
+}

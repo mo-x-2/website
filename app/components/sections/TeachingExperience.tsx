@@ -68,10 +68,10 @@ export default function TeachingExperience() {
       <div className="container max-w-6xl mx-auto">
         <AnimatedText>
           <div className="flex flex-col items-center mb-12">
-            <h1 className="text-3xl sm:text-4xl font-bold text-center">
+            <h1 className="section-heading text-center">
               Teaching Experience
             </h1>
-            <span className="text-lg sm:text-xl text-gray-600 dark:text-gray-400">
+            <span className="body-text text-gray-600 dark:text-gray-400">
               @ UC Santa Cruz
             </span>
           </div>
@@ -82,19 +82,19 @@ export default function TeachingExperience() {
             <AnimatedText key={course.id}>
               <div className="space-y-4 pb-8 border-b border-black/10 dark:border-white/10">
                 <div className="space-y-2">
-                  <h2 className="text-xl sm:text-2xl font-semibold">
+                  <h2 className="text-xl font-bold">
                     {course.code}: {course.name}
                   </h2>
-                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+                  <p className="body-text text-gray-600 dark:text-gray-400">
                     ({course.level})
                   </p>
                 </div>
 
                 <div className="space-y-1">
-                  <p className="text-base sm:text-lg">
+                  <p className="body-text">
                     Teaching Assistant to {course.professor}
                   </p>
-                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+                  <p className="body-text text-gray-600 dark:text-gray-400">
                     {course.term}
                   </p>
                 </div>

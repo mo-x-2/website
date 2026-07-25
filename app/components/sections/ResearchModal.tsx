@@ -170,7 +170,7 @@ export default function ResearchModal({ paper, onClose }: Props) {
                 text-base sm:text-lg 
                 leading-relaxed 
                 text-gray-600 dark:text-gray-300
-                border-l-4 border-purple-500/30
+                border-l-4 border-[var(--accent)]/30
                 pl-4
               ">
                 {paper.overview}

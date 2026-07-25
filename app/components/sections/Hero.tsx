@@ -2,12 +2,13 @@
 
 import Image from "next/image"
 import AnimatedText from "../common/AnimatedText"
-import FloatingElements from "../common/FloatingElements"
 import Bubbles from "../common/Bubbles"
-
-
+import { useLanguage } from "@/app/context/LanguageContext"
+import { t, ui } from "@/app/data/i18n"
 
 export default function Hero() {
+  const { locale } = useLanguage()
+
   return (
     <section id="home" className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen gap-8 sm:gap-16 bg-[var(--background)] text-[var(--foreground)]">
       
@@ -15,9 +16,9 @@ export default function Hero() {
 
         <Bubbles 
           sectionId="home"
-          bubbleCount={2}
+          bubbleCount={4}
           backgroundColor="var(--background)"
-          strokeStyle = 'rgba(210, 83, 181, 0.7)'
+          strokeStyle = 'rgba(192, 0, 0, 0.7)'
         />
 
         <AnimatedText className="flex flex-col items-center gap-3 sm:gap-4">
@@ -30,18 +31,20 @@ export default function Hero() {
             sizes="(max-width: 640px) 180px, 250px"
             priority
           />
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--foreground)]">Momo Hanawa</h1>
+          <h1 className="section-heading text-[var(--foreground)]">Momo Hanawa</h1>
         </AnimatedText>
 
         
         <AnimatedText 
           className="max-w-2xl text-center"
         >
-            <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
-            Hi. I am a Master's student at <a href="https://ishiguro-lab.org/" target="_blank" className="underline decoration-dotted underline-offset-4 hover:text-[#d253b5] duration-300">Ishiguro Laboratory</a>
-            , <a href="https://www.iii.u-tokyo.ac.jp/" target="_blank" className="underline decoration-dotted underline-offset-4 hover:text-[#d253b5] duration-300">III/GSII</a>, The University of Tokyo.<br />
-            Currently, I am on an exchange program at the University of Sydney, in Australia.<br />
-            My research interests include HCI, HAI, and HRI.
+            <p className="body-text text-foreground/80 leading-relaxed">
+            {t(ui.hero.line1Prefix, locale)}{' '}
+            <a href="https://ishiguro-lab.org/" target="_blank" className="underline decoration-dotted underline-offset-4 hover:text-[var(--accent)] duration-300">Ishiguro Laboratory</a>
+            , <a href="https://www.iii.u-tokyo.ac.jp/" target="_blank" className="underline decoration-dotted underline-offset-4 hover:text-[var(--accent)] duration-300">III/GSII</a>
+            {t(ui.hero.line1Suffix, locale)}
+            <br />
+            {t(ui.hero.line2, locale)}
             </p>
         </AnimatedText>
 

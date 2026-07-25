@@ -5,12 +5,14 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --accent: #C00000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --accent: #C00000;
   }
 }
 
@@ -36,4 +38,20 @@ html {
 /* Apply to all headings by default */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-cormorant-unicase), var(--font-zen-kaku-gothic-new), serif;
+}
+
+/* Site-wide typography scale */
+.section-heading {
+  @apply text-3xl sm:text-4xl font-bold;
+  font-family: var(--font-cormorant-unicase), var(--font-zen-kaku-gothic-new), serif;
+}
+
+.subheading {
+  @apply text-xl font-bold py-1;
+  color: var(--accent);
+  font-family: var(--font-cormorant-unicase), var(--font-zen-kaku-gothic-new), serif;
+}
+
+.body-text {
+  @apply text-base sm:text-lg;
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Cormorant_Unicase, Nunito_Sans, Zen_Kaku_Gothic_New } from "next/font/google";
 import "./globals.css";
+import Providers from "./context/Providers";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -70,7 +71,9 @@ export default function RootLayout({
         }} />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${cormorantUnicase.variable} ${nunitoSans.variable} ${zenKakuGothicNew.variable} antialiased bg-[var(--background)] text-[var(--foreground)]`}>
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

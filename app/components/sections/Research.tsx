@@ -91,13 +91,13 @@ export default function Research() {
         sectionId="research"
         bubbleCount={0}
         backgroundColor="var(--background)"
-        strokeStyle = 'rgba(24, 145, 48, 0.5)'
+        strokeStyle = 'rgba(192, 0, 0, 0.5)'
       /> 
 
       <div className="container max-w-6xl mx-auto relative z-10">
 
         <AnimatedText>
-          <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[var(--foreground)]">
+          <h1 className="section-heading mb-12 text-center text-[var(--foreground)]">
             Research
           </h1>
         </AnimatedText>
@@ -106,7 +106,7 @@ export default function Research() {
           {['publication', 'working'].map((type) => (
             <div key={type} className="space-y-8">
               <AnimatedText>
-                <h2 className="text-xl sm:text-2xl font-semibold text-[var(--foreground)]">
+                <h2 className="subheading">
                   {type === 'working' ? 'Working Papers' : 'Publications'}
                 </h2>
               </AnimatedText>
@@ -129,7 +129,7 @@ export default function Research() {
                           {paper.pdf && (
                             <a 
                               href={paper.pdf}
-                              className="text-purple-500 hover:text-purple-600 dark:text-purple-400 dark:hover:text-purple-300"
+                              className="text-[var(--accent)] hover:opacity-80"
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={e => e.stopPropagation()}
@@ -140,7 +140,7 @@ export default function Research() {
                           {paper.ssrn && (
                             <a 
                               href={paper.ssrn}
-                              className="text-purple-500 hover:text-purple-600 dark:text-purple-400 dark:hover:text-purple-300"
+                              className="text-[var(--accent)] hover:opacity-80"
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={e => e.stopPropagation()}

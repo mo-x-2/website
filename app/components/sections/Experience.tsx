@@ -74,7 +74,7 @@ export default function Experience() {
         />
 
         <AnimatedText>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center relative z-10 text-[var(--foreground)]">
+          <h1 className="section-heading mb-8 sm:mb-12 text-center relative z-10 text-[var(--foreground)]">
             Experience
           </h1>
         </AnimatedText>

@@ -3,88 +3,13 @@
 import { useState } from 'react'
 import AnimatedText from "../common/AnimatedText"
 import { motion } from "framer-motion"
-
-interface CourseItem {
-  date: string
-  title: React.ReactNode
-  description: React.ReactNode
-}
-
-// Example course data - Replace with your own education experience
-const courses: CourseItem[] = [
-  {
-    date: "Apr 2020 - Mar 2024",
-    title: "B.C. at Nagoya University",
-    description: (
-      <>
-        <a 
-          href="https://www.i.nagoya-u.ac.jp/si/cs/"
-          target="_blank" 
-          className="underline decoration-dotted underline-offset-4 duration-300"
-          onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(210, 83, 181, 1)'}
-          onMouseLeave={(e) => e.currentTarget.style.color = ''}
-        >
-          Department of Computer Science
-        </a>
-        {' | '}
-        <a 
-          href="http://www.nagao.nuie.nagoya-u.ac.jp/"
-          target="_blank" 
-          className="underline decoration-dotted underline-offset-4 duration-300"
-          onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(210, 83, 181, 1)'}
-          onMouseLeave={(e) => e.currentTarget.style.color = ''}
-        >
-          Nagao Laboratory
-        </a>
-      </>
-    )
-  },
-  {
-    date: "Apr 2024 - Mar 2026(Expected)",
-    title: "M.S. at The University of Tokyo",
-    description: (
-      <>
-        <a 
-          href="https://www.iii.u-tokyo.ac.jp/" 
-          target="_blank" 
-          className="underline decoration-dotted underline-offset-4 hover:text-[#d253b5] duration-300"
-        >
-          III/GSII
-        </a>
-        {' | '}
-        <a 
-          href="https://ishiguro-lab.org/"
-          target="_blank" 
-          className="underline decoration-dotted underline-offset-4 duration-300"
-          onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(210, 83, 181, 1)'}
-          onMouseLeave={(e) => e.currentTarget.style.color = ''}
-        >
-          Ishiguro Laboratory
-        </a>
-      </>
-    )
-  },
-  {
-    date: "Aug 2025 - July 2026(Expected)",
-    title: "Exchange at The University of Sydney",
-    description: (
-      <> Also Working as a Visiting Researcher</>
-    )
-  },
-
-]
-
-// Usage Instructions:
-// 1. Add your course information in the courses array above
-// 2. Each course item contains:
-//    - date: Course time
-//    - title: Course name
-//    - description: Course description (keywords recommended)
-// 3. Timeline will automatically display based on array length
-// 4. "Show More" button appears when more than 5 courses
+import { useLanguage } from "@/app/context/LanguageContext"
+import { t, ui } from "@/app/data/i18n"
 
 export default function CourseTimeline() {
+  const { locale } = useLanguage()
   const [showAll, setShowAll] = useState(false)
+  const courses = ui.background.courses
   const displayedCourses = showAll ? courses : courses.slice(0, 5)
 
   const handleCollapse = () => {
@@ -97,14 +22,21 @@ export default function CourseTimeline() {
     }
   }
 
+  const linkClass = "underline decoration-dotted underline-offset-4 duration-300"
+  const hoverHandlers = {
+    onMouseEnter: (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.currentTarget.style.color = '#C00000'
+    },
+    onMouseLeave: (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.currentTarget.style.color = ''
+    },
+  }
+
   return (
     <section className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
-      {/* Timeline container */}
       <div className="relative">
-        {/* Timeline background line */}
         <div className="absolute left-1/2 top-0 w-[2px] h-full bg-neutral-200 dark:bg-neutral-800 z-0" />
         
-        {/* Timeline items */}
         {displayedCourses.map((course, index) => (
           <AnimatedText key={index}>
             <div className={`
@@ -113,28 +45,36 @@ export default function CourseTimeline() {
               relative z-10
             `}>
               <div className="flex-1 text-center">
-                <h3 className="
-                  text-base                              /* Mobile: 16px */
-                  sm:text-lg md:text-xl                 /* sm: 18px, md: 20px */
-                  font-bold 
-                  mb-2
-                ">
-                  {course.title}
+                <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2">
+                  {t(course.title, locale)}
                 </h3>
-                <p className="
-                  text-xs                               /* Mobile: 12px */
-                  sm:text-sm md:text-base              /* sm: 14px, md: 16px */
-                  text-foreground/60 
-                  mb-1
-                ">
-                  {course.date}
+                <p className="text-xs sm:text-sm md:text-base text-foreground/60 mb-1">
+                  {t(course.date, locale)}
                 </p>
-                <p className="
-                  text-xs                               /* Mobile: 12px */
-                  sm:text-sm md:text-base              /* sm: 14px, md: 16px */
-                  text-foreground/80
-                ">
-                  {course.description}
+                <p className="text-xs sm:text-sm md:text-base text-foreground/80">
+                  {'dept' in course && course.dept ? (
+                    <>
+                      <a
+                        href={index === 0 ? "https://www.i.nagoya-u.ac.jp/si/cs/" : "https://www.iii.u-tokyo.ac.jp/"}
+                        target="_blank"
+                        className={linkClass}
+                        {...hoverHandlers}
+                      >
+                        {t(course.dept, locale)}
+                      </a>
+                      {' | '}
+                      <a
+                        href={index === 0 ? "http://www.nagao.nuie.nagoya-u.ac.jp/" : "https://ishiguro-lab.org/"}
+                        target="_blank"
+                        className={linkClass}
+                        {...hoverHandlers}
+                      >
+                        {t(course.lab!, locale)}
+                      </a>
+                    </>
+                  ) : 'description' in course && course.description ? (
+                    t(course.description, locale)
+                  ) : null}
                 </p>
               </div>
               
@@ -158,7 +98,6 @@ export default function CourseTimeline() {
         ))}
       </div>
 
-      {/* Buttons outside timeline container */}
       {!showAll && courses.length > 5 && (
         <AnimatedText>
           <div className="flex justify-center mt-8">
@@ -174,7 +113,7 @@ export default function CourseTimeline() {
                 flex items-center gap-2
               "
             >
-              Show More
+              {t(ui.background.showMore, locale)}
               <svg 
                 className="w-5 h-5 stroke-black dark:stroke-white" 
                 viewBox="0 0 24 24" 
@@ -203,7 +142,7 @@ export default function CourseTimeline() {
                 flex items-center gap-2
               "
             >
-              Show Less
+              {t(ui.background.showLess, locale)}
               <svg 
                 className="w-5 h-5 stroke-black dark:stroke-white" 
                 viewBox="0 0 24 24" 
@@ -217,28 +156,27 @@ export default function CourseTimeline() {
         </AnimatedText>
       )}
 
-      {/* Publications Section */}
       <AnimatedText>
         <div className="mt-8 space-y-2">
-          <h2 className="text-xl font-bold text-[var(--foreground)] border-l-4 border-[rgba(210,83,181,0.5)] pl-4 py-1">Publications</h2>
+          <h2 className="subheading">{t(ui.background.publications, locale)}</h2>
           
           <div className="space-y-3">
             <div>
-              <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2 underline decoration-1 underline-offset-4 decoration-[var(--foreground)]/30">Conference Papers</h3>
-              <p className="text-base text-foreground/80 leading-normal text-[var(--foreground)]/80 mt-1">
-                ・Momo Hanawa, Yoshio Ishiguro. &quot;RecallMe: Designing a Ritualistic Artifact for Immersive Reflection with the Past Self&quot; Designing Interactive Systems Conference (DIS Companion '26), Singapore, Singapore, June 13--17, 2026. ACM, 2026. (5 pages)
+              <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2 underline decoration-1 underline-offset-4 decoration-[var(--foreground)]/30">{t(ui.background.conferencePapers, locale)}</h3>
+              <p className="body-text text-foreground/80 leading-normal text-[var(--foreground)]/80 mt-1">
+                ・Momo Hanawa, Yoshio Ishiguro. &quot;RecallMe: Designing a Ritualistic Artifact for Immersive Reflection with the Past Self&quot; Designing Interactive Systems Conference (DIS Companion &apos;26), Singapore, Singapore, June 13--17, 2026. ACM, 2026. (5 pages)
               </p>
-              <p className="text-base text-foreground/80 leading-normal text-[var(--foreground)]/80">
+              <p className="body-text text-foreground/80 leading-normal text-[var(--foreground)]/80">
                 ・Momo Hanawa, Satomi Tokida, Yoshio Ishiguro. &quot;Leash as a Cue: Visual Indicators for Third-Party Acceptance Across Resistance Levels&quot; 2025 IEEE International Conference on Robot & Human Interactive Communication (RO-MAN), 2025. (7 pages)
               </p>
-              <p className="text-base text-foreground/80 leading-normal text-[var(--foreground)]/80 mt-1">
+              <p className="body-text text-foreground/80 leading-normal text-[var(--foreground)]/80 mt-1">
                 ・Momo Hanawa, Yoshio Ishiguro. &quot;ParaTalk: A Real-Time Paralinguistic Dialogue System for Human-Agent Interaction&quot; 2025 IEEE Conference on Virtual Reality and 3D User Interfaces Abstracts and Workshops (VRW). IEEE, 2025. (5 pages)
               </p>
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2 underline decoration-1 underline-offset-4 decoration-[var(--foreground)]/30">Thesis</h3>
-              <p className="text-base text-foreground/80 leading-normal text-[var(--foreground)]/80">
+              <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2 underline decoration-1 underline-offset-4 decoration-[var(--foreground)]/30">{t(ui.background.thesis, locale)}</h3>
+              <p className="body-text text-foreground/80 leading-normal text-[var(--foreground)]/80">
                 ・Momo Hanawa, Katashi Nagao. &quot;A study on the placement and distribution function of automatic guided robots based on object detection and semantic segmentation&quot; Bachelor&apos;s Thesis, Nagoya University. February 2022. (63 pages)
               </p>
             </div>
@@ -246,37 +184,27 @@ export default function CourseTimeline() {
         </div>
       </AnimatedText>
 
-      {/* Extracurricular Activities Section */}
       <AnimatedText>
         <div className="mt-8 space-y-2">
-          <h2 className="text-xl font-bold text-[var(--foreground)] border-l-4 border-[rgba(210,83,181,0.5)] pl-4 py-1">Extracurricular Activities</h2>
+          <h2 className="subheading">{t(ui.background.extracurricular, locale)}</h2>
           <div className="space-y-1">
-            <h3 className="text-lg font-semibold text-[var(--foreground)] underline decoration-1 underline-offset-4 decoration-[var(--foreground)]/30">International Experience</h3>
-            <p className="text-base text-foreground/80 leading-normal text-[var(--foreground)]/80">
-              ・Exchange Student, University of Sydney (Australia, Aug 2025 - Jul 2026) <br />
-              ・Selected participant, Women in Cybersecurity Program (University of North Carolina at Chapel Hill, U.S., 2 weeks, September 2023) <br />
-              ・Participant, CuriousU Summer School (University of Twente, Netherlands, 2 weeks, August 2022) <br />
-              ・Selected participant, Osaka Prefectural Global Leaders High School Short-term Training Program (Carolina, the U.S., 2 weeks, August 2018) 
-              
+            <h3 className="text-lg font-semibold text-[var(--foreground)] underline decoration-1 underline-offset-4 decoration-[var(--foreground)]/30">{t(ui.background.internationalExperience, locale)}</h3>
+            <p className="body-text text-foreground/80 leading-normal text-[var(--foreground)]/80 whitespace-pre-line">
+              {t(ui.background.internationalItems, locale)}
             </p>
           </div>
         </div>
       </AnimatedText>
 
-      {/* Certification Section */}
       <AnimatedText>
         <div className="mt-8 space-y-2">
-          <h2 className="text-xl font-bold text-[var(--foreground)] border-l-4 border-[rgba(210,83,181,0.5)] pl-4 py-1">Certification</h2>
-          <p className="text-base text-foreground/80 leading-normal text-[var(--foreground)]/80">
-            ・Feb 2025 - IELTS 6.5 <br />
-            ・Apr 2023 - TOEIC 875 <br />
-            ・Dec 2022 - 応用情報技術者試験 | Applied Information Technology Engineer Examination <br />
-            ・Nov 2021 - 基本情報技術者試験 | Fundamental Information Technology Engineer Examination
+          <h2 className="subheading">{t(ui.background.certification, locale)}</h2>
+          <p className="body-text text-foreground/80 leading-normal text-[var(--foreground)]/80 whitespace-pre-line">
+            {t(ui.background.certificationItems, locale)}
           </p>
         </div>
       </AnimatedText>
       
-      {/* Bottom spacing for next section */}
       <div className="pb-16 md:pb-24"></div>
     </section>
   )

@@ -1,36 +1,28 @@
 'use client'
 
 import { useState, useEffect, useRef } from "react"
-import React from 'react'
+import { usePathname } from "next/navigation"
+import { useLanguage } from "@/app/context/LanguageContext"
 
-// Navigation bar configuration
-// To modify navigation bar order and content:
-// 1. Each item contains two properties:
-//    - name: Display name
-//    - href: Corresponding section id (must start with #)
-// 2. To change order, simply adjust item positions in array
-// 3. When adding new items ensure:
-//    - href matches section id in page
-//    - maintain consistent format
-// 4. To remove items, delete directly from array
-// Example: Moving Projects before Experience:
-// { name: "Projects", href: "#projects"},
-// { name: "Experience", href: "#experience"},
 const navItems = [
   { name: "Home", href: "#home" },
-  { name: "Projects", href: "#projects"},
+  { name: "Projects", href: "#projects" },
   { name: "About", href: "#about" },
   { name: "Background", href: "#education" },
-  { name: "Gallery", href: "#gallery"},
 ]
 
 export default function Navbar() {
+  const pathname = usePathname()
+  const isHome = pathname === '/'
+  const { locale, setLocale } = useLanguage()
   const [activeSection, setActiveSection] = useState("home")
   const underlineRef = useRef<HTMLDivElement>(null)
   const navRef = useRef<HTMLUListElement>(null)
   const NAVBAR_HEIGHT = 60
 
   useEffect(() => {
+    if (!isHome) return
+
     const handleScroll = () => {
       const sections = document.querySelectorAll("section[id]")
       const scrollPosition = window.scrollY + NAVBAR_HEIGHT + 100
@@ -47,8 +39,9 @@ export default function Navbar() {
     }
 
     window.addEventListener("scroll", handleScroll)
+    handleScroll()
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [isHome])
 
   useEffect(() => {
     const activeItem = navRef.current?.querySelector(`a[href="#${activeSection}"]`)
@@ -59,7 +52,7 @@ export default function Navbar() {
       underlineRef.current.style.left = `${rect.left - navRect.left}px`
       underlineRef.current.style.width = `${rect.width}px`
     }
-  }, [activeSection])
+  }, [activeSection, isHome])
 
   const scrollToSection = (href: string) => {
     const target = document.querySelector(href) as HTMLElement
@@ -77,32 +70,40 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-10 bg-background/80 backdrop-blur-sm">
       <div className="
         max-w-6xl mx-auto 
-        px-3 sm:px-4 /* 移动端水平内边距3, sm(640px)以上为4 */
+        px-3 sm:px-4
         py-4
+        relative
+        flex items-center justify-center
       ">
         <ul ref={navRef} className="
           flex justify-center 
-          gap-4 sm:gap-8 /* 移动端间距4, sm(640px)以上为8 */
+          gap-4 sm:gap-8
           relative text-center overflow-x-auto
         ">
-          <div
-            ref={underlineRef}
-            className="absolute bottom-0 h-[2px] bg-neutral-950 dark:bg-neutral-50 transition-all duration-300 ease-out"
-          />
+          {isHome && (
+            <div
+              ref={underlineRef}
+              className="absolute bottom-0 h-[2px] bg-neutral-950 dark:bg-neutral-50 transition-all duration-300 ease-out"
+            />
+          )}
           
           {navItems.map((item) => (
-            <li key={item.name}>
+            <li key={item.href}>
               <a
-                href={item.href}
+                href={isHome ? item.href : `/${item.href}`}
                 className={`
-                  text-xs sm:text-sm /* 移动端字体大小xs(12px), sm(640px)以上为base(16px) */
+                  text-xs sm:text-sm
                   font-medium whitespace-nowrap transition-colors
-                  ${activeSection === item.href.slice(1)
+                  hover:text-[#C00000]
+                  ${isHome && activeSection === item.href.slice(1)
                     ? "text-foreground"
-                    : "text-foreground/60 hover:text-foreground"
+                    : "text-foreground/60"
                   }
                 `}
                 onClick={(e) => {
+                  if (!isHome) {
+                    return
+                  }
                   e.preventDefault()
                   scrollToSection(item.href)
                 }}
@@ -112,6 +113,40 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
+
+        <div className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 flex items-center gap-1 text-xs sm:text-sm">
+          <button
+            type="button"
+            onClick={() => setLocale('en')}
+            className={`
+              px-1.5 py-0.5 transition-colors
+              ${locale === 'en'
+                ? "text-foreground font-bold"
+                : "text-foreground/50 hover:text-[#C00000] font-medium"
+              }
+            `}
+            aria-pressed={locale === 'en'}
+            aria-label="Switch to English"
+          >
+            EN
+          </button>
+          <span className="text-foreground/30" aria-hidden="true">/</span>
+          <button
+            type="button"
+            onClick={() => setLocale('ja')}
+            className={`
+              px-1.5 py-0.5 transition-colors
+              ${locale === 'ja'
+                ? "text-foreground font-bold"
+                : "text-foreground/50 hover:text-[#C00000] font-medium"
+              }
+            `}
+            aria-pressed={locale === 'ja'}
+            aria-label="Switch to Japanese"
+          >
+            JP
+          </button>
+        </div>
       </div>
     </nav>
   )

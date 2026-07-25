@@ -1,6 +1,8 @@
-import Image from 'next/image'
-
 // Type definition for project details
+export type ProjectImageBlock =
+  | string
+  | { layout: '2x2'; images: string[]; aspect?: `${number}/${number}` }
+
 export type ProjectDetail = {
   id: number                // Unique identifier for the project
   title: string            // Project title
@@ -10,11 +12,11 @@ export type ProjectDetail = {
   videoUrl?: string        // Optional video URL (Vimeo, YouTube, etc.)
   link?: string            // Live project URL
   github?: string         // Optional GitHub repository URL
-  features?: {             // List of project features
-    title: string         // Feature title
-    description: string   // Feature description  
-    image: string | string[] // Feature image(s) path
+  features?: {             // Text sections (independent of images)
+    title: string
+    description: string
   }[]
+  images?: ProjectImageBlock[]  // Full-width images or layout blocks
   tag?: string
   state?: "On Going" | "Finished"
   period?: string         // Project duration
@@ -30,26 +32,34 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
     company: "Ishiguro Laboratory, The University of Tokyo",
     period: "Oct 2025 - Current",
     tag: "Research",
-    collaborators: "Yoshio Ishiguro",
+    collaborators: "Yuji Hatada, Yoshio Ishiguro",
     overview: "\"RecallMe\" is an experience design project exploring self-reflection through dialogue with a \"past self.\"  In an era where digital devices prioritize extreme efficiency and speed, deep introspection is often hindered by the disposable nature of digital interactions. To counter this, RecallMe leverages a vintage rotary telephone as a \"ritualistic interface.\" By intentionally designing physical friction—the weight of the receiver, the waiting time of the dial—the system frames the AI dialogue as a meaningful ritual. This physical framing bridges the gap between generative AI and human emotion, supporting the safe reconstruction of personal narratives.",
-
-
-    mainImage: "/project/8-5.JPG",
+    mainImage: "/project/8-1.JPG",
     features: [
       {
         title: "Interaction",
         description: "The interaction is a four-phase ritual designed for deep immersion. It begins as the user lifts the receiver and dials, transitioning from the mundane into a reflective state. Guided by an AI operator, the user engages in a dialogue with a voice-cloned version of their past self. This setup enables users to confront past conflicts from a matured, present-day perspective, reframing their personal narratives before concluding the experience by physically hanging up.",
-        image: "/project/8.png"
       },
       {
         title: "System",
         description: "The system integrates a vintage Model 800 rotary telephone with a generative AI pipeline. An internal ESP32 microcontroller monitors the hook and pulse dial signals, triggering the software sequence on a host PC. The audio pipeline utilizes the Whisper API for transcription, an LLM for character construction, and ElevenLabs for voice cloning. To enhance realism, the voice is pitch-adjusted based on the user's age, ensuring it resonates naturally through the handset’s acoustic characteristics",
-        image: "/project/8-1.png"
       },
       {
         title: "Motivation",
         description: "My habit of letter writing has always felt like a way of encountering my past and future selves, evoking a complex mix of pain and joy. While traditional media allow us to leave traces across time, they remain one-directional. I wanted to transcend this impossibility by creating a real-time, embodied dialogue. Guided by the concept of \"dividuality\" (分人)—the idea that we are composed of multiple true selves shaped by our relationships—I believe this concept extends beyond space to time. We coexist not only with the selves we show to different people, but with various versions of ourselves left behind across different timelines. This project, RecallMe, was born from a desire to facilitate deep self-reflection and healing—allowing the present self to comfort a wounded past \"dividual\". By transforming asynchronous reflection into an interactive ritual, I aim to help users reconstruct their own narratives through a direct encounter with the many versions of who they are",
-        image: "/project/8-6.png"
+      },
+    ],
+    images: [
+      "/project/8.JPG",
+      "/project/8-2.JPG",
+      {
+        layout: "2x2",
+        images: [
+          "/project/8-3.JPG",
+          "/project/8-3-2.JPG",
+          "/project/8-3-3.JPG",
+          "/project/8-3-4.JPG",
+        ],
       },
     ],
     publication: "Momo Hanawa, and Yoshio Ishiguro. \"RecallMe: Designing a Ritualistic Artifact for Immersive Reflection with the Past Self.\" Designing Interactive Systems Conference (DIS Companion '26), Singapore, Singapore, June 13--17, 2026. ACM, 2026. https://doi.org/10.1145/3802974.3808036",
@@ -68,18 +78,18 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
       {
         title: "Interaction",
         description: "The system creates an embodied \"変身\" (transformation) moment. It triggers when the heart rate sensor detects high arousal (BPM > 90), physically popping up the watch face via a servo motor. Users select an alien mode using a tactile rotary encoder, which then maps their physical 'transformation poses' to dynamic LED animations on the garment in real-time.",
-        image: "/project/7.gif"
       },
       {
         title: "System",
         description: "The system integrates two ESP32 units to synchronize the transformation sequence[cite: 14, 41]. The Watch Unit serves as the primary controller: it triggers the system via a heart rate sensor, manages alien selection through a rotary encoder, and runs on-device ML inference to classify gestures from IMU data. This control data is transmitted via Bluetooth to the Mantle Unit, which dynamically updates the LED colors and lighting patterns based on the selected mode and detected movement. This architecture ensures a seamless flow from the user's physiological state to the garment's visual response.",
-        image: "/project/7-3.png"
       },
       {
         title: "Showcase",
         description: "The project was presented at a showcase at the University of Sydney. Visitors interacted with the prototype, successfully performing the selection and gesture sequence to see the garment react instantly. It was especially rewarding to see the excitement of sci-fi movie fans, particularly young boys who were thrilled to see such technology brought to life.",
-        image: "/project/7-4.png"
       },
+    ],
+    images: [
+      "/project/7.gif",
     ],
   },
   6: {
@@ -95,13 +105,20 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
       {
         title: "Concept",
         description: "In our modern global society, physical and psychological distances are widening, leading to increased isolation. Existing communication media, with their read receipts and notifications, force one-way visibility of intentions and create a sense of obligation and surveillance. However, chance encounters bring surprise and joy without forcing expectations, offering opportunities to reconnect. We designed AwaseKagami to recreate these serendipitous moments even across great distances.",
-        image: "/project/6-2.png"
       },
       {
         title: "System",
         description: "The system creates a synchronous connection using a Node.js server and Socket.IO to manage real-time signaling between two distributed mirrors. When the server detects exactly two active connections, it initiates a WebRTC P2P (Peer-to-Peer) pipeline to establish a direct video stream. On the client side, a TensorFlow.js-based face-detection model monitors the user's presence every 150ms. The video display is only toggled from a black screen to full-screen remote video when the local state, remote state (shared via the server), and the active WebRTC stream all confirm that both users are simultaneously peering into the mirror.",
-        image: "/project/6-3.png"
-      }
+      },
+    ],
+    images: [
+      {
+        layout: "2x2",
+        images: [
+          "/project/6-2.png",
+          "/project/6-3.png",
+        ],
+      },
     ],
   },
   5: {
@@ -117,18 +134,27 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
       {
         title: "Inspiration",
         description: "Inspired by how remoras attach themselves to other fish, we explored the possibility of creating a wearable accessory modeled after this behavior. We envisioned a wearable agent where the remora could serve as an intermediary, helping to communicate intentions of refusal that are difficult to express directly to others.",
-        image: "/project/5-5.png"
       },
       {
         title: "Color Variation",
         description: "In order to match users' preferences and outfits, we explored various color variations to create a unique and friendly design.",
-        image: "/project/5-6.png"
       },
       {
         title: "Internal Architecture",
         description: "We developed a wearable device that's small enough to be worn and cute enough to love. By turning a smartphone into a beacon and using an onboard ESP32 to detect its signal, the device reacts to nearby phones in a playful and compact way.",
-        image: "/project/5-3.jpg"
-      }
+      },
+    ],
+    images: [
+      {
+        layout: "2x2",
+        aspect: "4/3",
+        images: [
+          "/project/5-5.png",
+          "/project/5-6.png",
+          "/project/5-3.jpg",
+          "/project/5-7.png",
+        ],
+      },
     ],
   },
   4: {
@@ -144,12 +170,19 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
       {
         title: "Concept",
         description: "ParaTalk proposes a foundational architecture that enables dialogue between verbal language (human) and non-verbal language (robot).",
-        image: "/project/4.png",
       },
       {
         title: "System Flow",
         description: "The system flow of ParaTalk is as follows: The user speaks in verbal language, and the system interprets it using a large language model. The system then generates a Paralinguistic Utterance (PU) based on the emotional state and intentional expression, and the robot responds with the PUs.",
-        image: "/project/4-1.png",
+      },
+    ],
+    images: [
+      {
+        layout: "2x2",
+        images: [
+          "/project/4.png",
+          "/project/4-1.png",
+        ],
       },
     ],
     publication: "Hanawa, Momo, and Yoshio Ishiguro. \"ParaTalk: A Real-Time Paralinguistic Dialogue System for Human-Agent Interaction.\" 2025 IEEE Conference on Virtual Reality and 3D User Interfaces Abstracts and Workshops (VRW). IEEE, 2025.",
@@ -168,13 +201,21 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
       {
         title: "Reinforcement Learning in Issac Gym",
         description: "Based on prior research, we reproduced the proposed approach in a high-performance simulation environment to train a quadruped robot using reinforcement learning, enabling it to perform complex parkour-like movements. Through this reproduction, we generated a motion model capable of traversing five types of terrain: flat, gap, hurdle, parkour, and step.",
-        image: "/project/3-3.png"
       },
       {
         title: "Real-World Deployment",
         description: "The trained model was deployed on the quadruped robot Unitree Go1. We recreated the stair-like terrain from the simulation in a physical test environment and confirmed that the model's performance transfers effectively to the real world.",
-        image: "/project/3-2.png"
-      }
+      },
+    ],
+    images: [
+      {
+        layout: "2x2",
+        aspect: "4/3",
+        images: [
+          "/project/3-3.png",
+          "/project/3-2.png",
+        ],
+      },
     ],
   },
   2: {
@@ -190,13 +231,21 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
       {
         title: "Aim & Methodology",
         description: "This research explores how visual design elements influence bystander impressions, specifically focusing on the interaction between these cues and individuals' pre-existing resistance to robots (NARS). To isolate the effects of visual indicators, we conducted a controlled experiment simulating passing encounters using an automated Wizard-of-Oz approach.",
-        image: "/project/2-1.JPG",
       },
       {
         title: "Design Implications",
         description: "Our findings suggest that making the human-robot cooperative relationship explicitly visible is key to social integration. For people hesitant about unfamiliar technology, designing visible physical constraints—such as a leash—fosters familiarity and significantly improves third-party acceptance in shared environments.",
-        image: "/project/2-4.jpg",
-      }
+      },
+    ],
+    images: [
+      {
+        layout: "2x2",
+        aspect: "4/3",
+        images: [
+          "/project/2-1.JPG",
+          "/project/2-4.jpg",
+        ],
+      },
     ],
     publication: "Hanawa, Momo, and Yoshio Ishiguro. \"Leash as a Cue: Visual Indicators for Third-Party Acceptance Across Resistance Levels.\" 2025 IEEE International Conference on Robot & Human Interactive Communication (RO-MAN). IEEE, 2025.",
   },
@@ -213,15 +262,23 @@ export const PROJECT_DATA: Record<number, ProjectDetail> = {
       {
         title: "IOS Application Development",
         description: "An iOS app that combines YOLOv8n and BiSeNetV2 to detect delivery targets and extract drivable areas, selecting optimal approach directions with a macro F1-score of ~0.96 based on user evaluation.",
-        image: "/project/1-2.png"
       },
       {
         title: "Field Experiment in Outdoor Environment",
         description: "In the \"Tsukuba Challenge 2023\", we conducted real-world testing using an actual robot. The experiment aimed to achieve autonomous navigation of a delivery robot in outdoor environments based on visual information.",
-        image: "/project/1-3.jpeg"
-      }
+      },
     ],
-  }
+    images: [
+      {
+        layout: "2x2",
+        aspect: "4/3",
+        images: [
+          "/project/1-2.png",
+          "/project/1-3.jpeg",
+        ],
+      },
+    ],
+  },
 }
 
 // Helper function: Get project by ID

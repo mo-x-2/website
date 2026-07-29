@@ -67,7 +67,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-10 bg-background/80 backdrop-blur-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
       <div className="
         max-w-6xl mx-auto 
         px-3 sm:px-4

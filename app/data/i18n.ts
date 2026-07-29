@@ -10,15 +10,15 @@ export const ui = {
   hero: {
     line1Prefix: {
       en: "Hi. I am a Master's student at",
-      ja: "こんにちは。私は",
+      ja: "こんにちは。",
     },
     line1Suffix: {
       en: ", The University of Tokyo.",
-      ja: "、東京大学の修士課程に在籍しています。",
+      ja: "所属、東京大学の修士課程に在籍しています。",
     },
     line2: {
       en: "My research interests include HCI, HAI, and HRI.",
-      ja: "研究関心は HCI、HAI、HRI です。",
+      ja: "HCI・HAI・HRI を中心に研究しています。",
     },
   },
   about: {
@@ -45,58 +45,58 @@ export const ui = {
     title: { en: "Background", ja: "Background" },
     courses: [
       {
-        date: { en: "Apr 2020 - Mar 2024", ja: "2020年4月 - 2024年3月" },
+        date: { en: "Apr 2020 - Mar 2024", ja: "2020/4 - 2024/3" },
         title: { en: "B.C. at Nagoya University", ja: "名古屋大学 学士" },
         dept: { en: "Department of Computer Science", ja: "情報学部 コンピュータ科学科" },
         lab: { en: "Nagao Laboratory", ja: "長尾研究室" },
       },
       {
-        date: { en: "Aug 2025 - Jul 2026", ja: "2025年8月 - 2026年7月" },
+        date: { en: "Aug 2025 - Jul 2026", ja: "2025/8 - 2026/7" },
         title: {
           en: "Studying Abroad at The University of Sydney",
-          ja: "シドニー大学 交換留学",
+          ja: "シドニー大学 留学",
         },
         description: { en: "Exchange Program", ja: "交換留学プログラム" },
       },
       {
         date: {
           en: "Apr 2024 - Mar 2027(Expected)",
-          ja: "2024年4月 - 2027年3月（予定）",
+          ja: "2024/4 - 2027/3（予定）",
         },
         title: { en: "M.S. at The University of Tokyo", ja: "東京大学 修士" },
-        dept: { en: "III/GSII", ja: "III/GSII" },
+        dept: { en: "III/GSII", ja: "学際情報学府" },
         lab: { en: "Ishiguro Laboratory", ja: "石黒研究室" },
       },
     ],
-    showMore: { en: "Show More", ja: "もっと見る" },
-    showLess: { en: "Show Less", ja: "閉じる" },
+    showMore: { en: "Show More", ja: "もっとみる" },
+    showLess: { en: "Show Less", ja: "とじる" },
     publications: { en: "Publications", ja: "論文・発表" },
     conferencePapers: { en: "Conference Papers", ja: "国際会議論文" },
     thesis: { en: "Thesis", ja: "学位論文" },
     extracurricular: { en: "Extracurricular Activities", ja: "課外活動" },
     internationalExperience: { en: "International Experience", ja: "国際経験" },
     internationalItems: {
-      en: "・Exchange Student, University of Sydney (Australia, Aug 2025 - Jul 2026)\n・Selected participant, Women in Cybersecurity Program (University of North Carolina at Chapel Hill, U.S., 2 weeks, September 2023)\n・Participant, CuriousU Summer School (University of Twente, Netherlands, 2 weeks, August 2022)\n・Selected participant, Osaka Prefectural Global Leaders High School Short-term Training Program (Carolina, the U.S., 2 weeks, August 2018)",
-      ja: "・交換留学生、シドニー大学（オーストラリア、2025年8月 - 2026年7月）\n・選抜参加、Women in Cybersecurity Program（ノースカロライナ大学チャペルヒル校、米国、2週間、2023年9月）\n・参加、CuriousU Summer School（トゥウェンテ大学、オランダ、2週間、2022年8月）\n・選抜参加、大阪府立グローバルリーダーズ高校 短期研修プログラム（カロライナ、米国、2週間、2018年8月）",
+      en: "・Exchange Student, University of Sydney (Australia, Aug 2025 - Jul 2026)\n・Selected participant, Women in Cybersecurity Program (University of North Carolina at Chapel Hill, U.S., 2 weeks, September 2023)\n・Participant, CuriousU Summer School (University of Twente, Netherlands, 2 weeks, August 2022)\n・Selected participant, Osaka Prefectural Global Leaders High School Short-term Training Program (California, the U.S., 2 weeks, August 2018)",
+      ja: "・交換留学生、シドニー大学（オーストラリア、2025年8月 - 2026年7月）\n・選抜参加、Women in Cybersecurity Program（ノースカロライナ大学チャペルヒル校、米国、2週間、2023年9月）\n・参加、CuriousU Summer School（トゥウェンテ大学、オランダ、2週間、2022年8月）\n・選抜参加、大阪府立グローバルリーダーズ高校 短期研修プログラム（カリフォルニア、米国、2週間、2018年8月）",
     },
     certification: { en: "Certification", ja: "資格" },
     certificationItems: {
-      en: "・Feb 2025 - IELTS 6.5\n・Apr 2023 - TOEIC 875\n・Dec 2022 - 応用情報技術者試験 | Applied Information Technology Engineer Examination\n・Nov 2021 - 基本情報技術者試験 | Fundamental Information Technology Engineer Examination",
-      ja: "・2025年2月 - IELTS 6.5\n・2023年4月 - TOEIC 875\n・2022年12月 - 応用情報技術者試験\n・2021年11月 - 基本情報技術者試験",
+      en: "・Feb 2025 - IELTS 6.5\n・Apr 2023 - TOEIC 875\n・Dec 2022 - Applied Information Technology Engineer Examination\n・Nov 2021 - Fundamental Information Technology Engineer Examination",
+      ja: "・2025/2 - IELTS 6.5\n・2023/4 - TOEIC 875\n・2022/12 - 応用情報技術者試験\n・2021/11 - 基本情報技術者試験",
     },
   },
   gallery: {
     title: { en: "Photo Gallery", ja: "Photo Gallery" },
   },
   modal: {
-    with: { en: "With", ja: "共同制作" },
-    viewCode: { en: "View Code", ja: "コードを見る" },
-    viewProject: { en: "View Project", ja: "プロジェクトを見る" },
-    back: { en: "← Back to Projects", ja: "← プロジェクト一覧に戻る" },
-    tag: { en: "Type", ja: "種別" },
-    period: { en: "Period", ja: "期間" },
-    team: { en: "Team", ja: "チーム" },
-    overview: { en: "Overview", ja: "概要" },
+    with: { en: "With", ja: "With" },
+    viewCode: { en: "View Code", ja: "View Code" },
+    viewProject: { en: "View Project", ja: "View Project" },
+    back: { en: "← Back to Projects", ja: "← Back to Projects" },
+    tag: { en: "Type", ja: "Type" },
+    period: { en: "Period", ja: "Period" },
+    team: { en: "Team", ja: "Team" },
+    overview: { en: "Overview", ja: "Overview" },
   },
 } as const
 

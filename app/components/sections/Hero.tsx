@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import AnimatedText from "../common/AnimatedText"
-import Bubbles from "../common/Bubbles"
+import HeroFluidBackground from "../common/HeroFluidBackground"
 import { useLanguage } from "@/app/context/LanguageContext"
 import { t, ui } from "@/app/data/i18n"
 
@@ -10,16 +10,14 @@ export default function Hero() {
   const { locale } = useLanguage()
 
   return (
-    <section id="home" className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen gap-8 sm:gap-16 bg-[var(--background)] text-[var(--foreground)]">
-      
-      <main className="flex flex-col gap-6 sm:gap-8 row-start-2 items-center">
+    <section
+      id="home"
+      className="relative w-full min-h-screen bg-[var(--background)] text-[var(--foreground)] overflow-hidden"
+    >
+      <HeroFluidBackground sectionId="home" showModeToggle={false} defaultMode="ink" />
 
-        <Bubbles 
-          sectionId="home"
-          bubbleCount={4}
-          backgroundColor="var(--background)"
-          strokeStyle = 'rgba(192, 0, 0, 0.7)'
-        />
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen gap-8 sm:gap-16 pointer-events-none">
+        <main className="relative z-10 flex flex-col gap-6 sm:gap-8 row-start-2 items-center pointer-events-auto">
 
         <AnimatedText className="flex flex-col items-center gap-3 sm:gap-4">
           <Image
@@ -159,6 +157,7 @@ export default function Hero() {
           
         </AnimatedText>
       </main>
+      </div>
     </section>
   )
 } 
